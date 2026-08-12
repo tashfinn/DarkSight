@@ -1,0 +1,238 @@
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+
+const ASSETS_DIR = 'd:\\Work\\PROJECTS\\CSE400 [CAPSTONE]\\DarkSight\\assets';
+
+const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #030712; color: white; margin: 0; padding: 40px; display: flex; align-items: center; justify-content: center; height: 1200px;}
+    
+    .canvas { width: 1800px; height: 1000px; background: radial-gradient(circle at center, #0f172a 0%, #020617 100%); padding: 50px; border-radius: 20px; border: 2px solid #1e293b; position: relative; box-shadow: inset 0 0 50px rgba(59, 130, 246, 0.1), 0 25px 50px -12px rgba(0,0,0,0.8); display: flex; flex-direction: column;}
+    
+    .header { text-align: center; margin-bottom: 50px; position: relative; }
+    .header h1 { font-size: 56px; font-weight: 900; letter-spacing: 15px; margin: 0; background: linear-gradient(to right, #60a5fa, #e879f9); -webkit-background-clip: text; color: transparent; text-transform: uppercase;}
+    .header p { color: #94a3b8; font-size: 16px; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px;}
+    
+    /* Decoration lines */
+    .dec-line-left { position: absolute; left: 100px; top: 50%; height: 2px; width: 400px; background: linear-gradient(to left, #3b82f6, transparent); }
+    .dec-line-right { position: absolute; right: 100px; top: 50%; height: 2px; width: 400px; background: linear-gradient(to right, #3b82f6, transparent); }
+
+    .grid-container { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; flex: 1; }
+
+    /* Column Headers */
+    .col-header { display: flex; align-items: center; border: 1px solid; border-radius: 12px; padding: 15px; margin-bottom: 30px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 15px;}
+    .num-circle { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; }
+    
+    /* Col Colors */
+    .col-1 .col-header { border-color: #a855f7; background: rgba(168, 85, 247, 0.1); color: #d8b4fe; box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
+    .col-1 .num-circle { background: #a855f7; color: white; }
+    
+    .col-2 .col-header { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); color: #93c5fd; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+    .col-2 .num-circle { background: #3b82f6; color: white; }
+    
+    .col-3 .col-header { border-color: #10b981; background: rgba(16, 185, 129, 0.1); color: #6ee7b7; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+    .col-3 .num-circle { background: #10b981; color: white; }
+    
+    .col-4 .col-header { border-color: #d946ef; background: rgba(217, 70, 239, 0.1); color: #f0abfc; box-shadow: 0 0 15px rgba(217, 70, 239, 0.2); }
+    .col-4 .num-circle { background: #d946ef; color: white; }
+
+    /* Box Styles */
+    .box { background: rgba(15, 23, 42, 0.8); border: 2px solid #334155; border-radius: 12px; padding: 25px; margin-bottom: 25px; position: relative; z-index: 2; backdrop-filter: blur(5px);}
+    .box h3 { margin: 0 0 10px 0; font-size: 22px; }
+    .box p { margin: 0; font-size: 14px; color: #94a3b8; line-height: 1.5; }
+
+    /* Specific Outlines */
+    .box-p { border-color: rgba(168, 85, 247, 0.5); }
+    .box-b { border-color: rgba(59, 130, 246, 0.5); box-shadow: inset 0 0 15px rgba(59, 130, 246, 0.1); }
+    .box-g { border-color: rgba(16, 185, 129, 0.5); box-shadow: inset 0 0 15px rgba(16, 185, 129, 0.1); }
+    
+    .box-final { border-color: rgba(217, 70, 239, 0.6); box-shadow: inset 0 0 30px rgba(217, 70, 239, 0.15), 0 0 20px rgba(217, 70, 239, 0.2); height: 580px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px;}
+    .box-final h3 { font-size: 32px; color: #f0abfc; margin-bottom: 20px; }
+    .box-final p { font-size: 18px; line-height: 1.8; color: #e2e8f0;}
+
+    /* Layout aligners */
+    .col { display: flex; flex-direction: column; position: relative;}
+    
+    .group { position: relative; }
+    .group-mathur-aidui { height: 180px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 25px;}
+    .group-mathur-aidui .box { margin-bottom: 0; padding: 20px; }
+
+    /* SVG Lines (Absolute position over everything) */
+    .svg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;}
+
+    .paper-box { padding: 20px !important; display: flex; align-items: center;}
+    .paper-box h3 { margin: 0; font-size: 20px; }
+
+</style>
+</head>
+<body>
+    <div class="canvas" id="capture-area">
+        
+        <div class="header">
+            <div class="dec-line-left"></div>
+            <h1>DARKSIGHT</h1>
+            <p>High-Precision Architecture for Dark Pattern Detection & Mitigation</p>
+            <div class="dec-line-right"></div>
+        </div>
+
+        <svg class="svg-layer">
+            <defs>
+                <linearGradient id="grad-pb" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#a855f7" />
+                    <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+                <linearGradient id="grad-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#3b82f6" />
+                    <stop offset="100%" stop-color="#10b981" />
+                </linearGradient>
+                <linearGradient id="grad-gp" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#10b981" />
+                    <stop offset="100%" stop-color="#d946ef" />
+                </linearGradient>
+                
+                <marker id="arrow-b" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+                </marker>
+                <marker id="arrow-g" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
+                </marker>
+                <marker id="arrow-p" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d946ef" />
+                </marker>
+            </defs>
+            
+            <!-- Lines from Col 1 to Col 2 -->
+            <!-- Mathur (x1=410, y1=320) to Regex (x2=480, y2=360) -->
+            <path d="M 390 280 C 420 280, 420 330, 470 330" fill="none" stroke="url(#grad-pb)" stroke-width="4" marker-end="url(#arrow-b)" />
+            <!-- AidUI (x1=410, y1=410) to Regex (x2=480, y2=360) -->
+            <path d="M 390 380 C 420 380, 420 330, 470 330" fill="none" stroke="url(#grad-pb)" stroke-width="4" marker-end="url(#arrow-b)" />
+            
+            <!-- Schaefer to Few Shot -->
+            <path d="M 390 480 L 470 480" fill="none" stroke="url(#grad-pb)" stroke-width="4" marker-end="url(#arrow-b)" />
+            
+            <!-- 50 Shades to Spatial -->
+            <path d="M 390 630 L 470 630" fill="none" stroke="url(#grad-pb)" stroke-width="4" marker-end="url(#arrow-b)" />
+
+            <!-- DP Sentinel directly to Final box (Col 4) under everything -->
+            <path d="M 390 750 C 600 750, 600 900, 1315 900 C 1315 900, 1315 800, 1315 800" fill="none" stroke="url(#grad-pb)" stroke-width="4" marker-end="url(#arrow-p)" />
+
+
+            <!-- Lines from Col 2 to Col 3 -->
+            <path d="M 830 330 L 900 330" fill="none" stroke="url(#grad-bg)" stroke-width="4" marker-end="url(#arrow-g)" />
+            <path d="M 830 480 L 900 480" fill="none" stroke="url(#grad-bg)" stroke-width="4" marker-end="url(#arrow-g)" />
+            <path d="M 830 630 L 900 630" fill="none" stroke="url(#grad-bg)" stroke-width="4" marker-end="url(#arrow-g)" />
+
+            <!-- Lines from Col 3 to Col 4 -->
+            <path d="M 1260 330 C 1290 330, 1290 480, 1320 480" fill="none" stroke="url(#grad-gp)" stroke-width="4" marker-end="url(#arrow-p)" />
+            <path d="M 1260 480 L 1320 480" fill="none" stroke="url(#grad-gp)" stroke-width="4" marker-end="url(#arrow-p)" />
+            <path d="M 1260 630 C 1290 630, 1290 480, 1320 480" fill="none" stroke="url(#grad-gp)" stroke-width="4" marker-end="url(#arrow-p)" />
+
+        </svg>
+
+        <div class="grid-container">
+            <!-- Col 1 -->
+            <div class="col col-1">
+                <div class="col-header">
+                    <div class="num-circle">1</div>
+                    Academic Foundations
+                </div>
+                
+                <div class="group-mathur-aidui">
+                    <div class="box box-p paper-box"><h3 style="color: #d8b4fe;">Mathur (2019)</h3></div>
+                    <div class="box box-p paper-box"><h3 style="color: #d8b4fe;">AidUI</h3></div>
+                </div>
+
+                <div class="box box-p paper-box" style="margin-bottom: 75px;"><h3 style="color: #d8b4fe;">Schaefer (2024)</h3></div>
+                
+                <div class="box box-p paper-box" style="margin-bottom: 50px;"><h3 style="color: #d8b4fe;">50 Shades of DP</h3></div>
+                
+                <div class="box box-p paper-box"><h3 style="color: #d8b4fe;">DP Sentinel</h3></div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="col col-2">
+                <div class="col-header">
+                    <div class="num-circle">2</div>
+                    Core Mechanisms
+                </div>
+                
+                <div class="box box-b" style="margin-top: 20px; height: 110px;">
+                    <h3 style="color: #93c5fd;">Regex & CSS Math</h3>
+                    <p>Instantly matches string patterns and calculates bounding box area & contrast ratios.</p>
+                </div>
+                
+                <div class="box box-b" style="margin-top: 20px; height: 110px;">
+                    <h3 style="color: #93c5fd;">Few-Shot Prompting</h3>
+                    <p>Injects strict definitions to evaluate the underlying semantic intent of text.</p>
+                </div>
+                
+                <div class="box box-b" style="margin-top: 20px; height: 110px;">
+                    <h3 style="color: #93c5fd;">Spatial Taxonomy</h3>
+                    <p>Maps 21 deceptive visual layout categories directly to raw pixels.</p>
+                </div>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="col col-3">
+                <div class="col-header">
+                    <div class="num-circle">3</div>
+                    DarkSight Extension Pipeline
+                </div>
+                
+                <div class="box box-g" style="margin-top: 20px; height: 110px;">
+                    <h3 style="color: #6ee7b7;">Tier 1: DOM Engine</h3>
+                    <p>Executes instantly on page load. Traps obvious manipulation natively in the DOM.</p>
+                </div>
+                
+                <div class="box box-g" style="margin-top: 20px; height: 110px;">
+                    <h3 style="color: #6ee7b7;">Tier 2: NLP Pipeline</h3>
+                    <p>Background local Mistral LLM contextually analyzes ambiguous text batches.</p>
+                </div>
+                
+                <div class="box box-g" style="margin-top: 20px; height: 110px;">
+                    <h3 style="color: #6ee7b7;">Tier 3: Vision Fallback</h3>
+                    <p>Full viewport screenshot passed to LLaVA AI for structural layout deception.</p>
+                </div>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="col col-4">
+                <div class="col-header">
+                    <div class="num-circle">4</div>
+                    Detection & Mitigation
+                </div>
+                
+                <div class="box box-final">
+                    <h3>Final Orchestration</h3>
+                    <p style="margin-bottom: 20px;">DP Sentinel routes tiers securely across the architecture.</p>
+                    <p>Schaefer's UI countermeasure injects glowing boundaries and warning tooltips to actively protect the user without slowing down browsing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+`;
+
+fs.writeFileSync(path.join(__dirname, 'gpt_style_flow.html'), htmlContent);
+
+(async () => {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1900, height: 1100, deviceScaleFactor: 2 });
+    await page.goto('file://' + path.join(__dirname, 'gpt_style_flow.html'));
+    
+    if (!fs.existsSync(ASSETS_DIR)) {
+        fs.mkdirSync(ASSETS_DIR);
+    }
+
+    const elementHandle = await page.$('#capture-area');
+    await elementHandle.screenshot({ path: path.join(ASSETS_DIR, 'gpt_style_methodology.png'), omitBackground: true });
+
+    await browser.close();
+    console.log('GPT Style Flow diagram generated successfully!');
+})();

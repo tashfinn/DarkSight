@@ -18,6 +18,7 @@ let MODE="HLE";
 const processedElements = new WeakSet();
 const textCache = new Map();
 const explainedTexts = new Set();
+const decisionWords = ['accept', 'decline', 'reject', 'agree', 'cancel', 'continue', 'skip', 'yes', 'no', 'allow', 'deny'];
 const pendingLLM = new Set();
 const llmQueue = [];
 
@@ -31,6 +32,31 @@ let explanationsVisible=true;
 const elementMap = new Map(); // normalizedText -> Set of elements
 const observedNodes = new Map(); // element -> normalizedText
 
+/* =============================
+   STAGE 1: HEURISTIC SCANNER
+============================= */
+
+function fastHeuristicScan(text) {
+    // 1. Urgency (Countdowns, flash sales)
+    if (text.includes("timer") || /(flash|mega|super|black friday)\s+sale/.test(text) || /sale is live/.test(text) || /limited time deal/.test(text) || /ends in \d+ (hrs|hours|mins)/.test(text)) {
+        return { text: text, category: "Urgency: High-pressure urgency keywords or countdown timers detected." };
+    }
+    // 2. Scarcity
+    if (/only \d+ left/.test(text) || /selling fast/.test(text) || /high demand/.test(text) || /almost gone/.test(text) || /sold out soon/.test(text)) {
+        return { text: text, category: "Scarcity: Low stock or high demand indicators used to pressure users." };
+    }
+    // 3. Fake Discount
+    if (/9[0-9]% off/.test(text) || /flat 50% off your 1st order/.test(text) || /massive savings/.test(text)) {
+        return { text: text, category: "Fake Discount: Highly suspicious or aggressive discount claims." };
+    }
+    // 4. Social Proof
+    if (/(people|users|customers)\s+(bought|viewing|looking)/.test(text) || /in \d+ people'?s (cart|bag|shopping bag)/.test(text) || /trending (product|item)/.test(text)) {
+        return { text: text, category: "Social Proof: Activity from other users shown to influence decisions." };
+    }
+    
+    return null; // Not found by fast scan, proceed to Stage 2 (LLM)
+}
+
 const visibilityObserver = new IntersectionObserver((entries) => {
     let triggered = false;
     entries.forEach(entry => {
@@ -40,9 +66,18 @@ const visibilityObserver = new IntersectionObserver((entries) => {
             
             if (key) {
                 if (!textCache.has(key) && !pendingLLM.has(key)) {
-                    pendingLLM.add(key);
-                    llmQueue.push(key);
-                    triggered = true;
+                    // Stage 1: Fast Heuristic Scan
+                    const heuristicResult = fastHeuristicScan(key);
+                    
+                    if (heuristicResult) {
+                        textCache.set(key, heuristicResult);
+                        applyMode(el, heuristicResult);
+                    } else {
+                        // Stage 2: Send to LLM
+                        pendingLLM.add(key);
+                        llmQueue.push(key);
+                        triggered = true;
+                    }
                 } else if (textCache.has(key)) {
                     // Apply cached result immediately
                     applyMode(el, textCache.get(key));
@@ -116,8 +151,15 @@ if(!text) return;
 
 const lower=text.toLowerCase();
 
+// Global decision words for AidUI heuristics
+
 // Thesis Data Preprocessing: Remove single words, numbers only, and prices.
-if(lower.split(/\s+/).length < 2) return;
+// EXCEPTION: Keep single words if they are decision buttons!
+if(lower.split(/\s+/).length < 2) {
+    if (!decisionWords.some(w => lower.includes(w) || lower === w)) {
+        return;
+    }
+}
 if(/^[\d\W]+$/.test(lower)) return;
 if(/[\$\€\£\¥\৳]\s*\d+/.test(lower)) return;
 // Removed aggressive blacklist so promotional buttons (Shop Now, Free Delivery, App Downloads) can be analyzed
@@ -168,7 +210,7 @@ log("Sending to LLM via background:",texts);
 const prompt=buildPrompt(texts);
 
 const response = await new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error("LLM request timed out after 30s")), 30000);
+    const timer = setTimeout(() => reject(new Error("LLM request timed out after 125s")), 125000);
     chrome.runtime.sendMessage({ action: "fetchLLM", prompt: prompt }, res => {
         clearTimeout(timer);
         if (chrome.runtime.lastError) reject(new Error(chrome.runtime.lastError.message));
@@ -452,6 +494,33 @@ function detectVisualCue(el) {
     return null;
 }
 
+/* =============================
+   ADVANCED VISUAL PROMINENCE HELPERS
+============================= */
+function parseRGB(colorStr) {
+    const match = colorStr.match(/[\d.]+/g);
+    if (!match || match.length < 3) return [255, 255, 255];
+    return [parseFloat(match[0]), parseFloat(match[1]), parseFloat(match[2])];
+}
+
+function getLuminance(r, g, b) {
+    const a = [r, g, b].map(function (v) {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+
+function getContrastRatio(color1, color2) {
+    const rgb1 = parseRGB(color1);
+    const rgb2 = parseRGB(color2);
+    const lum1 = getLuminance(rgb1[0], rgb1[1], rgb1[2]);
+    const lum2 = getLuminance(rgb2[0], rgb2[1], rgb2[2]);
+    const brightest = Math.max(lum1, lum2);
+    const darkest = Math.min(lum1, lum2);
+    return (brightest + 0.05) / (darkest + 0.05);
+}
+
 function getEffectiveBackgroundColor(el) {
     let currentEl = el;
     while (currentEl && currentEl !== document.documentElement) {
@@ -514,7 +583,6 @@ function resolveVisualDP(el, nodes) {
     // AidUI Paper Phase 3: "Text analysis is used to select the segments... Next, color analysis is performed"
     // We strictly filter to only run spatial/color analysis on elements with decision keywords (like the paper does)
     const textLower = el.innerText.trim().toLowerCase();
-    const decisionWords = ['accept', 'decline', 'agree', 'cancel', 'continue', 'skip', 'yes', 'no', 'allow', 'deny'];
     const hasDecisionText = decisionWords.some(w => textLower.includes(w) || textLower === w);
 
     if (!hasDecisionText && !isBadge) return null;
@@ -547,6 +615,13 @@ function resolveVisualDP(el, nodes) {
     if (neighbors.length === 0) return null;
     
     const myColor = analyzeColor(el);
+    const myBgColor = getEffectiveBackgroundColor(el);
+    const myTextColor = style.color;
+    const myFontSize = parseFloat(style.fontSize) || 12;
+    const myFontWeight = parseFloat(style.fontWeight) || (style.fontWeight === 'bold' ? 700 : 400);
+    
+    const localContrast = getContrastRatio(myBgColor, myTextColor);
+    const lowContrastFlag = (localContrast < 3.0); // WCAG minimum is 4.5
     
     // AidUI Spatial Analysis: compute relative width and height
     const relWidth = rect.width / maxWidth;
@@ -554,6 +629,7 @@ function resolveVisualDP(el, nodes) {
     
     let colorVote = 0;
     let spatialVote = 0;
+    let fontVote = 0;
     
     const SPATIAL_THRESHOLD = 0.3; // predefined threshold for relative size difference
 
@@ -562,6 +638,10 @@ function resolveVisualDP(el, nodes) {
         const neighborRect = neighbor.getBoundingClientRect();
         const neighborRelWidth = neighborRect.width / maxWidth;
         const neighborRelHeight = neighborRect.height / maxHeight;
+        
+        const nStyle = window.getComputedStyle(neighbor);
+        const nFontSize = parseFloat(nStyle.fontSize) || 12;
+        const nFontWeight = parseFloat(nStyle.fontWeight) || (nStyle.fontWeight === 'bold' ? 700 : 400);
         
         // AidUI Color Resolution: Opposite brightness
         if (myColor !== "normal" && neighborColor !== "normal" && myColor !== neighborColor) {
@@ -572,15 +652,31 @@ function resolveVisualDP(el, nodes) {
         if (Math.abs(relWidth - neighborRelWidth) > SPATIAL_THRESHOLD || Math.abs(relHeight - neighborRelHeight) > SPATIAL_THRESHOLD) {
             spatialVote = 1;
         }
+        
+        // Advanced Font Disparity Check (Misdirection)
+        if (nFontSize > myFontSize * 1.5 || (nFontWeight >= 700 && myFontWeight <= 400 && nFontSize > myFontSize * 1.2)) {
+            fontVote = 1;
+        }
     }
     
-    // AidUI Segment Level Resolution: Equally weighted score across features
-    if (colorVote + spatialVote >= 2) {
-        if (relWidth > 0.5 || relHeight > 0.5) {
-            return "Attention Distraction: Visually emphasized to distract users.";
+    // Advanced Segment Level Resolution
+    if (colorVote + spatialVote + fontVote >= 1 || (fontVote === 1 && lowContrastFlag)) {
+        if (relWidth < 0.8 && relHeight < 0.8) {
+            return "Misdirection: Visually de-emphasized to hide alternative options.";
+        } else if (spatialVote === 0 && colorVote === 1) {
+            // If they are the same size but different colors, base it purely on color brightness
+            if (myColor === "brighter") {
+                return "Attention Distraction: Visually emphasized to distract users.";
+            } else {
+                return "Misdirection: Visually de-emphasized to hide alternative options.";
+            }
         } else {
-            return "Default Choice: Visually de-emphasized to hide alternative options.";
+            return "Attention Distraction: Visually emphasized to distract users.";
         }
+    }
+    
+    if (lowContrastFlag) {
+        return "Sneaking: Text contrast is intentionally low to hide information.";
     }
     
     if (isBadge) {
@@ -784,4 +880,67 @@ childList:true,
 subtree:true
 });
 
-window.addEventListener("load",schedule);
+// 50 Shades Vision Pipeline
+let hasScannedVisual = false;
+async function scanVisualUI() {
+    if (hasScannedVisual) return;
+    hasScannedVisual = true;
+    
+    // Safety check
+    if(typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) return;
+    
+    const prompt = typeof buildVisionPrompt === "function" ? buildVisionPrompt() : "Analyze this image for deceptive patterns.";
+    
+    log("Sending screenshot to MLLM via background...");
+    
+    chrome.runtime.sendMessage({ action: "analyzeScreenshot", prompt: prompt }, res => {
+        if (chrome.runtime.lastError) {
+            log("Vision LLM Error:", chrome.runtime.lastError.message);
+            return;
+        }
+        if (!res || !res.success) {
+            log("Vision LLM failed:", res ? res.error : "Unknown error");
+            return;
+        }
+        
+        log("LLaVA Vision response:", res.data.response);
+        
+        // Parse the response
+        const responseText = res.data.response.toLowerCase();
+        if (responseText.includes("normal")) {
+            log("Vision check passed: No global deceptive patterns found.");
+            return;
+        }
+        
+        // Very basic overlay alert if something is found based on the 21 categories
+        const alertDiv = document.createElement("div");
+        alertDiv.style.position = "fixed";
+        alertDiv.style.bottom = "20px";
+        alertDiv.style.right = "20px";
+        alertDiv.style.backgroundColor = "rgba(255, 0, 0, 0.9)";
+        alertDiv.style.color = "white";
+        alertDiv.style.padding = "15px";
+        alertDiv.style.borderRadius = "8px";
+        alertDiv.style.zIndex = "999999999";
+        alertDiv.style.maxWidth = "300px";
+        alertDiv.style.boxShadow = "0 4px 12px rgba(0,0,0,0.3)";
+        alertDiv.innerHTML = `<strong>DarkSight Vision Alert</strong><br><br>${res.data.response}<br><br><button id='ds-vision-dismiss' style='background:white;color:black;border:none;padding:5px 10px;cursor:pointer;'>Dismiss</button>`;
+        
+        document.body.appendChild(alertDiv);
+        
+        const removeAlert = () => {
+            if (alertDiv.parentNode) alertDiv.remove();
+        };
+        
+        document.getElementById('ds-vision-dismiss').addEventListener('click', removeAlert);
+        
+        // Auto dismiss after 15 seconds so it doesn't block the screen forever
+        setTimeout(removeAlert, 15000);
+    });
+}
+
+// Trigger vision scan 3 seconds after load to ensure the page has somewhat settled
+window.addEventListener("load", () => {
+    schedule();
+    setTimeout(scanVisualUI, 3000);
+});

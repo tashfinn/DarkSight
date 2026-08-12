@@ -8,7 +8,7 @@
     "48": "logo/darksight.png",
     "128": "logo/darksight.png"
   },
-  "permissions": ["scripting", "storage", "declarativeNetRequest", "declarativeNetRequestWithHostAccess"],
+  "permissions": ["activeTab", "scripting", "storage", "declarativeNetRequest", "declarativeNetRequestWithHostAccess"],
   "host_permissions": [
     "<all_urls>",
     "http://127.0.0.1:11434/*"
@@ -36,8 +36,5 @@
       "css": ["styles.css"],
       "run_at": "document_idle"
     }
-  ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
-  }
+  ]
 }
