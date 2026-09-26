@@ -1,0 +1,1573 @@
+Item,Detection
+test.jpg,"Category: NORMAL
+Explanation: The image does not contain any elements that would indicate deceptive patterns as described in the taxonomy. It appears to be a placeholder for an image, with no interactive content or design elements present."
+check.png,"Category: NORMAL
+Explanation: The image does not contain any elements that would indicate deceptive patterns as described in the taxonomy. It appears to be a simple checkmark icon with no additional context or design features that could suggest hidden costs, preselections, or other deceptive practices."
+dp-taxonomy.png,"Category: Nagging  
+Explanation: Repetitive and unexpected pop-up windows disrupt user activities.
+
+Category: Roach Motel  
+Explanation: Opting in is easy, but opting out is complicated or obscure.
+
+Category: Price Comparison Prevention  
+Explanation: Direct comparisons of prices or plans are hindered by design elements.
+
+Category: Intermediate Currency  
+Explanation: Virtual currencies are used to obscure real financial costs.
+
+Category: Forced Continuity  
+Explanation: Users may be charged after a trial period ends without clear advance notice.
+
+Category: Hidden Costs  
+Explanation: Late disclosure of additional costs such as taxes, delivery, or service fees is present.
+
+Category: Sneak into Basket  
+Explanation: Items not actively selected by users are automatically added to the shopping cart.
+
+Category: Hidden Information  
+Explanation: Essential options or actions are concealed or difficult to find.
+
+Category: Preselection  
+Explanation: Options are preselected without explicit user consent.
+
+Category: Toying with Emotion  
+Explanation: Design elements such as language, colors, or styles elicit emotional responses and pressure users into making decisions.
+
+Category: False Hierarchy  
+Explanation: Some options appear more significant than other equivalent choices.
+
+Category: Disguised Ads  
+Explanation: Advertisements are designed to resemble normal content.
+
+Category: Tricked Questions  
+Explanation: Confusing or misleadingly worded questions are present.
+
+Category: Small Close Button  
+Explanation: Close buttons may be too small and difficult to locate or click.
+
+Category: Social Pyramid  
+Explanation: Incentives encourage users to share content with friends for rewards.
+
+Category: Privacy Zuckering  
+Explanation: Default options necessitate sharing unnecessary personal information.
+
+Category: Gamification  
+Explanation: Users are required to repeatedly perform tasks to earn rewards.
+
+Category: Countdown on Ads  
+Explanation: Timers restrict users from closing ads immediately.
+
+Category: Watch Ads to Unlock  
+Explanation: Users must watch advertisements to access particular features or rewards.
+
+Category: Forced Enrollment  
+Explanation: Users must sign up or sign in before they can utilize the service."
+design.png,"Category: Nagging  
+Explanation: The image shows repetitive pop-up windows that may disrupt user activities."
+approach.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described by the provided taxonomy. It appears to be a flowchart illustrating text and graphic component detection in an input GUI image, without any elements that would suggest deception or manipulation of user behavior."
+demo.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+._1119_Kq1ZthC.jpg,
+._entertainment_20--Face-Master-0-44_00a3.jpg,
+1411.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of a streaming app interface with no visible signs of misleading practices."
+._13538.jpg,
+._1427.jpg,
+1385.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by forcing them to select a sharing device."
+12415_GItLyhQ.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All settings and options are clearly visible with straightforward checkboxes for enabling notifications. There is no hidden information, preselection of options, or misleading design elements present."
+1971.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up from ""WDG+Games"" that disrupts user activities by overlaying content and requiring interaction to close."
+1383.jpg,"Category: NORMAL
+Explanation: The image does not present any deceptive patterns as described. It shows a standard information pop-up with no hidden costs, forced continuities, or misleading elements."
+._entertainment_2--Google-Play-Games-0-17-a_1a70.jpg,
+._10029.jpg,
+music_21--TuneIn-Radio-0-16_e31e.jpg,"Category: Forced Continuity
+Explanation: The image suggests that users will be automatically billed after a trial period ends without clear advance notice."
+1380.jpg,"Category: NORMAL
+Explanation: The image shows a settings menu with clear and straightforward options without any deceptive patterns."
+communication_3--textnow-0-16_24d9.jpg,"Category: Roach Motel  
+Explanation: Opting out is not immediately clear as there's no visible ""Cancel"" button."
+._1948.jpg,
+._12247_Lb9PIqo.jpg,
+1409.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a user interface for browsing content with various filters and options available, without any hidden costs or misleading elements."
+._1369.jpg,
+1395.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard mobile application interface with clear navigation options and no hidden costs, preselections, or misleading elements."
+._1947.jpg,
+._music_12--Free-Ringtone-0-15_3a76.jpg,
+music_15--Volume-Booster-0-46_a68c.jpg,"Category: Nagging
+Explanation: The image shows a repetitive pop-up window asking for user feedback that disrupts the music player experience."
+1055.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a screenshot of an app interface with user profile information and interaction options, but no elements that fit the listed categories are present."
+._1105.jpg,
+._communication_6--yahoo-email-2-51_8868.jpg,
+._12257_vqzq0Bo.jpg,
+12284.jpg,"Category: Disguised Ads
+Explanation: The advertisement for Vuevent is presented as a regular list item with an ""INSTALL"" button, making it appear like a normal feature rather than an ad."
+._19.jpg,
+._communication_30--Brave-0-5_b033.jpg,
+._10779_TpFqdCn.jpg,
+music_24--Simple-Radio-5-40_508d.jpg,"Category: Countdown on Ads
+Explanation: The advertisement has a countdown timer that restricts users from closing it immediately."
+._music_24--Simple-Radio-5-40_508d.jpg,
+._communication_19--Talkatone-7-7_3541.jpg,
+communication_20--call-free-free-online-0-21_7616.jpg,"Category: Forced Enrollment  
+Explanation: The image requires users to sign up/log in with their phone number before accessing any features."
+._music_22--Starmaker-3-8_27d0.jpg,
+._1978.jpg,
+music_13--Free-Music-Download-1-28_bf77.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window requesting a five-star rating to support app development, which disrupts the user's experience."
+._116.jpg,
+._entertainment_29--Smash-DIY-7-42_77d6.jpg,
+music_17--Free-Music-0-18_37a6.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window asking for user feedback and support, which can be disruptive to ongoing activities."
+communication_19--Talkatone-7-7_3541.jpg,"Category: Nagging
+Explanation: The image contains a persistent ad at the top that may disrupt user activities."
+115.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""Geek - Smarter Shopping"" is designed to resemble a normal app feature."
+1058.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard mobile app menu with clear options for the user to interact with."
+._entertainment_16--Color-by-Number-3-21_5060.jpg,
+._1102.jpg,
+music_23--Tidal-2-6_4894.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard settings menu for an app with no hidden costs, preselections, or misleading elements."
+1101.jpg,"Category: Price Comparison Prevention
+Explanation: The image shows a blank screen with no visible prices for comparison."
+._10974_07UoQn9.jpg,
+1097.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a news app interface with articles and images related to good news stories, without any hidden costs, forced continuities, or misleading elements."
+1376.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard flight booking interface with clear options and no hidden costs, preselections, or misleading elements."
+music_1--Spotify-1-6_55ff.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. All settings are clearly visible and easily accessible without hidden costs or preselections."
+._1108.jpg,
+14056_gEiLUmA.jpg,"Category: Disguised Ads
+Explanation: The advertisement is integrated into a weather forecast page, making it appear as part of the content rather than an ad."
+1413.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as per the provided taxonomy."
+music_8--Free-Music-Unlimited-Offline-0-3_618f.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window asking for user feedback and support, which can be disruptive to the user's experience."
+._1381.jpg,
+communication_6--yahoo-email-2-51_8868.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a standard settings screen for email notifications with clear options and no hidden costs or preselections."
+._1395.jpg,
+._communication_19--Talkatone-4-27_1499.jpg,
+._music_21--TuneIn-Radio-3-24_7184.jpg,
+._entertainment_19--Face-Secret-Master-0-7_b147.jpg,
+._communication_1--messenger-text-and-video-0-11_5c9f.jpg,
+communication_22--viber-2-16_83a4.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as it is a screenshot of notification settings for an app. There are no hidden costs, preselections, or misleading elements present."
+._1137_H9zzoUq.jpg,
+._entertainment_19--Face-Secret-Master-5-15_5310.jpg,
+._music_17--Free-Music-3-8_c3bb.jpg,
+._1382.jpg,
+118.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a straightforward weight tracking app with no hidden costs, preselections, or misleading elements."
+1211_FIlYrck.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as described. It appears to be a settings menu with various options that can be toggled on and off, without any hidden costs or preselections."
+1089.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard user interface for an EBS TV application with clear navigation options and information about streaming services, version updates, and customer support. There are no hidden costs or misleading elements present."
+music_1--Spotify-1-13_d144.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns related to the categories listed. It shows a standard notification settings screen for Spotify with clear options and no hidden costs, preselections, or misleading elements."
+._communication_24--Line-0-7_308e.jpg,
+1387.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns related to the categories listed. It appears to be a screenshot of a video player application with no visible signs of misleading practices."
+1366_8h8kXDb.jpg,"Category: Nagging
+Explanation: The image displays a persistent pop-up window asking to install an app immediately after viewing content."
+._10002.jpg,
+1391.jpg,"Category: NORMAL
+Explanation: The image shows a simple screen indicating no connected devices without any deceptive patterns."
+1389.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a straightforward display of device information and file sharing settings without any hidden costs, preselections, or misleading elements."
+._communication_13--telegram-1-41_c3b3.jpg,
+._14369_HGZAT0T.jpg,
+106.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard Facebook login screen for an app called ""My Account Straight Talk."" There are no hidden costs, preselections, or misleading elements present."
+._1970.jpg,
+._1100.jpg,
+music_6--MP3-Music-Downloader-_-Free-Music-Download-0-57_b85e.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that interrupts user activities by asking for feedback after a download."
+._music_1--Spotify-1-13_d144.jpg,
+113.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a straightforward weight tracker application with no hidden costs, forced continuities, or misleading advertisements."
+._1057.jpg,
+entertainment_19--Face-Secret-Master-0-7_b147.jpg,"Category: Forced Continuity  
+Explanation: The user is charged after a trial period ends without clear advance notice."
+._music_11--Edijing-mix-5-11_ec94.jpg,
+1401.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a simple medication entry form with no hidden costs, preselections, or misleading elements."
+._1103.jpg,
+._communication_3--textnow-5-26_21c0.jpg,
+communication_11--firefox-4-32_79cc.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard privacy settings menu from a web browser, with no hidden costs, preselections, or misleading elements detected."
+._music_8--Free-Music-Unlimited-Offline-0-13_9865.jpg,
+._16.jpg,
+1371.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All information is clearly presented and there are no hidden costs or misleading elements."
+._18.jpg,
+music_3--Drum-Pad-8-18_cf3e.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is an advertisement for a coding app with clear calls to action and no hidden costs or misleading elements."
+._music_17--Free-Music-8-0_a0a2.jpg,
+._1245_29sppkP.jpg,
+._13761_lRqlNk0.jpg,
+entertainment_29--Smash-DIY-7-42_77d6.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of an app listing on Google Play Store with no visible signs of misleading practices."
+._music_22--Starmaker-8-1_9e27.jpg,
+music_11--Edijing-mix-5-11_ec94.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by offering to remove ads in exchange for upgrading to the premium version."
+10018.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a list of countries for watching TV shows online without any hidden costs, preselections, or misleading elements."
+1118.jpg,"Category: Privacy Zuckering
+Explanation: The image shows that users are required to share their public profile and friend list with Zomato for login purposes. This is a privacy concern as it involves sharing unnecessary personal information without explicit consent."
+music_2--Youtube-Music-3-57_1da0.jpg,"Category: Forced Enrollment  
+Explanation: The image shows a video playing with an ad at the top, which is common in streaming platforms where users must sign up or sign in to watch content. This aligns with the category of Forced Enrollment as it requires user engagement before accessing the main content."
+1108.jpg,"Category: NORMAL
+Explanation: The image shows a straightforward language selection screen with no deceptive patterns identified."
+10447_lXAva8J.jpg,"Category: Roach Motel
+Explanation: Opting out is not immediately clear as there's no visible option to skip or decline the privacy policy."
+music_22--Starmaker-3-8_27d0.jpg,"Category: Forced Enrollment  
+Explanation: The image shows a sign-up screen with options to log in via Phone, Facebook, Email, and Google. This suggests that users must sign up before they can use the service, which is a form of forced enrollment."
+._1407.jpg,
+1137_H9zzoUq.jpg,"Category: Roach Motel  
+Explanation: Opting out of the one-time fee for full access is not clearly indicated."
+._1118.jpg,
+._1380.jpg,
+._communication_10--kik-1-30_e5dd.jpg,
+._12284.jpg,
+1944.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard filter interface for an e-commerce platform with clear options and no hidden costs or misleading elements."
+10027.jpg,"Category: NORMAL
+Explanation: The image is a weather forecast app and does not contain any deceptive patterns related to user interactions or hidden costs."
+12814_ZTYnBV1.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a settings screen with various options and their corresponding toggle switches. There are no hidden costs, preselections, or misleading elements present."
+._1211_FIlYrck.jpg,
+entertainment_19--Face-Secret-Master-0-58_e91a.jpg,"Category: Nagging
+Explanation: The image shows a repetitive pop-up asking for user feedback on an app, which can be disruptive to ongoing activities."
+._1107.jpg,
+10030.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a settings screen for weather notifications with clear toggle options and no hidden costs, preselections, or misleading elements."
+1238_IpgL3JU.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+10021.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""7 Gold"" is designed to resemble a video thumbnail within the app interface."
+1123.jpg,"Category: SOCIAL PYRAMID
+Explanation: The image encourages users to share Scholly with their friends for unspecified rewards."
+._1418.jpg,
+1094.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns related to the categories listed. It appears to be a standard mobile browser menu with no hidden costs, forced continuities, or misleading options."
+._1387.jpg,
+music_8--Free-Music-Unlimited-Offline-0-13_9865.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as described. It appears to be a music streaming app interface with song and album listings for Adele, without any hidden costs, forced continuities, or misleading advertisements."
+13538.jpg,"Category: Nagging
+Explanation: The image displays a persistent pop-up for an advertisement that disrupts user experience."
+._13068_E9D1V7w.jpg,
+._10345.jpg,
+1091.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of an educational app interface with no visible signs of misleading practices."
+._105.jpg,
+._music_2--Youtube-Music-1-6_21ff.jpg,
+._communication_5--discord-1-19_b02f.jpg,
+1048.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It simply indicates that there are no trips in a travel app and provides instructions on how to add one."
+1947.jpg,"Category: Gamification
+Explanation: The image suggests a repetitive task with a score system and a ""Complete"" button, indicating users are required to perform tasks repeatedly for rewards."
+._1375.jpg,
+._1099.jpg,
+._music_30--Music-Bass-Equalizer-0-12_24d3.jpg,
+1095.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a screenshot of an EBS TV app interface with no hidden costs, forced continuities, or misleading advertisements."
+communication_21--Marco-Polo-1-49_eafd.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard settings screen for notifications in an app, with clear options and no hidden costs or preselections."
+112.jpg,"Category: Disguised Ads
+Explanation: The advertisement for Nutrisystem Diet at the bottom of the screen appears to be integrated into the interface in a way that might deceive users into thinking it is part of the app's content."
+music_17--Free-Music-3-8_c3bb.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a music streaming app interface with no hidden costs, forced continuities, or misleading elements."
+._music_4--SounCloud-0-46-snap3_0d6c.jpg,
+music_29--Sticher-0-52_6901.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a settings menu for an application with clear toggle options and no hidden costs, preselections, or misleading elements."
+1955.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns related to the categories listed. It appears to be a guide for the game Pac-Man 256, with no hidden costs, forced continuities, or misleading elements detected."
+._communication_24--Line-1-45_e9fc.jpg,
+._1419.jpg,
+1434.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a menu for managing skins and community features in an app."
+music_22--Starmaker-8-1_9e27.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window asking to enable a feature that disrupts user activities."
+1099.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a standard comment section with no hidden costs, forced continuities, or misleading elements."
+1054.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It simply shows a message indicating no matches have been found in the context of a dating app, with an option to play zapping. There are no hidden costs or misleading elements present."
+1406.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a screenshot of an app interface for a TV show with no hidden costs, preselections, or misleading elements."
+101.jpg,"Category: NORMAL
+Explanation: The image shows a standard login screen with options for email and Facebook login. There are no deceptive patterns identified in the provided categories."
+1372.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard menu from an airline app with clear options and no hidden costs, preselections, or misleading elements."
+13842_Uxr3SUv.jpg,"Category: NORMAL
+Explanation: The image shows a settings screen with an option to enable push notifications. There are no deceptive patterns present in this screenshot."
+._1972.jpg,
+._1976.jpg,
+._104.jpg,
+._10003.jpg,
+communication_29--Messenger-0-19_1989.jpg,"Category: Roach Motel
+Explanation: The ""Next"" button is prominently displayed and easy to click, but there's no clear indication of how to skip the entire setup process."
+._103.jpg,
+._1392.jpg,
+._entertainment_14--Daily-Pixel---Color-By-Number-7-49_5329.jpg,
+10002.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a user interface for managing favorite train stations and itineraries, with clear options to add new entries without any hidden costs or misleading elements."
+communication_26--Puffin-Browser-0-9_da66.jpg,"Category: Preselection
+Explanation: The checkboxes for agreeing to terms and sending usage statistics are preselected by default."
+1126.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a screenshot of an app interface related to goal-setting and advice for scholarship applications, with no elements that would suggest deception according to the provided categories."
+._12814_ZTYnBV1.jpg,
+1378.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a service guide for streaming content from a smartphone to a TV, with no hidden costs, preselections, or misleading elements noted."
+._138_QQF5MWw.jpg,
+._107.jpg,
+._music_13--Free-Music-Download-1-28_bf77.jpg,
+music_17--Free-Music-8-0_a0a2.jpg,"Category: Countdown on Ads
+Explanation: The ad has a countdown timer of 6 seconds remaining, which restricts users from closing it immediately."
+._14080_mD4Dl14.jpg,
+10480.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. All elements are clearly visible and user actions can be easily understood without hidden costs or misleading options."
+._communication_14--hangout-1-26_aedf.jpg,
+._music_11--Edijing-mix-4-59_6039.jpg,
+10523_QKPfcOY.jpg,"Category: Roach Motel
+Explanation: The ""NO THANKS"" button is small and located at the bottom of the screen, making it less noticeable compared to the prominent ""INSTALL"" button. This design encourages users to install the app without fully considering their decision."
+117.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described."
+._13413_Vr8iS1f.jpg,
+communication_10--kik-1-30_e5dd.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard settings screen for managing notifications on a mobile device, with clear options and no hidden costs or preselections."
+._music_9--AudioMack-0-24_dcf6.jpg,
+._12978.jpg,
+._1093.jpg,
+10028.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard Facebook sharing interface with no hidden costs, preselections, or misleading elements."
+communication_24--Line-0-7_308e.jpg,"Category: Roach Motel
+Explanation: Opting out of allowing LINE to fill in your phone number is complicated as there are only two options presented."
+._13686.jpg,
+communication_29--Messenger-1-11_8b7e.jpg,"Category: Watch Ads to Unlock
+Explanation: The image shows a pop-up that requires users to watch an advertisement in order to unlock dark mode functionality. This is a deceptive pattern as it forces users to engage with ads before accessing the desired feature."
+1053.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described by the taxonomy. It appears to be a profile picture from a dating app with no hidden costs, forced continuities, or misleading elements."
+communication_24--Line-1-45_e9fc.jpg,"Category: Preselection
+Explanation: The ""Auto-add friends"" option is preselected by default."
+._entertainment_29--Smash-DIY-6-51_9d20.jpg,
+entertainment_14--Daily-Pixel---Color-By-Number-7-49_5329.jpg,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that disrupts user activities by prompting them to install an app."
+._1432.jpg,
+._12468_3G5DUfg.jpg,
+._10014.jpg,
+._1054.jpg,
+communication_1--messenger-text-and-video-0-11_5c9f.jpg,"Category: Roach Motel
+Explanation: Opting out of sharing a phone number is not immediately clear due to the placement and size of the ""NOT NOW"" button."
+13413_Vr8iS1f.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._1056.jpg,
+._1971.jpg,
+._1366_8h8kXDb.jpg,
+._12630_IpyePZz.jpg,
+._119.jpg,
+13179.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up ad that disrupts user activities by encouraging them to install an app."
+11203_zZ33eBw.jpg,"Category: Forced Continuity
+Explanation: The app requires users to agree to its privacy policy before continuing, which may lead to charges after a trial period ends without clear advance notice."
+1405.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns related to the categories listed. It appears to be a profile page for an actor with no hidden costs, forced continuities, or misleading elements."
+._1089.jpg,
+1047_cgX7FtX.jpg,"Category: Forced Enrollment
+Explanation: The image requires users to sign up or log in before they can view their trips on various devices."
+14369_HGZAT0T.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard advertisement for downloading an app from Google Play Store."
+music_24--Simple-Radio-3-37_c44c.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described."
+1202_WEBRHD8.jpg,"Category: Forced Enrollment
+Explanation: The image shows a pop-up window that requires users to create an account before accessing Black Friday deals. This forces users to sign up, which is a common deceptive pattern in mobile apps and websites."
+entertainment_20--Face-Master-0-44_00a3.jpg,"Category: Nagging
+Explanation: The image features a prominent ""Upgrade to Premium"" message and button, which may disrupt user activities by prompting them to upgrade."
+._1372.jpg,
+1404.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard mobile application interface with clear navigation options and no hidden costs, preselections, or misleading elements."
+communication_5--discord-1-19_b02f.jpg,"Category: NORMAL
+Explanation: The image shows a standard settings screen for Discord notifications with no deceptive patterns identified."
+._music_6--MP3-Music-Downloader-_-Free-Music-Download-0-57_b85e.jpg,
+._music_3--Drum-Pad-8-18_cf3e.jpg,
+10014.jpg,"Category: Roach Motel  
+Explanation: Opting out is complicated as there's no clear option to decline the terms and conditions."
+1472_OQsyXMb.jpg,"Category: Forced Enrollment
+Explanation: The image requires users to accept terms and conditions before creating a New Balance account, which is a form of forced enrollment."
+music_17--Free-Music-8-40_4b8a.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a music discovery section with no hidden costs, forced continuities, or misleading advertisements."
+1093.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a list of educational resources provided by EBS Korea."
+138_QQF5MWw.jpg,"Category: Nagging
+Explanation: The image displays a persistent pop-up for installing an app, which can disrupt user activities."
+1954.jpg,"Category: Nagging
+Explanation: The image contains a pop-up for ""Game Guides"" that is difficult to close immediately."
+1964.jpg,"Category: NORMAL
+Explanation: The image appears to be a screenshot of an emoji sticker app and does not contain any deceptive patterns related to user interactions or financial transactions."
+._entertainment_19--Face-Secret-Master-2-40_3ce2.jpg,
+._13822.jpg,
+1312_L8Kt9wc.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard app installation prompt with clear options to install or decline the app without any hidden costs, preselections, or misleading elements."
+._entertainment_2--Google-Play-Games-0-17-b_c427.jpg,
+105.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a straightforward account creation process with no hidden costs, preselections, or misleading elements."
+communication_3--textnow-5-26_21c0.jpg,"Category: Roach Motel
+Explanation: The ""SET UP"" button is prominently displayed and easy to click, but there's no clear indication of how to skip the setup process."
+12990.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""Lumosity - Brain Training"" is placed prominently and resembles a news article, making it deceptive."
+._1411.jpg,
+._1388.jpg,
+._12782_BrQOkOg.jpg,
+16.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a simple interface for creating a new project with no hidden costs, preselections, or misleading elements."
+111.jpg,"Category: Disguised Ads
+Explanation: The advertisement at the bottom of the screen is designed to resemble normal content and may influence user decisions."
+._music_2--Youtube-Music-0-8_89fe.jpg,
+13374_kzWD8xj.jpg,"Category: Disguised Ads
+Explanation: The image appears to be an advertisement with a ""Skip Ad"" button, which is commonly used in video platforms. However, the presence of the ""Learn More"" text and the Google Assistant icon suggests that this might be part of a larger ad campaign designed to resemble normal content."
+communication_14--hangout-1-26_aedf.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard notification settings screen with clear options and no hidden costs, preselections, or misleading elements."
+music_12--Free-Ringtone-0-15_3a76.jpg,"Category: Countdown on Ads
+Explanation: The advertisement has a countdown timer that restricts users from closing it immediately."
+._music_3--Drum-Pad-0-33_8b90.jpg,
+1295_4P0AAGr.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a settings screen for an app with clear options and no hidden costs, preselections, or misleading elements."
+._1398.jpg,
+music_30--Music-Bass-Equalizer-0-6_6cef.jpg,"Category: Roach Motel  
+Explanation: Opting out of personalized ads is not clearly indicated and may be obscured by the design."
+1990.jpg,"Category: Price Comparison Prevention
+Explanation: The image does not display a clear comparison of prices for different flight options."
+entertainment_16--Color-by-Number-4-39_0423.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a simple rating interface for an image with no hidden costs, preselections, or misleading elements."
+._12095_yW0sLPR.jpg,
+1978.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""letgo"" is designed to resemble a normal content element at the bottom of the shopping list screen."
+13822.jpg,"Category: Roach Motel  
+Explanation: The ""Sign me up"" button is prominently placed and easy to click, but there's no clear indication of how to opt out later."
+._communication_29--Messenger-0-19_1989.jpg,
+10311.jpg,"Category: Roach Motel  
+Explanation: Opting out is not clearly indicated; users are presented with a simple ""Yes"" and ""No"" choice without further details."
+._1123.jpg,
+._1393.jpg,
+._music_27--Groovepad-1-32_8006.jpg,
+._1121.jpg,
+121_FKJpDve.jpg,"Category: Disguised Ads
+Explanation: The advertisement for Plato's Closet is designed to resemble a normal content section rather than an ad."
+communication_1--messenger-text-and-video-1-25_9979.jpg,"Category: Roach Motel  
+Explanation: Opting out of continuously uploading contacts is not immediately clear due to the prominent ""TURN ON"" button."
+._10005.jpg,
+._1944.jpg,
+._10277_92JZ8UO.jpg,
+12978.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that interrupts user activities by prompting them to install an app."
+120_x3lPqOA.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""Geek - Smarter Shopping"" is designed to resemble a normal app feature rather than an ad."
+._music_21--TuneIn-Radio-0-16_e31e.jpg,
+._1127.jpg,
+._10004.jpg,
+._1050.jpg,
+._1383.jpg,
+._communication_20--call-free-free-online-0-21_7616.jpg,
+music_2--Youtube-Music-0-8_89fe.jpg,"Category: Roach Motel  
+Explanation: Opting out of the free trial is not immediately clear and requires scrolling down."
+._1110.jpg,
+1100.jpg,"Category: NORMAL
+Explanation: The image is a standard login screen for Facebook and does not exhibit any deceptive patterns as described."
+._1434.jpg,
+._1091.jpg,
+._106.jpg,
+._10480.jpg,
+10024.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a screenshot of a news broadcast with no hidden costs, preselections, or misleading elements."
+._communication_3--textnow-0-16_24d9.jpg,
+._11308_RDx6GWa.jpg,
+103.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a straightforward instruction for updating data settings on an APN (Access Point Name) configuration screen, with clear fields and instructions provided."
+._communication_23--Signal-1-18_a893.jpg,
+._168.jpg,
+._communication_11--firefox-4-32_79cc.jpg,
+._15.jpg,
+._1416.jpg,
+10710_iKhZ3vS.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard Facebook permission request screen for sharing content with friends."
+10863_qaGZOUa.jpg,"Category: Nagging
+Explanation: The image contains a persistent pop-up asking for a Google Play rating, which can be disruptive to user activities."
+._14882.jpg,
+1418.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as it is a screenshot of an anime wallpaper on a smartphone home screen. It lacks elements that would typically indicate deceptive practices such as hidden costs, forced continuities, or misleading advertisements."
+communication_3--textnow-1-8_115e.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard notification settings screen with clear options and no hidden costs, preselections, or misleading elements."
+._113.jpg,
+._12990.jpg,
+._1410.jpg,
+10012.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of a TV streaming app with no visible signs of misleading practices."
+._10020.jpg,
+._1111.jpg,
+._entertainment_19--Face-Secret-Master-0-21_5fda.jpg,
+12468_3G5DUfg.jpg,"Category: Audible Free Trial
+Explanation: The image shows an advertisement for an Audible free trial that is prominently displayed and may disrupt user experience."
+._entertainment_25--Dollify-4-20_36cb.jpg,
+._1370.jpg,
+._1053.jpg,
+._118.jpg,
+._music_17--Free-Music-8-40_4b8a.jpg,
+1056.jpg,"Category: Toying with Emotion
+Explanation: The sad face emoji and the heart icon suggest an attempt to evoke emotional responses from users."
+._music_23--Tidal-2-6_4894.jpg,
+._music_8--Free-Music-Unlimited-Offline-5-2_b930.jpg,
+._communication_16--messenger-free-texting-app-2-8_6078.jpg,
+1414.jpg,"Category: NORMAL
+Explanation: The image does not present any deceptive patterns as described. It simply shows a server error message without any hidden costs, preselections, or misleading elements."
+12247_Lb9PIqo.jpg,"Category: Nagging
+Explanation: The image displays a persistent pop-up window that interrupts user activities by prompting them to install an app."
+._1402.jpg,
+._communication_22--viber-2-16_83a4.jpg,
+music_2--Youtube-Music-3-14_3f38.jpg,"Category: Nagging
+Explanation: The image displays a persistent pop-up offering a free trial of Music Premium, which can be seen as nagging the user to engage with additional services."
+._entertainment_19--Face-Secret-Master-4-30_cc29.jpg,
+._12793_gncSTUR.jpg,
+._music_15--Volume-Booster-6-38_606b.jpg,
+._10024.jpg,
+12991.jpg,"Category: Disguised Ads
+Explanation: The advertisement for a bowling party is integrated into the content feed in a way that resembles normal news items."
+104.jpg,"Category: NORMAL
+Explanation: The image shows a blank webpage with no visible deceptive patterns."
+music_11--Edijing-mix-4-59_6039.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by prompting them to install Spotify."
+._111.jpg,
+._1406.jpg,
+music_19--Free-Music-Downloader-1-28_4797.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window requesting a five-star rating to support app development, which disrupts the user's experience."
+._music_12--Free-Ringtone-0-22_28f6.jpg,
+._10021.jpg,
+._1059.jpg,
+._1389.jpg,
+1369.jpg,"Category: Price Comparison Prevention
+Explanation: The image shows a flight booking interface with a ""Obtaining Total Price..."" message at the bottom, suggesting that price details are not immediately visible and may require additional steps to view. This hinders direct comparisons of prices or plans."
+1386.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard user interface for managing media files on a mobile device."
+music_2--Youtube-Music-1-6_21ff.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. All settings and options are clearly visible with no hidden costs or preselections."
+._music_17--Free-Music-0-18_37a6.jpg,
+._10026.jpg,
+._music_8--Free-Music-Unlimited-Offline-0-3_618f.jpg,
+._10018.jpg,
+1081_oljYHz2.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It is a straightforward instruction for adding a member to an account with clear steps and no hidden costs, preselections, or misleading elements."
+music_8--Free-Music-Unlimited-Offline-5-2_b930.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described."
+music_22--Starmaker-3-4_fbeb.jpg,"Category: Countdown on Ads
+Explanation: The image shows a countdown timer that restricts users from closing ads immediately."
+10791_e5jsjLi.jpg,"Category: Roach Motel
+Explanation: The ""OK"" button is prominently placed and easy to click, while the ""cancel"" option is less visible. This makes it easier for users to accept terms than to opt out."
+1104.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up asking for permission to access device files, which disrupts user activities."
+communication_29--Messenger-0-26_23dc.jpg,"Category: Roach Motel  
+Explanation: Opting out of SMS and contacts access is not clearly indicated."
+1370.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a list of airports for selecting an arrival airport in an app interface, with no hidden costs, preselections, or misleading elements detected."
+._117.jpg,
+entertainment_19--Face-Secret-Master-4-30_cc29.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that interrupts user activities by offering free access through watching an ad."
+1373.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard mobile app interface for booking flights and managing travel-related tasks without any hidden costs, preselections, or misleading elements."
+13686.jpg,"Category: Roach Motel
+Explanation: Opting out is not immediately clear due to the placement of ""Not Now"" at the bottom."
+._entertainment_14--Daily-Pixel---Color-By-Number-6-18_79d8.jpg,
+168.jpg,"Category: Forcing Enrollment
+Explanation: The image shows a login screen that requires users to enter their email and password before accessing any features of the app. This suggests that users must sign in or sign up before they can utilize the service, which is a form of forced enrollment."
+._1397.jpg,
+10433.jpg,"Category: SMALL CLOSE BUTTON
+Explanation: The close button is located at the top right corner and appears to be small in size."
+._1096.jpg,
+._12415_GItLyhQ.jpg,
+._1404.jpg,
+12733.jpg,"Category: Roach Motel  
+Explanation: Opting out of receiving updates and information from Marvel is not clearly indicated. The checkbox for opting in is prominent but the option to opt out seems obscure."
+13054_R8ibHD7.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of an app interface for learning Spanish phrases with categories like ""Common,"" ""Emergency,"" and others, without any signs of nagging or hidden costs."
+1382.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as it is a simple photo of a rose with no additional elements or hidden costs."
+14882.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up for downloading an app, which can disrupt user activities."
+._11510_8rRqbWu.jpg,
+._communication_21--Marco-Polo-1-49_eafd.jpg,
+._1098.jpg,
+114.jpg,"Category: Disguised Ads
+Explanation: The advertisement for Nutrisystem Diet is designed to resemble normal content at the bottom of the screen."
+1396.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard sign-up form for an application with clear fields and terms of service."
+._1238_IpgL3JU.jpg,
+._1969.jpg,
+._music_11--Edijing-mix-8-32_7eda.jpg,
+10013.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._1097.jpg,
+1958.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as described. It appears to be a screenshot of an app interface with various stickers and icons for user interaction, without any hidden costs, forced continuities, or misleading elements."
+1368.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard calendar selection interface for booking travel tickets."
+12630_IpyePZz.jpg,"Category: Nagging
+Explanation: The image presents a persistent pop-up window that disrupts user activities by prompting them to install an app."
+._music_30--Music-Bass-Equalizer-0-6_6cef.jpg,
+._10028.jpg,
+1435.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described."
+communication_19--Talkatone-4-27_1499.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""The HyperFast Galaxy S10 5G"" is designed to look like a normal contact entry, which could mislead users into thinking it's part of their contacts list."
+10779_TpFqdCn.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All options are clearly visible and accessible without hidden costs or preselections."
+._1371.jpg,
+1107.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as it is a simple list of electricity boards for selection."
+14080_mD4Dl14.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as described. It appears to be a standard settings menu with clear options and no hidden costs or misleading elements."
+communication_30--Brave-0-12_9c44.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard settings screen for managing passwords and auto-sign-in features in an application, with clear options and no hidden costs or preselections."
+._10011.jpg,
+._115.jpg,
+._1429.jpg,
+._communication_27--boss-revolution-0-37_221f.jpg,
+._music_29--Sticher-0-52_6901.jpg,
+1951.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns related to the categories listed. It appears to be a search results page for applications with no visible signs of misleading practices."
+107.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._music_11--Edijing-mix-1-35_ed63.jpg,
+10004.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a confirmation message for real-time alerts in a travel app, with clear options and no hidden costs or preselections."
+1384.jpg,"Category: NORMAL
+Explanation: The image appears to be a FAQ section and does not contain any deceptive patterns related to user interactions or hidden costs."
+communication_7--groupme-4-22_8baa.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a settings screen for messaging and notification preferences without any hidden costs, preselections, or misleading elements."
+._music_22--Starmaker-3-4_fbeb.jpg,
+11607.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by promoting an app for live video streaming."
+entertainment_2--Google-Play-Games-0-17-b_c427.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard settings menu for an app with no hidden costs, preselections, or misleading elements."
+music_11--Edijing-mix-1-35_ed63.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up asking for feedback on a music mix, which can be disruptive to user activities."
+._1055.jpg,
+music_30--Music-Bass-Equalizer-0-12_24d3.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as described. It appears to be a standard settings menu with clear options and no hidden costs or preselections."
+._1312_L8Kt9wc.jpg,
+communication_29--Messenger-0-45_792d.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a settings screen with clear toggle options for dark mode, notifications, and setting as default SMS app. There are no hidden costs or misleading elements present."
+1398.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as it simply indicates that no consultations have been taken. There are no hidden costs, forced continuities, or misleading elements present in the screenshot provided."
+._1409.jpg,
+10345.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is an advertisement for a free app by CreditCards.com with clear call-to-action and no hidden costs or misleading elements."
+._entertainment_19--Face-Secret-Master-0-58_e91a.jpg,
+10005.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard user interface for selecting a region in a transportation app, with clear options and no hidden costs or misleading elements."
+1417.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+entertainment_16--Color-by-Number-3-21_5060.jpg,"Category: Nagging
+Explanation: The image shows a repetitive pop-up window that disrupts user activities by requiring acknowledgment before proceeding."
+._communication_29--Messenger-1-11_8b7e.jpg,
+music_21--TuneIn-Radio-3-24_7184.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up asking for user feedback on TuneIn Radio, which can disrupt ongoing activities."
+._music_1--Spotify-1-6_55ff.jpg,
+communication_13--telegram-1-41_c3b3.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a settings screen for notifications and sounds in an app, with clear options that can be easily toggled on or off without any hidden costs or preselections."
+._1073.jpg,
+._1945.jpg,
+1397.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It is a standard informational screen for an app about its terms and partners."
+._1476_zWN50Sx.jpg,
+entertainment_2--Google-Play-Games-0-17-a_1a70.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard profile editing screen with clear options and settings for the user."
+10020.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+communication_20--call-free-free-online-1-51_ce2e.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by reminding them to buy a new number for receiving functions."
+._1391.jpg,
+1948.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a tutorial for drawing manga figures and parts with video links provided, without any hidden costs, preselections, or misleading elements."
+._communication_28--wechat-3-49_b1ca.jpg,
+music_14--Voice-Recorder-4-55_39ce.jpg,"Category: Nagging  
+Explanation: The image shows a persistent pop-up window asking for a 5-star review, which disrupts user activities and is repetitive."
+1051.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a profile picture from a dating app with no hidden costs or misleading elements."
+entertainment_19--Face-Secret-Master-0-21_5fda.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as per the provided taxonomy."
+1050.jpg,"Category: Preselection
+Explanation: The ""Only from my country"" option is preselected by default in both sections of the image."
+entertainment_14--Daily-Pixel---Color-By-Number-6-18_79d8.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up asking for a rating, which can disrupt user activities."
+12793_gncSTUR.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard advertisement for an app with clear options to install or decline the installation."
+music_16--Google-Podcast-0-20_c5af.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard settings screen for managing notifications in an application."
+11308_RDx6GWa.jpg,"Category: Forced Enrollment
+Explanation: The image prompts users to install an app for a free credit report without providing clear alternatives."
+._1408.jpg,
+._music_15--Volume-Booster-0-46_a68c.jpg,
+._1052.jpg,
+1959.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a simple drawing application interface without any hidden costs, forced continuities, or misleading elements."
+._13391_TtUKOAA.jpg,
+._communication_30--Brave-0-12_9c44.jpg,
+._10447_lXAva8J.jpg,
+._1990.jpg,
+1374.jpg,"Category: NORMAL
+Explanation: The image shows a calendar for selecting departure dates without any deceptive patterns identified."
+._communication_29--Messenger-0-26_23dc.jpg,
+._1095.jpg,
+12681_ewXNkw8.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It is a promotional advertisement for downloading an app to use Uber for transportation to the theater, with no hidden costs or misleading elements present."
+1121.jpg,"Category: NORMAL
+Explanation: The image does not display any deceptive patterns as described. It appears to be a user profile form for an educational platform with no hidden costs, preselections, or misleading elements."
+music_12--Free-Ringtone-0-22_28f6.jpg,"Category: Forced Enrollment  
+Explanation: The image shows a countdown timer with an ""Install"" button for an ad-supported app, suggesting that users must install the app to proceed. This implies forced enrollment as it requires signing up before accessing the service."
+1059.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It simply indicates that there are no visitors yet and provides an option to play zapping, which is a neutral action without any hidden costs or misleading elements."
+._1405.jpg,
+._1394.jpg,
+1416.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It simply indicates that Google Maps needs to be installed for map display and provides a clear call-to-action button without any hidden costs, preselections, or misleading elements."
+._1472_OQsyXMb.jpg,
+17.jpg,"Category: NORMAL
+Explanation: The image is a standard user license agreement and does not contain any deceptive patterns."
+._communication_7--groupme-4-22_8baa.jpg,
+1112.jpg,"Category: Price Comparison Prevention
+Explanation: The image shows a screen where price comparisons are not visible under any of the sorting options provided."
+1393.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a standard weather app interface with no hidden costs, forced continuities, or misleading elements."
+communication_23--Signal-0-44_b60d.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window asking users to rate an app, which can be disruptive and repetitive."
+music_22--Starmaker-0-20_1d76.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by encouraging them to join a collaboration."
+._12991.jpg,
+._1120.jpg,
+._communication_3--textnow-1-8_115e.jpg,
+._121_FKJpDve.jpg,
+1381.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as it appears to be a screenshot of an LG TV SmartShare app interface displaying files. There are no elements that suggest hidden costs, forced continuities, or misleading advertisements."
+._1946.jpg,
+12616_jL97srp.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All settings and options are clearly visible with straightforward checkboxes for enabling or disabling features. There is no hidden information, preselection of options, or misleading design elements present."
+._music_16--Google-Podcast-0-20_c5af.jpg,
+1946.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described."
+._communication_30--Brave-0-22_8965.jpg,
+._1390.jpg,
+._music_19--Free-Music-Downloader-0-43_ed0b.jpg,
+1103.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user actions can be easily performed without hidden costs or misleading information."
+1098.jpg,"Category: NORMAL
+Explanation: The image shows a standard share menu with no deceptive patterns identified."
+._1104.jpg,
+15.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All options are clearly visible and accessible without hidden costs or preselections."
+._1413.jpg,
+._1386.jpg,
+._120_x3lPqOA.jpg,
+communication_15--messages-0-6_d2d8.jpg,"Category: Roach Motel
+Explanation: Opting out of setting Messages as default SMS app is not immediately clear due to the prominent ""Set As Default"" button."
+1096.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns related to the categories listed. It is a news article about Ethel Kennedy's birthday and her contributions, with no hidden costs, forced continuities, or misleading elements."
+communication_4--messenger-lite-3-33_e749.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as it is a screenshot of a settings menu for notifications and sounds. There are no hidden costs, preselections, or misleading elements present in the image."
+._13468_dhFOYaP.jpg,
+._1112.jpg,
+._communication_29--Messenger-0-45_792d.jpg,
+10003.jpg,"Category: NORMAL
+Explanation: The image shows a loading screen which is common and not deceptive. It does not indicate any hidden costs, preselections, or misleading elements."
+1102.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard informational screen for adding money to a Paytm wallet, with no hidden costs, preselections, or misleading elements noted."
+music_3--Drum-Pad-0-33_8b90.jpg,"Category: Disguised Ads
+Explanation: The advertisement for ""Skin Elixir"" is designed to resemble a product image rather than an ad, potentially misleading users into thinking it's part of the content."
+._communication_27--boss-revolution-3-43_dda6.jpg,
+119.jpg,"Category: Ad
+Explanation: The image contains an advertisement for Plato's Closet Champaign that is designed to resemble normal content."
+._13179.jpg,
+13121.jpg,"Category: Preselection
+Explanation: The gender option is preselected as ""Guy,"" which may not reflect the user's actual preference."
+._1384.jpg,
+1972.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a music streaming app interface with no visible signs of misleading practices."
+1410.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns related to the categories listed. It appears to be a profile page for an actor with no hidden costs, forced continuities, or misleading elements."
+10974_07UoQn9.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard app installation prompt with clear options to install or decline the app without any hidden costs, preselections, or misleading elements."
+1106.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user-friendly for booking bus tickets."
+._1373.jpg,
+._1414.jpg,
+1402.jpg,"Category: NORMAL
+Explanation: The image appears to be a health check app interface and does not contain any deceptive patterns as described in the taxonomy."
+._communication_2--whatsapp-2-14_e5de.jpg,
+12257_vqzq0Bo.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All settings and options are clearly visible with straightforward checkboxes for enabling notifications. There is no hidden information, preselection of options, or misleading design elements present."
+music_8--Free-Music-Unlimited-Offline-4-17_3cb5.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of an app advertisement on Google Play Store with no visible signs of misleading practices."
+1110.jpg,"Category: NORMAL
+Explanation: The image shows a standard calendar interface for selecting travel dates without any deceptive patterns."
+._music_24--Simple-Radio-0-20_589f.jpg,
+music_14--Voice-Recorder-1-41_e6bb.jpg,"Category: Nagging  
+Explanation: The image shows a persistent pop-up window asking for a 5-star review, which disrupts user activities and is repetitive."
+music_3--Drum-Pad-2-26_de54.jpg,"Category: Countdown on Ads
+Explanation: The advertisement has a timer counting down from 30 seconds remaining."
+1412.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._12810_9mifsrp.jpg,
+1117.jpg,"Category: Roach Motel
+Explanation: The image presents a clear option to enable the keyboard feature but does not provide an obvious way to disable it later."
+._communication_8--Google-duo-1-46_ba05.jpg,
+._112.jpg,
+._13621_4urtKkx.jpg,
+._1412.jpg,
+._music_22--Starmaker-0-20_1d76.jpg,
+._1385.jpg,
+._music_19--Free-Music-Downloader-1-28_4797.jpg,
+._11203_zZ33eBw.jpg,
+._1417.jpg,
+communication_30--Brave-0-22_8965.jpg,"Category: NORMAL
+Explanation: The image shows a settings menu for notifications with clear options and checkboxes. There are no deceptive patterns identified in this context."
+10029.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a straightforward call-to-action for submitting photos and videos related to weather conditions, with clear options provided without hidden costs or misleading elements."
+._10523_QKPfcOY.jpg,
+._music_3--Drum-Pad-2-26_de54.jpg,
+._1396.jpg,
+1105.jpg,"Category: NORMAL
+Explanation: The image shows a straightforward location selection interface without any deceptive patterns."
+music_15--Volume-Booster-6-38_606b.jpg,"Category: Install
+Explanation: The image shows an ""Install"" button prominently displayed for a mobile app, which is not deceptive but rather a standard feature."
+._1058.jpg,
+communication_20--call-free-free-online-3-43_ec1f.jpg,"Category: Gamification  
+Explanation: The image shows a daily check-in system where users earn cents for checking in, which is a form of gamification to encourage repeated engagement."
+13468_dhFOYaP.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by prompting them to install an app."
+1392.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a standard music app interface with no hidden costs, forced continuities, or misleading elements."
+1408.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by asking to add content to a ""watch later"" list."
+1092.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard mobile application interface for EBS TV services with clear navigation and no hidden costs, preselections, or misleading elements."
+music_19--Free-Music-Downloader-0-43_ed0b.jpg,"Category: Install
+Explanation: The image shows an ""Install"" button for a game called Puzzle Blast, which is typically used to prompt users to download and install the app. This is not deceptive but rather a standard feature in mobile app stores."
+._1400.jpg,
+._music_24--Simple-Radio-0-8_df32.jpg,
+1415.jpg,"Category: Nagging
+Explanation: The image contains a persistent notification that repeatedly prompts users to rate the app and share it on Facebook."
+1432.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a blank help page with no visible advertisements or hidden costs."
+10000.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a user interface for a travel planning app with clear instructions and no hidden costs, preselections, or misleading elements."
+1400.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a health app interface with clear options and no hidden costs or misleading elements."
+._12733.jpg,
+1388.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard version information screen for an app with no hidden costs, forced continuities, or misleading elements."
+._1101.jpg,
+entertainment_19--Face-Secret-Master-2-40_3ce2.jpg,"Category: Forced Continuity  
+Explanation: The image suggests a subscription model that automatically extends after a trial period without clear advance notice."
+._music_14--Voice-Recorder-4-55_39ce.jpg,
+._1202_WEBRHD8.jpg,
+1127.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a user interface for a scholarship application platform with no hidden costs, preselections, or misleading elements."
+1245_29sppkP.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a simple prayer requests app interface with no hidden costs, forced continuities, or misleading elements."
+._13121.jpg,
+._17.jpg,
+._1952.jpg,
+._communication_20--call-free-free-online-3-43_ec1f.jpg,
+._communication_4--messenger-lite-3-33_e749.jpg,
+music_4--SounCloud-0-46-snap3_0d6c.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It is a notification settings screen with clear toggle options for various notifications, and there are no hidden costs, preselections, or misleading elements present."
+._10000.jpg,
+1427.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a screenshot of a character model from the game Minecraft, with no elements that would fit into the categories listed."
+._1435.jpg,
+._1415.jpg,
+._11607.jpg,
+._1081_oljYHz2.jpg,
+._10710_iKhZ3vS.jpg,
+._1954.jpg,
+._10019.jpg,
+._108.jpg,
+._music_21--TuneIn-Radio-1-14_6762.jpg,
+1375.jpg,"Category: NORMAL
+Explanation: The image appears to be a list of airport options for selecting departure airports. There are no deceptive patterns identified in the provided categories."
+._communication_1--messenger-text-and-video-1-25_9979.jpg,
+1116.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user-friendly for booking train tickets."
+._1117.jpg,
+13391_TtUKOAA.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard app installation prompt for Amazon Shopping on Google Play Store."
+._10027.jpg,
+entertainment_19--Face-Secret-Master-5-15_5310.jpg,"Category: Toying with Emotion  
+Explanation: The use of contrasting colors and a prominent ""EXCELLENT!"" button aims to evoke positive emotions and influence user decisions."
+._1051.jpg,
+._1957.jpg,
+._13374_kzWD8xj.jpg,
+._12616_jL97srp.jpg,
+._1116.jpg,
+1956.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard webpage layout with no hidden costs, forced continuities, or misleading elements."
+1952.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It simply indicates that no APK files were found and suggests exploring featured apps instead."
+12782_BrQOkOg.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window for an app that disrupts user activities."
+110.jpg,"Category: NORMAL
+Explanation: The image does not present any deceptive patterns as described. It is a standard End User License Agreement screen with an ""AGREE"" button, which is typical for mobile applications and does not include any of the listed deceptive tactics."
+._10012.jpg,
+._1115.jpg,
+10025.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It is a simple feedback form with clear options for reporting issues or submitting ideas."
+._10863_qaGZOUa.jpg,
+1943.jpg,"Category: Privacy Zuckering
+Explanation: The app requires users to share personal financial and health information by default."
+._music_2--Youtube-Music-3-57_1da0.jpg,
+1073.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._1368.jpg,
+1419.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user actions can be easily understood without hidden costs or preselections."
+._10311.jpg,
+music_21--TuneIn-Radio-1-14_6762.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. All settings are clearly visible and easily accessible without hidden costs or preselections."
+entertainment_25--Dollify-4-20_36cb.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window asking for a rating after creating a doll, which can be seen as disruptive to the user's activity."
+entertainment_29--Smash-DIY-6-51_9d20.jpg,"Category: Watch Ads to Unlock
+Explanation: The image shows a pop-up that requires users to watch an advertisement in order to obtain crystals. This is a common tactic used by apps to monetize user engagement without providing direct access to the desired content or features."
+._10433.jpg,
+19.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It simply shows a Google Maps interface with no routes found between two locations."
+communication_27--boss-revolution-3-43_dda6.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by requiring them to decide whether to add funds before making a call."
+11510_8rRqbWu.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard Facebook permission request screen with clear options for the user to choose from."
+._communication_20--call-free-free-online-1-51_ce2e.jpg,
+13761_lRqlNk0.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up for SwiftKey Keyboard installation that disrupts user activities."
+._music_8--Free-Music-Unlimited-Offline-4-17_3cb5.jpg,
+1429.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a simple character editing screen with no hidden costs, forced continuities, or misleading advertisements."
+music_24--Simple-Radio-0-20_589f.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by offering to unlock features with a purchase."
+1957.jpg,"Category: Nagging
+Explanation: The image displays a pop-up window stating ""Your Phone is too Slow!"" which disrupts user activities."
+._1399.jpg,
+communication_27--boss-revolution-0-37_221f.jpg,"Category: NORMAL
+Explanation: The image shows a simple notification settings screen without any deceptive patterns identified."
+._1956.jpg,
+12810_9mifsrp.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by offering to try a music lockscreen."
+._communication_23--Signal-0-44_b60d.jpg,
+._1092.jpg,
+._1943.jpg,
+._1047_cgX7FtX.jpg,
+communication_16--messenger-free-texting-app-2-8_6078.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard backup and restore settings screen for messaging applications, with clear options and no hidden costs or preselections."
+._1378.jpg,
+._10791_e5jsjLi.jpg,
+._13842_Uxr3SUv.jpg,
+._110.jpg,
+music_9--AudioMack-0-24_dcf6.jpg,"Category: Roach Motel  
+Explanation: Opting out of personalized ads is not clearly indicated and may be obscured by the design."
+12095_yW0sLPR.jpg,"Category: Forced Enrollment
+Explanation: The image prompts users to install an app immediately after viewing a promotional video, which is a common tactic to force users into signing up for the service."
+1476_zWN50Sx.jpg,"Category: Nagging
+Explanation: The image displays a persistent pop-up window that interrupts user activities and offers to shop on the app."
+1115.jpg,"Category: Forced Enrollment
+Explanation: The image requires users to either log in or sign up before accessing the service."
+._13054_R8ibHD7.jpg,
+._10025.jpg,
+._1376.jpg,
+18.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a news article with no hidden costs, forced continuities, or misleading advertisements."
+._1094.jpg,
+1120.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard account setup screen with clear instructions and options for the user."
+._1953.jpg,
+1052.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns related to the categories listed. It appears to be a screenshot of a dating app interface showing profiles of users who are currently online. There is no evidence of nagging, roach motel, price comparison prevention, forced continuity, hidden costs, sneak into basket, hidden information, preselection, toying with emotion, false hierarchy, disguised ads, tricked questions, small close button, social pyramid, privacy zuckering, gamification, countdown on ads, watch ads to unlock, pay to avoid ads, or forced enrollment."
+1114.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard login screen for Paytm with clear options and no hidden costs, preselections, or misleading elements."
+10026.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a menu from a weather app with clear options for users to navigate through different features without any hidden costs, preselections, or misleading elements."
+._14056_gEiLUmA.jpg,
+13621_4urtKkx.jpg,"Category: Nagging
+Explanation: The image features a persistent pop-up window that disrupts user activities by promoting a sale and requiring installation of an app."
+._1126.jpg,
+116.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described. It appears to be a standard weight tracker app displaying body fat percentage and lean/fat mass information without any hidden costs, preselections, or misleading elements."
+1969.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a list of songs under the ""Rock Cristiano"" category without any hidden costs, forced continuities, or misleading elements."
+._1374.jpg,
+1111.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and easily accessible without hidden costs or misleading information."
+communication_2--whatsapp-2-14_e5de.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as it is a screenshot of WhatsApp's notification settings. There are no hidden costs, preselections, or misleading elements present in the image."
+communication_23--Signal-1-18_a893.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard settings screen for notifications with clear options and no hidden costs, preselections, or misleading elements."
+._1295_4P0AAGr.jpg,
+._entertainment_16--Color-by-Number-4-39_0423.jpg,
+._music_6--MP3-Music-Downloader-_-Free-Music-Download-0-14_4df9.jpg,
+._1964.jpg,
+music_11--Edijing-mix-8-32_7eda.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by offering to remove ads in exchange for upgrading to the premium version."
+._10013.jpg,
+._music_24--Simple-Radio-3-37_c44c.jpg,
+._12681_ewXNkw8.jpg,
+10019.jpg,"Category: SMALL CLOSE BUTTON
+Explanation: The close button is located at the top right corner and appears to be small in size."
+1945.jpg,"Category: Forced Enrollment
+Explanation: The image shows a ""Sign In"" button prominently displayed, suggesting that users must sign in to access certain features. This implies a forced enrollment requirement before utilizing the service."
+._music_14--Voice-Recorder-1-41_e6bb.jpg,
+108.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard login screen for linking accounts with no hidden costs, preselections, or misleading elements."
+10011.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+1953.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a list of featured apps with no hidden costs, preselections, or misleading elements."
+1394.jpg,"Category: NORMAL
+Explanation: The image appears to be a weather app interface and does not contain any deceptive patterns as described in the taxonomy."
+._1379.jpg,
+communication_8--Google-duo-1-46_ba05.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a standard settings screen for managing notifications in an application called Duo, with clear options and no hidden costs or preselections."
+._1955.jpg,
+._communication_26--Puffin-Browser-0-9_da66.jpg,
+1390.jpg,"Category: NORMAL
+Explanation: The image appears to be a FAQ section and does not contain any deceptive patterns related to user interactions or hidden costs."
+._communication_15--messages-0-6_d2d8.jpg,
+1407.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of a streaming app interface with no visible signs of misleading practices."
+1119_Kq1ZthC.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It is a standard login screen for Zomato with clear options and no hidden costs, preselections, or misleading elements."
+13068_E9D1V7w.jpg,"Category: Forced Enrollment
+Explanation: The image prompts users to sign up for Nordstrom Rewards with a clear ""Yes"" and ""No"" option, indicating that signing up is required before proceeding."
+music_27--Groovepad-1-32_8006.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up asking for user feedback on Groovepad, which can disrupt ongoing activities."
+._10030.jpg,
+._114.jpg,
+._1401.jpg,
+music_6--MP3-Music-Downloader-_-Free-Music-Download-0-14_4df9.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described."
+1057.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns related to the categories listed. It appears to be a screenshot of a photo gallery with no visible signs of misleading design elements, hidden costs, or forced actions."
+music_24--Simple-Radio-0-8_df32.jpg,"Category: Ad
+Explanation: The advertisement for ""NZZ"" is prominently displayed and appears to be an ad within the radio app."
+._music_2--Youtube-Music-3-14_3f38.jpg,
+1379.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. It appears to be a screenshot of an LG TV SmartShare app interface with no visible signs of misleading practices or hidden costs."
+communication_30--Brave-0-5_b033.jpg,"Category: Forced Enrollment
+Explanation: The image shows a pop-up for joining Brave Rewards, which requires users to sign up before they can utilize the service. This is indicative of forced enrollment as it prevents users from using the browser without signing in first."
+1970.jpg,"Category: NORMAL
+Explanation: The image does not show any deceptive patterns as described. It appears to be a screenshot of a music streaming app interface with no visible signs of misleading practices."
+._1959.jpg,
+10277_92JZ8UO.jpg,"Category: Roach Motel
+Explanation: The ""NO THANKS"" button is small and not prominently placed compared to the ""INSTALL"" button. This makes it less intuitive for users to opt out of installing the app, potentially leading them into a subscription or trial without clear consent."
+._1048.jpg,
+._101.jpg,
+1399.jpg,"Category: Forced Enrollment  
+Explanation: The image suggests that users must sign up to proceed with their consultation."
+communication_28--wechat-3-49_b1ca.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy. It appears to be a standard settings screen for managing notifications on a mobile device, with clear options and no hidden costs or preselections."
+._1106.jpg,
+._1958.jpg,
+._1114.jpg,
+1976.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._1951.jpg,
+music_21--TuneIn-Radio-0-40_582f.jpg,"Category: Roach Motel  
+Explanation: Opting out of personalized ads is not clearly indicated and may be obscured by the design."
+._music_21--TuneIn-Radio-0-40_582f.jpg,
+japanny.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(383)www.mlsstore.com_7245.jpg,
+laylasleep.com.png,"Category: Countdown on Ads
+Explanation: The advertisement includes a countdown timer that restricts users from closing it immediately."
+fugoo.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window asking for help with speakers, which can be considered nagging."
+bumpboxes.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(921)www.wolfandbadger.com_c9c9.jpg,
+._(194)www.dressbarn.com_30d1.jpg,
+._brandsforless.com.png,
+._dessy.com.png,
+crossrope.com.png,"Category: Price Comparison Prevention
+Explanation: The image does not display a clear comparison of prices for different plans or options."
+._(273)shapermint.com_35e5.jpg,
+Bookings-Live-Example-1-Opti.jpg,"Category: Price Comparison Prevention
+Explanation: The image does not provide a direct comparison of prices for different room types or durations. Instead, it only shows the price for four nights in a double room without clear alternatives."
+colorit.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and easily accessible for users to make informed decisions."
+fashionphile.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._claires.com.png,
+shop.ozobot.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+markselectrical.co.uk.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(170)shapermint.com_fcf2.jpg,
+._artsper.com.png,
+(657)www.ashleystewart.com_8285.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+healthyhempoil.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._beemission.com.png,
+._(69)www.crossrope.com_6d43.jpg,
+._d-fantix.com.png,
+._countycomm.com.png,
+._speedcubeshop.com.png,
+house_of_fraser-blog-full.jpg,"Category: Hidden Information
+Explanation: The image shows a notification indicating that only 7 items are left in stock for the selected size and color. This information is not prominently displayed, making it difficult for users to quickly assess availability before adding the item to their cart."
+ghibli.store.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._furbo.com.png,
+secure.mdg.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(275)shapermint.com_b425.jpg,
+._motoloot.com.png,
+(299)www.autogeek.net_249b.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(305)www.bellamihair.com_5eea.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy."
+(146)www.sivanaspirit.com_96c5.jpg,"Category: Roach Motel
+Explanation: Opting out of the email subscription is not clearly indicated in the image."
+._booking.com_.png,
+._www.selectblinds.com.png,
+(273)shapermint.com_35e5.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._www.adoreme.com.png,
+(383)www.mlsstore.com_7245.jpg,"Category: Nagging
+Explanation: The image features a prominent pop-up window that disrupts user activities and does not provide an obvious way to close it immediately."
+fabrics-store.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and there is no hidden information or misleading design choices."
+._(861)www.roamans.com_9eec.jpg,
+justhype.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._dipyourcar.com.png,
+groupon.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(922)www.wolfandbadger.com_6799.jpg,
+www.myphotosocks.com.png,"Category: COUNTDOWN ON ADS
+Explanation: The image features a countdown timer that may restrict users from closing ads immediately."
+jenshansen.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that interrupts user activities."
+._flatpyramid.com.png,
+._organicaromas.com.png,
+._(657)www.ashleystewart.com_8285.jpg,
+._HIGH_DEMAND_MESSAGE_1.png,
+www.autogeek.net.png,"Category: Price Comparison Prevention  
+Explanation: The image includes a statement that guarantees matching prices but does not provide clear information on how to compare with other vendors. This could prevent users from easily checking and verifying the price comparison."
+(552)www.penningtons.com_6870.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+(345)www.harveynorman.com.sg_3146.jpg,"Category: Nagging
+Explanation: The pop-up window is prominently displayed and obstructs the main content of the website."
+._(334)www.fanatics.com_cceb.jpg,
+healthrangerstore.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that disrupts user activities."
+www.bonescoffee.com.png,"Category: Price Comparison Prevention
+Explanation: The image shows a single price for ""One Time Purchase"" without any comparison to other pricing options like the discounted price with membership. This hinders direct comparisons of prices or plans."
+flattummyco.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user-friendly."
+._markselectrical.co.uk.png,
+._(42)speedcubeshop.com_440a.jpg,
+blenderseyewear.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(688)www.chicwish.com_4cb6.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user actions can be easily understood without hidden costs or misleading information."
+josbank.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(274)shapermint.com_ddea.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+._www.dreamcloudsleep.com.png,
+booking.com_.png,"Category: Toying with Emotion
+Explanation: The use of bold red text and a countdown timer creates urgency to prompt users into booking quickly."
+._www.geekbuying.com.png,
+(922)www.wolfandbadger.com_6799.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(89)www.harveynorman.com.sg_bb02.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window offering an SGD10 voucher that disrupts user activities."
+._bokksu.com.png,
+speedcubeshop.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user-friendly without hidden costs or misleading options."
+bobswatches.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._www.colorsbridesmaid.com.png,
+www.gasbike.net.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(42)speedcubeshop.com_440a.jpg,"Category: Nagging
+Explanation: The pop-up window is persistent and disrupts user activities by requiring them to sign up for a discount before proceeding."
+HIGH_DEMAND_MESSAGE_2.png,"Category: SELLING FAST!
+Explanation: The phrase ""SELLING FAST!"" is used to create a sense of urgency and pressure on users to make a purchase quickly."
+bookmartialarts.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(921)www.wolfandbadger.com_c9c9.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+www.dreamcloudsleep.com.png,"Category: Price Comparison Prevention
+Explanation: The image shows a limited selection of mattress options with no clear indication that other brands or models are available for comparison. This hinders direct price comparisons and may lead users to believe they have the best deal when in fact, there might be better alternatives elsewhere."
+._(894)www.templeandwebster.com.au_02e7.jpg,
+electricfireplacesdepot.com.png,"Category: Price Comparison Prevention
+Explanation: The image shows a discounted price with an original price crossed out but does not provide any information on how to compare this price with other similar products."
+._Bookings-Live-Example-1-Opti.jpg,
+(170)shapermint.com_fcf2.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._josbank.com.png,
+japancodesupply.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(782)www.levenger.com_33f7.jpg,
+._(23)nutrabay.com_5665.jpg,
+._(723)www.faithful-to-nature.co.za_9b6f.jpg,
+brandhousedirect.com.au.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+artsper.com.png,"Category: Hidden Costs
+Explanation: The image shows additional delivery fees for United States, which are not immediately visible and require scrolling to find. This could be considered a hidden cost as it is not prominently displayed."
+mxstore.com.au.png,"Category: Price Comparison Prevention
+Explanation: The image does not display a price comparison feature for other similar products."
+shapermint.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that encourages users to add items to their cart for a discount. This repetitive and unexpected notification disrupts user activities."
+._www.aafnation.com.png,
+aptdeco.com.png,"Category: Roach Motel
+Explanation: The email sign-up for a discount is easy to opt-in but may be difficult to unsubscribe from."
+._www.1800flowers.com.png,
+madison-reed.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user actions can be easily understood without hidden costs or misleading information."
+www.airydress.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window at the bottom that disrupts user activities."
+houzz.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(146)www.sivanaspirit.com_96c5.jpg,
+._fwreshinc.com.png,
+knockaround.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user actions can be easily understood without hidden costs or misleading information."
+myfave.com.png,"Category: Price Comparison Prevention
+Explanation: The image shows a single price and discount without providing alternative prices for comparison."
+mirraw.com.png,"Category: Nagging
+Explanation: The image shows a persistent pop-up asking for push notifications from 'Mirraw', which can be disruptive to the user's browsing experience."
+droom.in.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+._bumpboxes.com.png,
+platt.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._houzz.com.png,
+(728)www.finditparts.com_f582.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and easily accessible for users to make informed decisions."
+d-fantix.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+hipvan.com.png,"Category: Price Comparison Prevention
+Explanation: The image does not display a price comparison feature for other mattresses."
+kohls.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._www.bonescoffee.com.png,
+._centralvapors.com.png,
+._4wdsupacentre.com.au.png,
+brosa.com.au.png,"Category: Nagging
+Explanation: The image shows a persistent pop-up window offering a discount upon email sign-up, which can disrupt user activities and is repetitive."
+._www.gasbike.net.png,
+._ghibli.store.png,
+._diyelectricskateboard.com.png,
+www.geekbuying.com.png,"Category: Price Comparison Prevention  
+Explanation: The image does not display a direct price comparison feature for different products."
+._carpetright.co.uk.png,
+._2ndsworld.com.au.png,
+._(728)www.finditparts.com_f582.jpg,
+(275)shapermint.com_b425.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(305)www.bellamihair.com_5eea.jpg,
+._groupon.com.png,
+._laylasleep.com.png,
+._catch.com.au.png,
+._(449)www.victorianplumbing.co.uk_7777.jpg,
+._fabrics-store.com.png,
+www.selectblinds.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._japancodesupply.com.png,
+._house_of_fraser-blog-full.jpg,
+nutrabay.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+www.adoreme.com.png,"Category: Forced Enrollment
+Explanation: The image requires users to sign up for a VIP Membership before unlocking the offer."
+(269)pages.daraz.lk_115d.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+fwreshinc.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+lighterusa.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user-friendly without hidden costs or misleading information."
+._nutrabay.com.png,
+2ndsworld.com.au.png,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described by the taxonomy. It appears to be a straightforward advertisement for Harvey Norman's second-hand electronics store with clear contact information and locations listed."
+._fugoo.com.png,
+(861)www.roamans.com_9eec.jpg,"Category: Nagging
+Explanation: The image contains a persistent pop-up window for accepting cookies that disrupts user activities."
+._www.myphotosocks.com.png,
+._www.airydress.com.png,
+hijup.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user-friendly."
+dessy.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+claires.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(340)www.forzieri.com_0192.jpg,
+4wdsupacentre.com.au.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+kiiroo.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and easily accessible for users to make informed decisions."
+kraftika.shop.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+shop.iravin.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window asking to change currency, which can be considered nagging as it disrupts user activities."
+._(862)www.roamans.com_03b3.jpg,
+._mxstore.com.au.png,
+www.aafnation.com.png,"Category: COUNTDOWN ON ADS
+Explanation: The image features a countdown timer that restricts users from closing ads immediately."
+(23)nutrabay.com_5665.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy. All elements are clearly visible and user-friendly without any hidden costs or misleading information."
+(159)www.victorianplumbing.co.uk_62cc.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(894)www.templeandwebster.com.au_02e7.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by asking to upload a photo for similar item suggestions."
+._americanapprel.png,
+._(931)www.zzounds.com_68a4.jpg,
+(196)www.epicsports.com_5905.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by requiring them to provide an email address before proceeding."
+._hairfinity.com.png,
+._(196)www.epicsports.com_5905.jpg,
+victoriaplum.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(963)www.smokecartel.com_6342.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._bookmartialarts.com.png,
+(511)www.yesstyle.com_86d6.jpg,"Category: COUNTDOWN ON ADS
+Explanation: The advertisement includes a countdown timer that may prevent users from closing it immediately."
+._crossrope.com.png,
+beyondretro.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+fathersonsclothing.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._urbanedcsupply.com.png,
+stock-optimization.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(299)www.autogeek.net_249b.jpg,
+._linenchest.com.png,
+._shapermint.com.png,
+maccosmetics.co.uk.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and easily accessible for users to make informed decisions."
+dipyourcar.com.png,"Category: Nagging
+Explanation: The image displays a nagging message to update the browser, which is unexpected and disrupts user activities."
+._knockaround.com.png,
+._(94)www.hotter.com_dcde.jpg,
+(612)store.yitechnology.com_d93e.jpg,"Category: Price Comparison Prevention
+Explanation: The image shows a discounted price but does not provide a direct comparison to other similar products."
+._kratomcrazy.com.png,
+._fashionphile.com.png,
+._kohls.com.png,
+._bobswatches.com.png,
+(194)www.dressbarn.com_30d1.jpg,"Category: Roach Motel
+Explanation: The image presents a clear option to sign up for emails and texts in exchange for a discount, but it does not provide an obvious way to opt out of future communications."
+luckytacklebox.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and easily accessible for users to make informed decisions."
+us.pandora.net.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._mremountain.com.png,
+._www.autogeek.net.png,
+._lighterusa.com.png,
+._victoriaplum.com.png,
+(340)www.forzieri.com_0192.jpg,"Category: Nagging
+Explanation: The pop-up window is prominently displayed and covers a significant portion of the screen, potentially disrupting user activities."
+._(269)pages.daraz.lk_115d.jpg,
+._(233)www.sivanaspirit.com_5b1f.jpg,
+._(360)www.jjshouse.com_7293.jpg,
+furbo.com.png,"Category: Forced Continuity
+Explanation: The image suggests a subscription model where users are charged after a trial period ends without clear advance notice."
+flatpyramid.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._Boost_ecommerce_sales_with_urgency_tactics_13_-_Sales.png,
+(27)puffy.com_f607.jpg,"Category: Nagging
+Explanation: The image features a countdown timer at the bottom of the page, which may be designed to create urgency and pressure users into making a purchase."
+._brandhousedirect.com.au.png,
+brandsforless.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._hijup.com.png,
+._lifestylebyps.com.png,
+._aveda.com.png,
+._maccosmetics.co.uk.png,
+._headphonezone.in.png,
+._kamikoto.com.png,
+carpetright.co.uk.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+cbdfx.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._shop.ozobot.com.png,
+urbanedcsupply.com.png,"Category: Nagging
+Explanation: A pop-up window is present at the bottom of the page that disrupts user activities by promoting a store account sign-up."
+._luckytacklebox.com.png,
+._(345)www.harveynorman.com.sg_3146.jpg,
+catch.com.au.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._shop.iravin.com.png,
+._colorit.com.png,
+bokksu.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(253)eyedictive.com_5778.jpg,
+(177)www.adoreme.com_a719.jpg,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as per the provided taxonomy."
+Boost_ecommerce_sales_with_urgency_tactics_13_-_Sales.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(337)www.floryday.com_3f1c.jpg,
+._aptdeco.com.png,
+aveda.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window asking for location permissions that may disrupt user activities."
+beemission.com.png,"Category: Nagging
+Explanation: The countdown timer and urgency messaging create a sense of pressure to act quickly."
+._beyondretro.com.png,
+(708)www.ebay.ca_d3e8.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+._kiiroo.com.png,
+._(159)www.victorianplumbing.co.uk_62cc.jpg,
+._(359)www.jjshouse.com_30a7.jpg,
+._hipvan.com.png,
+._jenshansen.com.png,
+._HIGH_DEMAND_MESSAGE_2.png,
+._fathersonsclothing.com.png,
+hairfinity.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that disrupts user activities by offering points for signing up and making purchases."
+headphonezone.in.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that offers points for signing up and making purchases, which can be considered nagging as it disrupts the user experience."
+._brosa.com.au.png,
+(94)www.hotter.com_dcde.jpg,"Category: Roach Motel
+Explanation: Opting out of email subscription is not clearly indicated."
+mremountain.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user-friendly without hidden costs or misleading options."
+._(35)shapermint.com_d46f.jpg,
+www.thertastore.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(27)puffy.com_f607.jpg,
+herringshoes.co.uk.png,"Category: NORMAL
+Explanation: The image does not contain any deceptive patterns as described."
+._www.stealthangelsurvival.com.png,
+www.wowcher.co.uk.png,"Category: Price Comparison Prevention
+Explanation: The image shows a single price for the product without providing other pricing options or comparisons."
+._us.pandora.net.png,
+countycomm.com.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window asking for permission to notify about new products and promotions."
+._inthestyle.com.png,
+(69)www.crossrope.com_6d43.jpg,"Category: Nagging
+Explanation: The pop-up window is persistent and disrupts user activities by requiring interaction to close it."
+._electricfireplacesdepot.com.png,
+dekanta.com.png,"Category: Roach Motel
+Explanation: Opting out is not clearly indicated; users must click a button to unsubscribe."
+._(662)www.bcbg.com_a8d3.jpg,
+(662)www.bcbg.com_a8d3.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by requiring them to enter personal information and agree to terms before accessing the main content."
+(539)www.homewetbar.com_3dec.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(89)www.harveynorman.com.sg_bb02.jpg,
+(360)www.jjshouse.com_7293.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+www.colorsbridesmaid.com.png,"Category: Price Comparison Prevention
+Explanation: The image shows a single price for the dress without any comparison to other similar products."
+._budexpressnow.net.png,
+._(539)www.homewetbar.com_3dec.jpg,
+(723)www.faithful-to-nature.co.za_9b6f.jpg,"Category: Nagging
+Explanation: The image contains a persistent pop-up window asking for instant notifications which can disrupt user activities."
+._www.wowcher.co.uk.png,
+._brightech.com.png,
+._(708)www.ebay.ca_d3e8.jpg,
+._healthyhempoil.com.png,
+._dekanta.com.png,
+linenchest.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+budexpressnow.net.png,"Category: Nagging
+Explanation: The image contains a persistent pop-up window that encourages users to sign up for newsletters and offers, which can be disruptive."
+www.stealthangelsurvival.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+._cbdfx.com.png,
+(218)www.naturehills.com_8b1a.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._(807)www.naturehills.com_bf06.jpg,
+HIGH_DEMAND_MESSAGE_1.png,"Category: Toying with Emotion
+Explanation: The use of a flame icon and urgency language (""Items in your cart are in high demand"") aims to create a sense of urgency, potentially pressuring users into making a quick decision."
+brightech.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._madison-reed.com.png,
+(807)www.naturehills.com_bf06.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._www.thertastore.com.png,
+._(612)store.yitechnology.com_d93e.jpg,
+._secure.mdg.com.png,
+._(218)www.naturehills.com_8b1a.jpg,
+._ttdeye.com.png,
+inthestyle.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as per the provided taxonomy."
+._(552)www.penningtons.com_6870.jpg,
+._herringshoes.co.uk.png,
+lifestylebyps.com.png,"Category: Price Comparison Prevention
+Explanation: The image shows a price of $9.89 with an option to download for free ($0.00), which might mislead users into thinking they are getting the product at no cost, but it's not clear if this is a one-time offer or part of a subscription model."
+(337)www.floryday.com_3f1c.jpg,"Category: Nagging
+Explanation: The image features a prominent pop-up window that disrupts user activities by offering a discount and urging users to take action immediately."
+kratomcrazy.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+leprix.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(35)shapermint.com_d46f.jpg,"Category: Nagging
+Explanation: The image features a persistent pop-up window that disrupts user activities by offering discounts and requiring email input to unlock an extra discount."
+._flattummyco.com.png,
+www.uksoccershop.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+(862)www.roamans.com_03b3.jpg,"Category: Nagging
+Explanation: The image shows a persistent pop-up window that disrupts user activities by asking for an email address to sign up for exclusive offers."
+._japanny.com.png,
+(334)www.fanatics.com_cceb.jpg,"Category: Nagging
+Explanation: The image features a prominent countdown timer that disrupts user activities by indicating how much time is left for a clearance sale."
+(253)eyedictive.com_5778.jpg,"Category: Price Comparison Prevention
+Explanation: The image shows discounted prices but does not provide a direct comparison of these deals with other similar products."
+centralvapors.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._stock-optimization.png,
+._platt.com.png,
+lectory.com.au.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and user-friendly."
+kamikoto.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and easily accessible for users to make informed decisions."
+americanapprel.png,"Category: Nagging
+Explanation: The image displays a ""Low Stock"" message that repeatedly appears and may disrupt user activities by emphasizing urgency."
+ttdeye.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly presented and user actions can be easily understood without hidden costs or misleading information."
+._justhype.com.png,
+._myfave.com.png,
+._(177)www.adoreme.com_a719.jpg,
+._healthrangerstore.com.png,
+._(688)www.chicwish.com_4cb6.jpg,
+._droom.in.png,
+._www.uksoccershop.com.png,
+(782)www.levenger.com_33f7.jpg,"Category: Nagging
+Explanation: The image contains a persistent pop-up window at the bottom that disrupts user activities."
+(233)www.sivanaspirit.com_5b1f.jpg,"Category: Roach Motel
+Explanation: Opting out of the email subscription is not clearly indicated in the image."
+._(274)shapermint.com_ddea.jpg,
+motoloot.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+._leprix.com.png,
+._lectory.com.au.png,
+._blenderseyewear.com.png,
+diyelectricskateboard.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described. All elements are clearly visible and easily accessible for users to make informed decisions."
+._(511)www.yesstyle.com_86d6.jpg,
+organicaromas.com.png,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."
+www.1800flowers.com.png,"Category: Price Comparison Prevention
+Explanation: The image does not display a price comparison feature for different vendors or options."
+._mirraw.com.png,
+(449)www.victorianplumbing.co.uk_7777.jpg,"Category: COUNTDOWN ON ADS
+Explanation: The image shows a countdown timer for a promotional code, which restricts users from closing ads immediately."
+._kraftika.shop.png,
+(931)www.zzounds.com_68a4.jpg,"Category: Price Comparison Prevention
+Explanation: The image shows a single price for the guitar without any comparison to other similar products."
+._(963)www.smokecartel.com_6342.jpg,
+(359)www.jjshouse.com_30a7.jpg,"Category: NORMAL
+Explanation: The image does not exhibit any deceptive patterns as described."

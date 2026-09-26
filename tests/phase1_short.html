@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        background: radial-gradient(circle at center, #0a0f1d 0%, #030712 100%);
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    /* Slide Title matching Slide 18 glowing serif style */
+    .slide-title {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 42px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+        text-shadow: 0 0 16px rgba(255, 255, 255, 0.7), 0 0 35px rgba(168, 85, 247, 0.5);
+        text-align: center;
+    }
+
+    /* Outer White Frame with Purple Border */
+    .outer-card {
+        width: 1720px;
+        height: 820px;
+        background: #ffffff;
+        border: 4.5px solid #a855f7;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(168, 85, 247, 0.35);
+        border-radius: 4px;
+        position: relative;
+        padding: 45px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Slide Number */
+    .slide-num {
+        position: absolute;
+        bottom: 20px;
+        right: 35px;
+        font-size: 28px;
+        font-weight: 700;
+        color: #111827;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Left: Target Input Box */
+    .input-box {
+        width: 300px;
+        height: 540px;
+        background: #e2e8f0;
+        border: 2px solid #000000;
+        border-radius: 6px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .box-header {
+        font-size: 17px;
+        font-weight: 700;
+        text-align: center;
+        color: #000000;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #94a3b8;
+    }
+
+    .inner-pill {
+        background: #ffffff;
+        border: 1.5px solid #000000;
+        border-radius: 6px;
+        padding: 16px 14px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    .trigger-subtext {
+        font-size: 12.5px;
+        color: #475569;
+        margin-top: 5px;
+        font-weight: 500;
+    }
+
+    /* Center: Phase 1 Container */
+    .phase-container {
+        width: 720px;
+        height: 540px;
+        background: #e2e8f0;
+        border: 2px solid #000000;
+        border-radius: 6px;
+        padding: 24px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .phase-title-bar {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000000;
+        text-align: center;
+        background: #cbd5e1;
+        padding: 8px 14px;
+        border-radius: 4px;
+        border: 1.5px solid #64748b;
+    }
+
+    .engine-card {
+        background: #93c5fd;
+        border: 2px solid #000000;
+        border-radius: 6px;
+        padding: 18px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .engine-header {
+        font-size: 17px;
+        font-weight: 700;
+        color: #000000;
+        text-align: center;
+    }
+
+    .sub-steps-row {
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+    }
+
+    .sub-step {
+        flex: 1;
+        background: #ffffff;
+        border: 1.5px solid #000000;
+        border-radius: 4px;
+        padding: 10px 8px;
+        text-align: center;
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    .sub-step small {
+        display: block;
+        font-size: 11.5px;
+        color: #334155;
+        margin-top: 4px;
+        font-weight: 500;
+    }
+
+    /* Right: Outputs Box */
+    .output-column {
+        width: 360px;
+        height: 540px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .output-item {
+        background: #ffffff;
+        border: 2px solid #000000;
+        border-radius: 6px;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .output-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .output-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    .output-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid #000000;
+    }
+
+    .badge-blue { background: #bfdbfe; color: #1e3a8a; }
+    .badge-green { background: #bbf7d0; color: #14532d; }
+    .badge-purple { background: #e9d5ff; color: #581c87; }
+
+    .output-dest {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1d4ed8;
+    }
+
+    .output-desc {
+        font-size: 12px;
+        color: #475569;
+        line-height: 1.4;
+    }
+
+    /* Arrow Connectors */
+    .arrow-divider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .arrow-icon {
+        font-size: 38px;
+        color: #000000;
+        font-weight: 900;
+    }
+
+    .arrow-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #000000;
+        text-align: center;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        padding: 3px 8px;
+        border-radius: 4px;
+        max-width: 110px;
+    }
+</style>
+</head>
+<body>
+
+<div class="slide-title">DarkSight Architecture &bull; Phase 1: Data Ingestion</div>
+
+<div class="outer-card" id="card">
+    
+    <!-- Left: Target Environment -->
+    <div class="input-box">
+        <div class="box-header">Live Webpage Input</div>
+        
+        <div class="inner-pill">
+            DOM Tree & Nodes
+            <div class="trigger-subtext">HTML Elements & CSS Styles</div>
+        </div>
+
+        <div class="inner-pill">
+            Active Viewport Pixels
+            <div class="trigger-subtext">Visible Browser Screen Buffer</div>
+        </div>
+
+        <div class="inner-pill" style="border-style: dashed; background: #f8fafc;">
+            Dynamic Triggers
+            <div class="trigger-subtext">Page Load &bull; Scroll &bull; Mutation</div>
+        </div>
+    </div>
+
+    <!-- Arrow 1: Input to Phase 1 -->
+    <div class="arrow-divider">
+        <div class="arrow-label">Raw DOM & Screen</div>
+        <div class="arrow-icon">&rarr;</div>
+    </div>
+
+    <!-- Center: Phase 1 Core Container -->
+    <div class="phase-container">
+        <div class="phase-title-bar">Phase 1 : Data Ingestion</div>
+
+        <!-- DOM Extractor (content.js) -->
+        <div class="engine-card">
+            <div class="engine-header">DOM Extractor (content.js)</div>
+            <div class="sub-steps-row">
+                <div class="sub-step">
+                    Leaf Extraction
+                    <small>extractNodes()</small>
+                </div>
+                <div class="sub-step">
+                    Text Normalization
+                    <small>Timer Mask & Tokens</small>
+                </div>
+                <div class="sub-step">
+                    Computed CSS Math
+                    <small>Size & Luminance</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Viewport Capture (background.js) -->
+        <div class="engine-card">
+            <div class="engine-header">Viewport Capture (background.js)</div>
+            <div class="sub-steps-row">
+                <div class="sub-step">
+                    Tab Interception
+                    <small>captureVisibleTab()</small>
+                </div>
+                <div class="sub-step">
+                    Base64 Packaging
+                    <small>Binary Pixel Payload</small>
+                </div>
+                <div class="sub-step">
+                    Timeout Guard
+                    <small>AbortController (120s)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arrow 2: Phase 1 to Outputs -->
+    <div class="arrow-divider">
+        <div class="arrow-label">Clean Streams</div>
+        <div class="arrow-icon">&rarr;</div>
+    </div>
+
+    <!-- Right: Output Streams Handoff -->
+    <div class="output-column">
+        <!-- Output 1 -->
+        <div class="output-item">
+            <div class="output-header-row">
+                <div class="output-title">Extracted HTML Text</div>
+                <span class="output-badge badge-blue">TEXT</span>
+            </div>
+            <div class="output-dest">&rarr; Phase 2 (Regex) & Phase 3 (LLM)</div>
+            <div class="output-desc">Cleaned text tokens for fast regex rules and prompt engineering.</div>
+        </div>
+
+        <!-- Output 2 -->
+        <div class="output-item">
+            <div class="output-header-row">
+                <div class="output-title">CSS Variables (Color/Size)</div>
+                <span class="output-badge badge-green">CSS</span>
+            </div>
+            <div class="output-dest" style="color: #059669;">&rarr; Phase 2 (AidUI Math)</div>
+            <div class="output-desc">Bounding boxes, area ratios, and WCAG contrast calculations.</div>
+        </div>
+
+        <!-- Output 3 -->
+        <div class="output-item">
+            <div class="output-header-row">
+                <div class="output-title">Base64 Screenshot Image</div>
+                <span class="output-badge badge-purple">VISION</span>
+            </div>
+            <div class="output-dest" style="color: #7c3aed;">&rarr; Phase 3 (Vision MLLM)</div>
+            <div class="output-desc">Direct pixel buffer for spatial and visual hierarchy detection.</div>
+        </div>
+    </div>
+
+    <div class="slide-num">18</div>
+</div>
+
+</body>
+</html>

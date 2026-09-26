@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    body {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f0f2f5;
+        color: #333;
+        margin: 0;
+        padding: 40px 20px;
+    }
+    .slide {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        padding: 50px 60px;
+        margin-bottom: 40px;
+        position: relative;
+        min-height: 400px;
+    }
+    h2 {
+        color: #1a365d;
+        font-size: 32px;
+        margin-top: 0;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #3182ce;
+        padding-bottom: 15px;
+        display: inline-block;
+    }
+    .results-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+    .results-table th {
+        background-color: #ebf8ff;
+        color: #2b6cb0;
+        padding: 12px;
+        text-align: left;
+        border-bottom: 3px solid #3182ce;
+    }
+    .results-table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e2e8f0;
+        color: #4a5568;
+    }
+    .results-table tr:last-child td {
+        border-bottom: none;
+    }
+    .results-table tr:nth-child(even) {
+        background-color: #f7fafc;
+    }
+    .highlight-row {
+        background-color: #fffaf0 !important;
+        font-weight: bold;
+    }
+    .metric-box {
+        text-align: center;
+        background: #ebf8ff;
+        padding: 20px;
+        border-radius: 12px;
+        border: 2px solid #90cdf4;
+        display: inline-block;
+        margin-top: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .metric-box.vision {
+        background: #faf5ff;
+        border-color: #d6bcfa;
+    }
+    .metric-box h3 {
+        color: #2b6cb0;
+        margin-top: 0;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    .metric-box.vision h3 {
+        color: #553c9a;
+    }
+    .metric-value {
+        font-size: 40px;
+        font-weight: bold;
+        color: #2b6cb0;
+    }
+    .metric-box.vision .metric-value {
+        color: #553c9a;
+    }
+    .split-col {
+        display: flex;
+        gap: 20px;
+    }
+    .split-col > div {
+        flex: 1;
+    }
+</style>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="slide">
+        <h2>Overall Detection Accuracy</h2>
+        <div style="display: flex; gap: 30px; margin-top: 20px;">
+            <div style="flex: 1; background: #ebf8ff; padding: 30px; border-radius: 12px; border-top: 5px solid #3182ce; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="color: #2b6cb0; margin-top: 0; font-size: 24px;">Textual Pipeline (DeepSeek-R1)</h3>
+                <p style="font-size: 48px; font-weight: bold; color: #2b6cb0; margin: 20px 0;">70.07%</p>
+                <p style="font-size: 18px; color: #4a5568;"><strong>1,274</strong> Detected out of <strong>1,818</strong> Scanned</p>
+            </div>
+            
+            <div style="flex: 1; background: #faf5ff; padding: 30px; border-radius: 12px; border-top: 5px solid #805ad5; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <h3 style="color: #553c9a; margin-top: 0; font-size: 24px;">Visual Pipeline (Qwen2.5-VL)</h3>
+                <p style="font-size: 48px; font-weight: bold; color: #553c9a; margin: 20px 0;">80.73%</p>
+                <p style="font-size: 18px; color: #4a5568;"><strong>486</strong> Detected out of <strong>602</strong> Scanned</p>
+            </div>
+        </div>
+        <div style="margin-top: 30px; padding: 20px; background: #f7fafc; border-left: 6px solid #4a5568; border-radius: 0 8px 8px 0;">
+            <p style="font-size: 18px; color: #2d3748; margin: 0;"><strong>Summary:</strong> DeepSeek-R1 excels at catching explicit deceptive language, while Qwen2.5-VL successfully identifies manipulative visual layouts and UI structures.</p>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h2>Ranking Dark Pattern Categories (Textual Pipeline)</h2>
+        <table class="results-table" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Rank</th>
+                    <th style="text-align: center;">DP Category</th>
+                    <th style="text-align: center;">Scanned</th>
+                    <th style="text-align: center;">Detected</th>
+                    <th style="text-align: center;">Accuracy (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Scarcity</td><td>679</td><td><strong>661</strong></td><td>97.35%</td></tr>
+                <tr><td>2</td><td>Social Proof</td><td>325</td><td><strong>263</strong></td><td>80.92%</td></tr>
+                <tr><td>3</td><td>Urgency</td><td>481</td><td><strong>238</strong></td><td>49.48%</td></tr>
+                <tr><td>4</td><td>Misdirection</td><td>270</td><td><strong>94</strong></td><td>34.81%</td></tr>
+                <tr><td>5</td><td>Sneaking</td><td>26</td><td><strong>10</strong></td><td>38.46%</td></tr>
+                <tr><td>6</td><td>Obstruction</td><td>31</td><td><strong>6</strong></td><td>19.35%</td></tr>
+                <tr><td>7</td><td>Forced Action</td><td>6</td><td><strong>2</strong></td><td>33.33%</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h2>Ranking Dark Pattern Categories (Visual Pipeline)</h2>
+        <table class="results-table" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th style="background-color: #faf5ff; border-bottom: 3px solid #805ad5; color: #553c9a; text-align: center;">Rank</th>
+                    <th style="background-color: #faf5ff; border-bottom: 3px solid #805ad5; color: #553c9a; text-align: center;">DP Category</th>
+                    <th style="background-color: #faf5ff; border-bottom: 3px solid #805ad5; color: #553c9a; text-align: center;">Scanned</th>
+                    <th style="background-color: #faf5ff; border-bottom: 3px solid #805ad5; color: #553c9a; text-align: center;">Detected</th>
+                    <th style="background-color: #faf5ff; border-bottom: 3px solid #805ad5; color: #553c9a; text-align: center;">Accuracy (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Preselection</td><td>222</td><td><strong>177</strong></td><td>79.73%</td></tr>
+                <tr><td>2</td><td>Nagging</td><td>114</td><td><strong>102</strong></td><td>89.47%</td></tr>
+                <tr><td>3</td><td>Countdown on Ads</td><td>56</td><td><strong>43</strong></td><td>76.79%</td></tr>
+                <tr><td>4</td><td>Toying with Emotion</td><td>52</td><td><strong>40</strong></td><td>76.92%</td></tr>
+                <tr><td>5</td><td>Hidden Information</td><td>38</td><td><strong>28</strong></td><td>73.68%</td></tr>
+                <tr><td>6</td><td>False Hierarchy</td><td>26</td><td><strong>26</strong></td><td>100.00%</td></tr>
+                <tr><td>7</td><td>Disguised Ads</td><td>42</td><td><strong>26</strong></td><td>61.90%</td></tr>
+                <tr><td>8</td><td>Gamification</td><td>22</td><td><strong>20</strong></td><td>90.91%</td></tr>
+                <tr><td>9</td><td>Social Pyramid</td><td>20</td><td><strong>14</strong></td><td>70.00%</td></tr>
+                <tr><td>10</td><td>Price Comparison Prevention</td><td>10</td><td><strong>10</strong></td><td>100.00%</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size: 14px; color: #4a5568; margin-top: 20px; font-style: italic;">
+            *Note: Vision accuracy metrics are derived by mapping Qwen2.5-VL's '50 Shades' taxonomy predictions to AidUI's baseline ground-truth labels.
+        </p>
+    </div>
+
+</body>
+</html>

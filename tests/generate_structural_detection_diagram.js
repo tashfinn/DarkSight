@@ -1,0 +1,580 @@
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+
+const ASSETS_DIR = path.join(__dirname, '..', 'assets');
+const htmlPath = path.join(__dirname, 'structural_detection_diagram.html');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        background: #0b0f19;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        min-height: 100vh;
+    }
+
+    .slide-header {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .slide-title {
+        font-size: 44px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: #ffffff;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .slide-subtitle {
+        font-size: 18px;
+        color: #94a3b8;
+        font-weight: 500;
+        margin-top: 6px;
+    }
+
+    /* Diagram Container */
+    .diagram-container {
+        width: 1680px;
+        height: 840px;
+        border: 2.5px solid #000000;
+        background: #ffffff;
+        display: flex;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Left Stage Swimlane */
+    .left-stages {
+        width: 270px;
+        border-right: 2.5px solid #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 24px 20px;
+        background: #ffffff;
+    }
+
+    .stage-card {
+        border: 2px solid #000000;
+        border-radius: 10px;
+        padding: 20px 16px;
+        text-align: center;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 130px;
+        gap: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .stage-num {
+        font-size: 12.5px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #0284c7;
+        margin-bottom: 2px;
+    }
+
+    .stage-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.25;
+    }
+
+    .stage-sub {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #64748b;
+    }
+
+    /* Right Flow Canvas */
+    .flow-canvas {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px 90px;
+        position: relative;
+    }
+
+    /* Row Styling */
+    .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        height: 200px;
+    }
+
+    .reverse-row {
+        flex-direction: row-reverse;
+    }
+
+    /* Node Components */
+    .node-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 210px;
+        text-align: center;
+        position: relative;
+        z-index: 3;
+    }
+
+    .node-label {
+        font-size: 17px;
+        font-weight: 800;
+        color: #0f172a;
+        margin-top: 12px;
+        line-height: 1.2;
+    }
+
+    .node-sublabel {
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #64748b;
+        margin-top: 4px;
+    }
+
+    /* Icon Box Badges */
+    .icon-box {
+        width: 90px;
+        height: 90px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+    }
+
+    /* Color Variants for Nodes */
+    .box-blue {
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        border: 2.5px solid #2563eb;
+    }
+    .box-cyan {
+        background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+        border: 2.5px solid #0d9488;
+    }
+    .box-purple {
+        background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+        border: 2.5px solid #9333ea;
+    }
+    .box-sky {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 2.5px solid #0284c7;
+    }
+    .box-amber {
+        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        border: 2.5px solid #d97706;
+    }
+    .box-rose {
+        background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+        border: 2.5px solid #e11d48;
+    }
+    .box-red {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        border: 2.5px solid #dc2626;
+    }
+    .box-crimson {
+        background: linear-gradient(135deg, #fee2e2 0%, #fca5a5 100%);
+        border: 2.5px solid #991b1b;
+    }
+
+    /* Arrow Connector */
+    .arrow-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 16px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .arrow-label {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #1e293b;
+        text-align: center;
+        margin-bottom: 8px;
+        max-width: 250px;
+        line-height: 1.3;
+    }
+
+    .arrow-line {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .line-bar {
+        flex: 1;
+        height: 2.5px;
+        background: #000000;
+    }
+
+    .arrow-head-right {
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 10px solid #000000;
+    }
+
+    .arrow-head-left {
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-right: 10px solid #000000;
+    }
+
+    /* SVG Connecting Curves */
+    .turn-svg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+</style>
+</head>
+<body>
+
+<div class="slide-header">
+    <div class="slide-title">Structural Dark Pattern Detection Pipeline</div>
+    <div class="slide-subtitle">How DarkSight Detects False Hierarchies and Visual Misdirection (AidUI)</div>
+</div>
+
+<div class="diagram-container" id="diagram">
+    
+    <!-- Left Stages (Swimlane Labels) -->
+    <div class="left-stages">
+        <div class="stage-card">
+            <div class="stage-num">Stage 1</div>
+            <div class="stage-title">Element Ingestion</div>
+            <div class="stage-sub">Extract Buttons & Styles</div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-num">Stage 2</div>
+            <div class="stage-title">Asymmetry Analysis</div>
+            <div class="stage-sub">AidUI Contrast & Size Check</div>
+        </div>
+
+        <div class="stage-card">
+            <div class="stage-num">Stage 3</div>
+            <div class="stage-title">Hierarchy Decision</div>
+            <div class="stage-sub">Flag Misdirection & Balance</div>
+        </div>
+    </div>
+
+    <!-- Right Flow Canvas -->
+    <div class="flow-canvas" id="flowCanvas">
+
+        <!-- SVG Gradients Definition & Connecting Turn Lines -->
+        <svg class="turn-svg-overlay" id="overlaySvg">
+            <defs>
+                <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                    <polygon points="0 0, 8 4, 0 8" fill="#000000"/>
+                </marker>
+            </defs>
+        </svg>
+
+        <!-- Row 1: Element Ingestion (Left to Right) -->
+        <div class="flow-row" id="row1">
+            
+            <!-- Node 1.1: Webpage UI -->
+            <div class="node-item" id="node1_1">
+                <div class="icon-box box-blue">
+                    <!-- Layout / Modal Window Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                </div>
+                <div class="node-label">Webpage UI</div>
+                <div class="node-sublabel">Interactive Modals & Dialogs</div>
+            </div>
+
+            <!-- Arrow 1.1 -->
+            <div class="arrow-container">
+                <div class="arrow-label">Extract Action Elements</div>
+                <div class="arrow-line">
+                    <div class="line-bar"></div>
+                    <div class="arrow-head-right"></div>
+                </div>
+            </div>
+
+            <!-- Node 1.2: Button Pairs -->
+            <div class="node-item" id="node1_2">
+                <div class="icon-box box-cyan">
+                    <!-- Dual Buttons / Toggle Pair Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="6" width="9" height="12" rx="2"></rect>
+                        <rect x="13" y="6" width="9" height="12" rx="2"></rect>
+                        <line x1="6.5" y1="12" x2="6.51" y2="12"></line>
+                        <line x1="17.5" y1="12" x2="17.51" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="node-label">Button Pairs</div>
+                <div class="node-sublabel">Accept vs. Decline Elements</div>
+            </div>
+
+            <!-- Arrow 1.2 -->
+            <div class="arrow-container">
+                <div class="arrow-label">Get Bounding Boxes & CSS</div>
+                <div class="arrow-line">
+                    <div class="line-bar"></div>
+                    <div class="arrow-head-right"></div>
+                </div>
+            </div>
+
+            <!-- Node 1.3: UI Properties -->
+            <div class="node-item" id="node1_3">
+                <div class="icon-box box-purple">
+                    <!-- Palette / Dimension Properties Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="13.5" cy="6.5" r=".5"></circle>
+                        <circle cx="17.5" cy="10.5" r=".5"></circle>
+                        <circle cx="8.5" cy="7.5" r=".5"></circle>
+                        <circle cx="6.5" cy="12.5" r=".5"></circle>
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                    </svg>
+                </div>
+                <div class="node-label">UI Properties</div>
+                <div class="node-sublabel">Size, Colors & Contrast</div>
+            </div>
+
+        </div>
+
+        <!-- Row 2: AidUI Asymmetry Analysis (Right to Left Snake Flow) -->
+        <div class="flow-row reverse-row" id="row2">
+            
+            <!-- Node 2.1: AidUI Engine -->
+            <div class="node-item" id="node2_1">
+                <div class="icon-box box-sky">
+                    <!-- Ruler / Geometry Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.3 8.7 8.7 21.3c-1 1-2.5 1-3.4 0l-2.6-2.6c-1-1-1-2.5 0-3.4L15.3 2.7c1-1 2.5-1 3.4 0l2.6 2.6c1 1 1 2.5 0 3.4Z"></path>
+                        <path d="m14.5 3.5 2 2"></path>
+                        <path d="m11.5 6.5 2 2"></path>
+                        <path d="m8.5 9.5 2 2"></path>
+                        <path d="m5.5 12.5 2 2"></path>
+                    </svg>
+                </div>
+                <div class="node-label">AidUI Engine</div>
+                <div class="node-sublabel">Geometric Rule Evaluation</div>
+            </div>
+
+            <!-- Arrow 2.1 (Pointing Left) -->
+            <div class="arrow-container">
+                <div class="arrow-label">Measure Size & Color Asymmetry</div>
+                <div class="arrow-line">
+                    <div class="arrow-head-left"></div>
+                    <div class="line-bar"></div>
+                </div>
+            </div>
+
+            <!-- Node 2.2: Asymmetry Ratio -->
+            <div class="node-item" id="node2_2">
+                <div class="icon-box box-amber">
+                    <!-- Balance Scale / Ratio Disparity Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+                        <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+                        <path d="M7 21h10"></path>
+                        <path d="M12 3v18"></path>
+                        <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path>
+                    </svg>
+                </div>
+                <div class="node-label">Asymmetry Ratio</div>
+                <div class="node-sublabel">Area & Contrast Gap</div>
+            </div>
+
+            <!-- Arrow 2.2 (Pointing Left) -->
+            <div class="arrow-container">
+                <div class="arrow-label">Exceeds Imbalance Threshold</div>
+                <div class="arrow-line">
+                    <div class="arrow-head-left"></div>
+                    <div class="line-bar"></div>
+                </div>
+            </div>
+
+            <!-- Node 2.3: Deceptive Pair -->
+            <div class="node-item" id="node2_3">
+                <div class="icon-box box-rose">
+                    <!-- Unbalanced / Eye-Off Subdued Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
+                </div>
+                <div class="node-label">Deceptive Pair</div>
+                <div class="node-sublabel">Suppressed Decline Option</div>
+            </div>
+
+        </div>
+
+        <!-- Row 3: Hierarchy Decision (Left to Right) -->
+        <div class="flow-row" id="row3">
+            
+            <!-- Node 3.1: False Hierarchy -->
+            <div class="node-item" id="node3_1">
+                <div class="icon-box box-red">
+                    <!-- Alert Shield Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="node-label">False Hierarchy</div>
+                <div class="node-sublabel">Visual Interference Flag</div>
+            </div>
+
+            <!-- Arrow 3.1 -->
+            <div class="arrow-container">
+                <div class="arrow-label">Isolate Manipulative Element</div>
+                <div class="arrow-line">
+                    <div class="line-bar"></div>
+                    <div class="arrow-head-right"></div>
+                </div>
+            </div>
+
+            <!-- Node 3.2: Misdirection Flag -->
+            <div class="node-item" id="node3_2">
+                <div class="icon-box box-red">
+                    <!-- Flag / Fault Target Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                    </svg>
+                </div>
+                <div class="node-label">Misdirection Flag</div>
+                <div class="node-sublabel">Calculated Contrast Fault</div>
+            </div>
+
+            <!-- Arrow 3.2 -->
+            <div class="arrow-container">
+                <div class="arrow-label">Apply Visual Countermeasures</div>
+                <div class="arrow-line">
+                    <div class="line-bar"></div>
+                    <div class="arrow-head-right"></div>
+                </div>
+            </div>
+
+            <!-- Node 3.3: Confirmed DP -->
+            <div class="node-item" id="node3_3">
+                <div class="icon-box box-crimson">
+                    <!-- Equalized Choice / Shield Protection Icon -->
+                    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#991b1b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                    </svg>
+                </div>
+                <div class="node-label">Confirmed DP</div>
+                <div class="node-sublabel">Highlight & Equalize Choice</div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        const canvas = document.getElementById('flowCanvas');
+        const svg = document.getElementById('overlaySvg');
+        const canvasRect = canvas.getBoundingClientRect();
+
+        const n1_3 = document.getElementById('node1_3').getBoundingClientRect();
+        const n2_1 = document.getElementById('node2_1').getBoundingClientRect();
+        const n2_3 = document.getElementById('node2_3').getBoundingClientRect();
+        const n3_1 = document.getElementById('node3_1').getBoundingClientRect();
+
+        // Right turn: From right of node1_3 around into top of node2_1
+        const x1 = n1_3.right - canvasRect.left;
+        const y1 = n1_3.top + 45 - canvasRect.top;
+        const x2 = n2_1.right - canvasRect.left;
+        const y2 = n2_1.top + 45 - canvasRect.top;
+
+        const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path1.setAttribute('d', \`M \${x1} \${y1} H \${x1 + 45} V \${y2} H \${x2 + 12}\`);
+        path1.setAttribute('fill', 'none');
+        path1.setAttribute('stroke', '#000000');
+        path1.setAttribute('stroke-width', '2.5');
+        path1.setAttribute('marker-end', 'url(#arrowHead)');
+        svg.appendChild(path1);
+
+        // Left turn: From left of node2_3 around into left of node3_1
+        const x3 = n2_3.left - canvasRect.left;
+        const y3 = n2_3.top + 45 - canvasRect.top;
+        const x4 = n3_1.left - canvasRect.left;
+        const y4 = n3_1.top + 45 - canvasRect.top;
+
+        const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path2.setAttribute('d', \`M \${x3} \${y3} H \${x3 - 45} V \${y4} H \${x4 - 12}\`);
+        path2.setAttribute('fill', 'none');
+        path2.setAttribute('stroke', '#000000');
+        path2.setAttribute('stroke-width', '2.5');
+        path2.setAttribute('marker-end', 'url(#arrowHead)');
+        svg.appendChild(path2);
+    });
+</script>
+
+</body>
+</html>
+`;
+
+fs.writeFileSync(htmlPath, htmlContent);
+
+async function renderDiagram() {
+    console.log('Rendering All-Icon Structural Dark Pattern Detection Diagram...');
+    const browser = await puppeteer.launch({
+        headless: "new",
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 2 });
+    await page.goto(`file://${htmlPath}`, { waitUntil: 'networkidle0' });
+    await new Promise(r => setTimeout(r, 200));
+
+    // 1. Full Slide with Dark Background
+    const slidePath = path.join(ASSETS_DIR, 'Structural_Detection_Slide_Theme.png');
+    await page.screenshot({ path: slidePath, fullPage: true });
+
+    // 2. Card Only (Pure diagram container)
+    const cardPath = path.join(ASSETS_DIR, 'Structural_Detection_Pipeline_Diagram.png');
+    const cardElem = await page.$('#diagram');
+    await cardElem.screenshot({ path: cardPath });
+
+    console.log(`✅ Structural Detection Slide generated: ${slidePath}`);
+    console.log(`✅ Structural Detection Card generated: ${cardPath}`);
+    await browser.close();
+}
+
+renderDiagram().catch(err => {
+    console.error('Error generating diagram:', err);
+});

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        background: #090d16;
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        min-height: 100vh;
+        color: #e2e8f0;
+    }
+
+    .diagram-wrapper {
+        width: 1920px;
+        height: 1080px;
+        position: relative;
+        background: radial-gradient(circle at 50% 0%, #172554 0%, #0b1120 70%, #030712 100%);
+        border: 1.5px solid #1e3a8a;
+        border-radius: 24px;
+        padding: 45px 55px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(37, 99, 235, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+    /* Decorative Grid */
+    .diagram-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: linear-gradient(rgba(30, 58, 138, 0.1) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(30, 58, 138, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 1.5px solid #1e293b;
+        padding-bottom: 22px;
+    }
+
+    .badge-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(37, 99, 235, 0.2);
+        border: 1px solid #3b82f6;
+        color: #93c5fd;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .header-title {
+        font-size: 34px;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .header-title span.highlight {
+        background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .header-subtitle {
+        font-size: 16px;
+        color: #94a3b8;
+        margin-top: 6px;
+        font-weight: 500;
+    }
+
+    .header-meta {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    .phase-pill {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 16px;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .meta-desc {
+        font-size: 13px;
+        color: #64748b;
+    }
+
+    /* Main Content Grid */
+    .main-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 310px 1fr 340px;
+        gap: 40px;
+        flex: 1;
+        margin: 28px 0;
+        align-items: stretch;
+    }
+
+    /* Canvas / Cards */
+    .col-card {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid #1e293b;
+        border-radius: 18px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .col-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #f1f5f9;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #334155;
+    }
+
+    /* Column 1: Trigger & Target */
+    .target-box {
+        background: #0f172a;
+        border: 1.5px solid #334155;
+        border-radius: 14px;
+        padding: 18px;
+        margin-bottom: 16px;
+    }
+
+    .target-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #38bdf8;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .target-list {
+        list-style: none;
+        font-size: 13px;
+        color: #cbd5e1;
+        line-height: 1.6;
+    }
+
+    .target-list li {
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 6px;
+    }
+
+    .target-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #38bdf8;
+        font-size: 14px;
+    }
+
+    .trigger-badge-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: auto;
+    }
+
+    .trigger-item {
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid #334155;
+        border-radius: 10px;
+        padding: 12px 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .trigger-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: #1e3a8a;
+        color: #60a5fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .trigger-text h4 {
+        font-size: 13px;
+        color: #f8fafc;
+        font-weight: 600;
+    }
+
+    .trigger-text p {
+        font-size: 11px;
+        color: #94a3b8;
+    }
+
+    /* Column 2: Dual-Engine Ingestion */
+    .engines-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+    }
+
+    .engine-block {
+        border-radius: 16px;
+        padding: 20px 24px;
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .engine-dom {
+        background: linear-gradient(135deg, rgba(30, 58, 138, 0.3) 0%, rgba(15, 23, 42, 0.85) 100%);
+        border: 1.5px solid #2563eb;
+        box-shadow: inset 0 0 20px rgba(37, 99, 235, 0.1);
+    }
+
+    .engine-vision {
+        background: linear-gradient(135deg, rgba(88, 28, 135, 0.3) 0%, rgba(15, 23, 42, 0.85) 100%);
+        border: 1.5px solid #7c3aed;
+        box-shadow: inset 0 0 20px rgba(124, 58, 237, 0.1);
+    }
+
+    .engine-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+    }
+
+    .engine-tag {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 6px;
+    }
+
+    .dom-tag { background: #1d4ed8; color: #dbeafe; }
+    .vision-tag { background: #6d28d9; color: #ede9fe; }
+
+    .engine-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .engine-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .step-box {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .step-num {
+        font-size: 11px;
+        font-weight: 800;
+        color: #38bdf8;
+        letter-spacing: 0.5px;
+    }
+
+    .step-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #f1f5f9;
+    }
+
+    .step-desc {
+        font-size: 11px;
+        color: #94a3b8;
+        line-height: 1.45;
+    }
+
+    .code-pill {
+        font-family: 'Consolas', 'Courier New', monospace;
+        background: #020617;
+        color: #38bdf8;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 10.5px;
+        border: 1px solid #1e293b;
+        display: inline-block;
+        margin-top: 4px;
+    }
+
+    /* Column 3: Output Handoff Streams */
+    .stream-box {
+        background: rgba(15, 23, 42, 0.9);
+        border-radius: 14px;
+        padding: 16px;
+        margin-bottom: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+    }
+
+    .stream-1 {
+        border: 1.5px solid #0284c7;
+        border-left: 5px solid #0284c7;
+    }
+
+    .stream-2 {
+        border: 1.5px solid #10b981;
+        border-left: 5px solid #10b981;
+    }
+
+    .stream-3 {
+        border: 1.5px solid #a855f7;
+        border-left: 5px solid #a855f7;
+    }
+
+    .stream-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .stream-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .stream-badge {
+        font-size: 10.5px;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 6px;
+    }
+
+    .b-blue { background: rgba(2, 132, 199, 0.2); color: #38bdf8; }
+    .b-green { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .b-purple { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+
+    .stream-content {
+        font-size: 12px;
+        color: #cbd5e1;
+        line-height: 1.45;
+    }
+
+    .stream-dest {
+        font-size: 11.5px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    .dest-1 { color: #38bdf8; }
+    .dest-2 { color: #34d399; }
+    .dest-3 { color: #c084fc; }
+
+    /* Footer: Academic Rigor Mapping */
+    .footer {
+        position: relative;
+        z-index: 2;
+        border-top: 1.5px solid #1e293b;
+        padding-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .papers-row {
+        display: flex;
+        gap: 24px;
+    }
+
+    .paper-card {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 6px 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #cbd5e1;
+    }
+
+    .paper-name {
+        font-weight: 700;
+        color: #f1f5f9;
+    }
+
+    .paper-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+
+    .dot-blue { background: #3b82f6; }
+    .dot-green { background: #10b981; }
+    .dot-purple { background: #a855f7; }
+</style>
+</head>
+<body>
+
+<div class="diagram-wrapper" id="diagram">
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <div class="badge-tag">
+                <span>⚡ DarkSight Pipeline</span> • Architecture Deep Dive
+            </div>
+            <div class="header-title">
+                Phase 1: <span class="highlight">Data Ingestion & State Extraction</span>
+            </div>
+            <div class="header-subtitle">
+                Dual-Engine DOM Extraction, Real-Time Viewport Interception & Performance-Optimized Preprocessing
+            </div>
+        </div>
+        <div class="header-meta">
+            <div class="phase-pill">PHASE 1 OF 4</div>
+            <div class="meta-desc">Zero-Impact Real-Time Data Pipeline</div>
+        </div>
+    </div>
+
+    <!-- Main Content 3-Column Layout -->
+    <div class="main-grid">
+        
+        <!-- Column 1: Target Page & Observers -->
+        <div class="col-card">
+            <div class="col-title">
+                <span>🌐</span> Target Environment
+            </div>
+
+            <div class="target-box">
+                <div class="target-title">
+                    <span>📄</span> Live Webpage DOM
+                </div>
+                <ul class="target-list">
+                    <li>Dynamic E-Commerce SPAs (Amazon, Daraz, AliExpress)</li>
+                    <li>Live Interactive Decision Dialogs</li>
+                    <li>Rendered Viewport Pixel Buffer</li>
+                </ul>
+            </div>
+
+            <div class="target-title" style="margin-top: 10px; margin-bottom: 10px; font-size: 14px;">
+                <span>⏱️</span> Ingestion Triggers
+            </div>
+
+            <div class="trigger-badge-container">
+                <div class="trigger-item">
+                    <div class="trigger-icon">👁️</div>
+                    <div class="trigger-text">
+                        <h4>IntersectionObserver</h4>
+                        <p>200px pre-fetch proximity buffer for viewport-visible nodes.</p>
+                    </div>
+                </div>
+
+                <div class="trigger-item">
+                    <div class="trigger-icon">🔄</div>
+                    <div class="trigger-text">
+                        <h4>MutationObserver</h4>
+                        <p>Auto-intercepts dynamic DOM inserts, popups, and badges.</p>
+                    </div>
+                </div>
+
+                <div class="trigger-item">
+                    <div class="trigger-icon">🚀</div>
+                    <div class="trigger-text">
+                        <h4>Page Load Event</h4>
+                        <p>Initial state capture on document_idle execution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Dual Extraction Engines -->
+        <div class="engines-container">
+            
+            <!-- DOM Engine -->
+            <div class="engine-block engine-dom">
+                <div class="engine-header">
+                    <div class="engine-name">
+                        <span>🌲</span> DOM & CSS Extractor
+                    </div>
+                    <div class="engine-tag dom-tag">content.js Engine</div>
+                </div>
+
+                <div class="engine-steps">
+                    <div class="step-box">
+                        <div class="step-num">STEP 1.1 • FILTERING</div>
+                        <div class="step-title">Leaf Node Extraction</div>
+                        <div class="step-desc">
+                            Isolates leaf text nodes (children.length === 0). Ignores scripts, styles, extension UI (.dp-explain).
+                        </div>
+                        <div class="code-pill">extractNodes()</div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-num">STEP 1.2 • CLEANING</div>
+                        <div class="step-title">Text Normalization</div>
+                        <div class="step-desc">
+                            Regex timer masking (\d:\d:\d ➔ TIMER), exact blacklist stripping, and decision keyword preservation.
+                        </div>
+                        <div class="code-pill">normalizeText()</div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-num">STEP 1.3 • STYLING</div>
+                        <div class="step-title">CSS & Contrast Math</div>
+                        <div class="step-desc">
+                            Extracts computed styles, bounding box dimensions, upward background inheritance, and WCAG luminance.
+                        </div>
+                        <div class="code-pill">window.getComputedStyle()</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vision Engine -->
+            <div class="engine-block engine-vision">
+                <div class="engine-header">
+                    <div class="engine-name">
+                        <span>📸</span> Viewport Capture Engine
+                    </div>
+                    <div class="engine-tag vision-tag">background.js Service Worker</div>
+                </div>
+
+                <div class="engine-steps">
+                    <div class="step-box">
+                        <div class="step-num">STEP 2.1 • CAPTURE</div>
+                        <div class="step-title">Chrome Tab Interception</div>
+                        <div class="step-desc">
+                            Calls native Chrome extension API to capture the exact rendered visible pixels without DOM cloning overhead.
+                        </div>
+                        <div class="code-pill">captureVisibleTab()</div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-num">STEP 2.2 • ENCODING</div>
+                        <div class="step-title">Base64 Frame Packaging</div>
+                        <div class="step-desc">
+                            Strips data URI headers, extracts uncompressed binary base64 string, and bundles with tab dimensions.
+                        </div>
+                        <div class="code-pill">dataUrl.split(',')[1]</div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-num">STEP 2.3 • TIMEOUT & SAFETY</div>
+                        <div class="step-title">AbortController Guard</div>
+                        <div class="step-desc">
+                            120-second timeout guard prevents memory leaks and network hangs during local Ollama model payload handoff.
+                        </div>
+                        <div class="code-pill">new AbortController()</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Column 3: Output Handoff Streams -->
+        <div class="col-card">
+            <div class="col-title">
+                <span>📤</span> Output Handoff Streams
+            </div>
+
+            <!-- Stream 1 -->
+            <div class="stream-box stream-1">
+                <div class="stream-header">
+                    <div class="stream-title">Stream A: Clean Text</div>
+                    <span class="stream-badge b-blue">TEXT PIPELINE</span>
+                </div>
+                <div class="stream-content">
+                    Normalized leaf strings, timer tokens, and pre-categorized keyword candidates.
+                </div>
+                <div class="stream-dest dest-1">
+                    <span>➔</span> Phase 2 (Regex) & Phase 3 (DeepSeek)
+                </div>
+            </div>
+
+            <!-- Stream 2 -->
+            <div class="stream-box stream-2">
+                <div class="stream-header">
+                    <div class="stream-title">Stream B: CSS Geometry</div>
+                    <span class="stream-badge b-green">STRUCTURAL</span>
+                </div>
+                <div class="stream-content">
+                    Bounding boxes (W/H), area ratios, RGB luminance values, and 5% spatial neighborhood coordinates.
+                </div>
+                <div class="stream-dest dest-2">
+                    <span>➔</span> Phase 2 (AidUI CSS Math)
+                </div>
+            </div>
+
+            <!-- Stream 3 -->
+            <div class="stream-box stream-3">
+                <div class="stream-header">
+                    <div class="stream-title">Stream C: Viewport Pixels</div>
+                    <span class="stream-badge b-purple">VISION PIPELINE</span>
+                </div>
+                <div class="stream-content">
+                    Full-frame Base64 screenshot payload preserving complete visual layout and spatial hierarchy.
+                </div>
+                <div class="stream-dest dest-3">
+                    <span>➔</span> Phase 3 (Qwen2.5-VL Vision)
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer: Academic Alignment -->
+    <div class="footer">
+        <div class="footer-title">
+            <span>📚</span> Academic Foundations Governing Phase 1
+        </div>
+        <div class="papers-row">
+            <div class="paper-card">
+                <div class="paper-dot dot-blue"></div>
+                <div><span class="paper-name">Mathur et al. (2019):</span> DOM Leaf Text & Urgency Signature Extraction</div>
+            </div>
+            <div class="paper-card">
+                <div class="paper-dot dot-green"></div>
+                <div><span class="paper-name">AidUI (2023):</span> Computed CSS Hierarchy, Luminance & Neighborhood Boundaries</div>
+            </div>
+            <div class="paper-card">
+                <div class="paper-dot dot-purple"></div>
+                <div><span class="paper-name">DP Sentinel (2024):</span> Multi-Stream Decoupled Ingestion Architecture</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
