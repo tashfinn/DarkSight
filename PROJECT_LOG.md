@@ -260,9 +260,11 @@ DarkSight is a Chrome Extension designed to detect Dark Patterns (Deceptive Patt
   - Built `package.ps1` to automatically generate a clean, production-ready `dist/darksight-v1.5.0.zip` bundle excluding node_modules, test logs, and raw datasets.
   - Fixed `.gitignore` to prevent tracking heavy dataset zips, temporary build artifacts, and OS files.
 - **Artifacts Saved**: `README.md`, `PRIVACY_POLICY.md`, `LICENSE`, `package.ps1`, `dist/darksight-v1.5.0.zip`, `logo/icon16.png`, `logo/icon48.png`, `logo/icon128.png`.
+- **Accomplished**:
+  - Pushed staged commits and tag `v1.5.0` to GitHub repository (`https://github.com/tashfinn/DarkSight.git`).
+  - Generated pre-packaged `darksight-v1.5.0.zip` ready for GitHub Releases and Chrome Web Store upload.
 - **Next Logical Steps**:
-  - Push staged commits to GitHub repository (`origin/main`).
-  - Create a GitHub Release tag (`v1.5.0`) attaching `darksight-v1.5.0.zip`.
-  - Submit the extension to the Chrome Web Store Developer Dashboard using the provided Privacy Policy and Permission justifications.
+  - Draft and finalize GitHub Release `v1.5.0` on GitHub.
+  - Complete the Chrome Web Store Developer Console submission with the provided store descriptions, permission justifications, and privacy declarations.
 
 
