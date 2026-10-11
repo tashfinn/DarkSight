@@ -1,0 +1,312 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>DarkSight Methodology</title>
+<!--[if gte mso 9]>
+<xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>100</w:Zoom>
+  <w:DoNotOptimizeForBrowser/>
+ </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: 8.27in 11.69in; /* A4 */
+    margin: 1.0in 1.0in 1.0in 1.0in;
+    mso-header-margin: 0.5in;
+    mso-footer-margin: 0.5in;
+    mso-paper-source: 0;
+}
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #111111;
+    text-align: justify;
+}
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0pt;
+    margin-bottom: 18pt;
+    color: #000000;
+}
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+    color: #000000;
+}
+h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+    color: #000000;
+}
+p {
+    margin-top: 0pt;
+    margin-bottom: 8pt;
+    text-indent: 0pt;
+}
+ul, ol {
+    margin-top: 0pt;
+    margin-bottom: 8pt;
+    padding-left: 24pt;
+}
+li {
+    margin-bottom: 4pt;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 12pt;
+    margin-bottom: 14pt;
+    font-size: 10pt;
+}
+table, th, td {
+    border: 1px solid #333333;
+}
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 6pt 8pt;
+    text-align: left;
+}
+td {
+    padding: 6pt 8pt;
+    vertical-align: top;
+}
+.image-placeholder {
+    border: 2px dashed #4a5568;
+    background-color: #f7fafc;
+    border-radius: 4px;
+    padding: 24pt;
+    text-align: center;
+    margin: 12pt 0;
+    color: #2d3748;
+}
+.image-placeholder-title {
+    font-weight: bold;
+    font-size: 11pt;
+    color: #1a202c;
+    margin-bottom: 4pt;
+}
+.image-placeholder-sub {
+    font-size: 9.5pt;
+    color: #718096;
+    font-style: italic;
+}
+.caption {
+    font-size: 9.5pt;
+    font-style: italic;
+    text-align: center;
+    margin-top: 4pt;
+    margin-bottom: 14pt;
+    color: #2d3748;
+}
+.equation {
+    text-align: center;
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-size: 11pt;
+    margin: 8pt 0;
+    font-weight: bold;
+}
+.ref-item {
+    margin-bottom: 6pt;
+    padding-left: 20pt;
+    text-indent: -20pt;
+    font-size: 10pt;
+}
+</style>
+</head>
+<body>
+
+<h1>III. METHODOLOGY</h1>
+
+<p>Automated detection and mitigation of dark patterns require a system that can process heterogeneous web representations—ranging from raw textual phrasing to structural DOM hierarchies and visual page layouts—without degrading browsing latency or compromising user privacy. To address the limitations of prior works that rely exclusively on post-hoc, offline classification, we propose <b>DarkSight</b>: a real-time, client-side browser extension that unifies multi-modal detection with runtime countermeasure execution.</p>
+
+<div class="image-placeholder">
+    <div class="image-placeholder-title">[PASTE SCREENSHOT HERE: Master Architecture Diagram]</div>
+    <div class="image-placeholder-sub">File reference: assets/changes/darksight architechture diagram.png</div>
+</div>
+<div class="caption">Figure 1: High-level architectural dataflow of DarkSight, illustrating the dual ingestion pipeline, three-tiered detection cascade, and the runtime countermeasure dispatcher.</div>
+
+<h2>A. System Architecture and Workflow</h2>
+<p>As illustrated in Figure 1, DarkSight operates as an asynchronous, multi-tiered pipeline executed entirely within the client browser. The runtime architecture is partitioned into four sequential stages:</p>
+<ol>
+    <li><b>Data Ingestion:</b> Simultaneously extracts visible text strings, computed CSS styles, and a viewport screenshot upon page settlement.</li>
+    <li><b>Tier-1 Heuristic Filtering:</b> Employs zero-latency regular expressions to intercept deterministic linguistic patterns synchronously.</li>
+    <li><b>Deep Multi-Modal Analysis:</b> Escalates ambiguous or complex candidate elements to specialized local models: a text Large Language Model (LLM) for semantic intent, structural CSS calculations for visual hierarchy discrepancies, and a multimodal vision-language model (VLM) for spatial page layouts.</li>
+    <li><b>Countermeasure Dispatch and Transformation:</b> Resolves confirmed detections and dynamically mutates target DOM elements in real time based on user-configured protection policies.</li>
+</ol>
+
+<h2>B. Dual-Stream Data Ingestion</h2>
+<p>To decouple lightweight heuristic operations from computationally intensive visual processing, DarkSight implements a dual-track ingestion engine operating across content and background extension scripts:</p>
+<ul>
+    <li><b>DOM Extractor (<code>content.js</code>):</b> Recursively traverses the live HTML DOM tree to isolate rendered leaf nodes. To minimize unnecessary computation, the extractor immediately prunes non-rendered elements (e.g., nodes with <code>display: none</code>, <code>visibility: hidden</code>, or zero-area bounding boxes). For every active candidate node, it retrieves the resolved typography, foreground and background colors, and rendered bounding box coordinates via <code>window.getComputedStyle()</code> and <code>getBoundingClientRect()</code>.</li>
+    <li><b>Viewport Capture Engine (<code>background.js</code>):</b> Accesses privileged browser APIs (<code>chrome.tabs.captureVisibleTab</code>) to serialize the active viewport into a Base64-encoded image stream. To prevent performance degradation and redundant scans during dynamic DOM mutations, capture is constrained to a single execution triggered after page load completion.</li>
+</ul>
+
+<h2>C. Multi-Tiered Detection Pipeline</h2>
+<p>Deceptive patterns manifest through distinct design modalities. DarkSight integrates four specialized detection mechanisms structured across three complementary tiers:</p>
+
+<div class="image-placeholder">
+    <div class="image-placeholder-title">[PASTE SCREENSHOT HERE: Textual Detection Pipeline Diagram]</div>
+    <div class="image-placeholder-sub">File reference: assets/Textual_Detection_Pipeline_Diagram.png</div>
+</div>
+<div class="caption">Figure 2: Textual Detection Pipeline combining Tier-1 regex heuristics with Tier-2 local LLM semantic reasoning.</div>
+
+<h3>1) Tier-1: Fast Heuristic Regex Engine</h3>
+<p>Synthesized from the empirical taxonomy established by Mathur et al. [1] across 11,000 shopping websites, Tier-1 acts as an instantaneous pre-filter. It scans candidate strings against optimized regular expressions targeting four high-prevalence categories:</p>
+<ul>
+    <li><b>Urgency:</b> Temporal pressure markers (e.g., <i>"offer expires in"</i>, <i>"limited time remaining"</i>).</li>
+    <li><b>Scarcity:</b> Inventory restriction claims (e.g., <i>"only \d+ items left in stock"</i>).</li>
+    <li><b>Social Proof:</b> Activity metrics implying simulated popularity (e.g., <i>"\d+ people viewing right now"</i>).</li>
+    <li><b>Fake Discount:</b> Deceptive crossed-out reference pricing tokens.</li>
+</ul>
+<p>Explicit matches resolve synchronously in microseconds and bypass downstream AI inference entirely, eliminating unnecessary computational overhead for formulaic patterns.</p>
+
+<h3>2) Tier-2: Semantic LLM Reasoning</h3>
+<p>Textual instances that exhibit manipulative intent without adhering to fixed lexical templates are escalated to a local DeepSeek-R1 (1.5B) language model. To ensure deterministic, robust classification from a quantized edge model, we integrate two complementary methodologies:</p>
+<ul>
+    <li><b>Taxonomic Framing:</b> The model's label space is formally constrained to the 8-category textual dark pattern taxonomy established by Schaefer [2] (<i>Urgency, Scarcity, Social Proof, Obstruction, Forced Action, Sneaking, Misdirection, and Fake Discount</i>).</li>
+    <li><b>In-Context Prompt Engineering:</b> Following few-shot in-context learning principles [3], the inference prompt (<code>prompt.js</code>) incorporates formal semantic definitions, boundary counter-examples, and Chain-of-Thought (CoT) reasoning paths. This constrains the model to distinguish authentic transactional alerts from artificial psychological pressure, suppressing hallucination. The resulting CoT reasoning trace is preserved to drive downstream explanatory tooltips.</li>
+</ul>
+
+<div class="image-placeholder">
+    <div class="image-placeholder-title">[PASTE SCREENSHOT HERE: Structural Detection Pipeline Diagram]</div>
+    <div class="image-placeholder-sub">File reference: assets/Structural_Detection_Pipeline_Diagram.png</div>
+</div>
+<div class="caption">Figure 3: Structural Detection Pipeline mathematically verifying UI symmetry.</div>
+
+<h3>3) Tier-3a: Structural Visual Analysis</h3>
+<p>Certain deceptive techniques do not depend on deceptive phrasing but rather exploit visual hierarchy to obscure consumer choices. We implement the structural analysis methodology proposed in AidUI [4] to detect <i>False Hierarchies</i> between competing interactive controls (e.g., an oversized, vibrant "Accept" button paired with a muted, low-contrast "Decline" link).</p>
+<p>The engine computes two geometric and visual ratios across sibling interactive elements:</p>
+
+<div class="equation">Area Ratio = Area<sub>Primary</sub> / Area<sub>Secondary</sub></div>
+<div class="equation">Contrast Ratio = Contrast(Primary, Background) / Contrast(Secondary, Background)</div>
+
+<p>Contrast is computed independently against each element’s local container background using standard WCAG relative luminance formulas. We calibrate the decision boundary to trigger whenever the composite visual asymmetry meets or exceeds 1.0 (<b>Discrepancy &ge; 1.0</b>). Evaluating area and contrast as independent terms allows DarkSight to reliably catch opacity-based visual suppression even when button bounding boxes are dimensionally identical.</p>
+
+<div class="image-placeholder">
+    <div class="image-placeholder-title">[PASTE SCREENSHOT HERE: Visual Detection Pipeline Diagram]</div>
+    <div class="image-placeholder-sub">File reference: assets/Visual_Detection_Pipeline_Diagram.png</div>
+</div>
+<div class="caption">Figure 4: Visual Detection Pipeline utilizing Qwen2.5-VL for multimodal spatial reasoning.</div>
+
+<h3>4) Tier-3b: Spatial Multimodal Vision Scan</h3>
+<p>Deceptive designs embedded within canvas elements, raster banners, or complex nested modals evade DOM inspection. To identify these compositional patterns, DarkSight operationalizes the spatial detection architecture of DP Sentinel [5] powered by a local Qwen2.5-VL multimodal model.</p>
+<p>The model evaluates the captured viewport image against the comprehensive 21-category visual deception taxonomy from "50 Shades of Deceptive Patterns" [6] (e.g., <i>Disguised Ads, Roach Motel, Gamification, Sneak into Basket, and Hidden Costs</i>). Rather than emitting non-spatial text descriptions, the model performs visual grounding to return normalized bounding box coordinates [y<sub>min</sub>, x<sub>min</sub>, y<sub>max</sub>, x<sub>max</sub>]. DarkSight rescales these coordinates to the client viewport to establish spatial overlays over purely graphical manipulations.</p>
+
+<h2>D. Dynamic Countermeasure and Neutralization Engine</h2>
+<p>Detection alone is insufficient to protect user autonomy; the diagnostic output must trigger therapeutic interventions. Building upon the conceptual mitigation framework introduced by Schaefer et al. [7], DarkSight operationalizes the first client-side countermeasure runtime capable of executing live DOM mutations on production web pages.</p>
+
+<div class="image-placeholder">
+    <div class="image-placeholder-title">[PASTE SCREENSHOT HERE: Countermeasure Architecture Diagram]</div>
+    <div class="image-placeholder-sub">File reference: assets/Countermeasures_Pipeline_Diagram.png</div>
+</div>
+<div class="caption">Figure 5: The Countermeasure and Neutralization Architecture, detailing Pattern Ingestion, the 3-Mode Strategy Dispatcher, and direct DOM transformation into a Fair & Safe UI.</div>
+
+<p>As depicted in Figure 5, the remediation workflow executes across three distinct phases:</p>
+<ul>
+    <li><b>Phase 1 (Pattern Ingestion):</b> Incoming detections from the textual, structural, and visual pipelines are normalized into a unified flag containing the target element reference, category classification, confidence score, and CoT explanation.</li>
+    <li><b>Phase 2 (Strategy Dispatch):</b> The Strategy Dispatcher acts as an automated policy and severity selector, mapping the normalized flag against active user settings into one of three distinct operational modes:
+        <ol>
+            <li><b>Mode 1 &middot; Highlight & Explain (HLE):</b> Wraps the target DOM node in an animated, high-visibility rose-red outline (<code>#f43f5e</code>) and attaches an interactive tooltip (<code>dp-global-tooltip</code>). The tooltip displays the classified dark pattern category alongside the LLM's generated CoT rationale, educating the user without modifying page functionality.</li>
+            <li><b>Mode 2 &middot; Hide (HD):</b> Designed for non-essential manipulative elements (e.g., fabricated countdown timers, artificial stock badges, social proof toasts). Injects scoped CSS rules (<code>display: none !important</code>) that collapse the deceptive element from the render tree while preserving surrounding layout geometry.</li>
+            <li><b>Mode 3 &middot; Switch (SW):</b> Designed for coercive copywriting. The engine performs in-situ lexical rewriting, replacing high-pressure text (e.g., <i>"Only 2 items left—hurry!"</i>) with neutral indicators (e.g., <i>"[Inventory pressure suppressed]"</i>), and neutralizes skewed button hierarchies by equalizing contrast styling.</li>
+        </ol>
+    </li>
+    <li><b>Phase 3 (Fair Webpage Execution):</b> The <b>DOM Transformer</b> carries out direct browser-level mutations, ensuring all surrounding transactional flows (e.g., navigation links, checkout handlers) remain fully functional while producing a <b>Fair & Safe UI</b>.</li>
+</ul>
+
+<div class="image-placeholder">
+    <div class="image-placeholder-title">[PASTE SCREENSHOT HERE: Live Countermeasure UI Demos (HLE/HD/SW)]</div>
+    <div class="image-placeholder-sub">File references: assets/changes/H_and_E.png, Hide.png, Switch.png</div>
+</div>
+<div class="caption">Figure 6: Live in-situ countermeasure demonstrations deployed by DarkSight on production e-commerce websites.</div>
+
+<h2>E. Architectural Synthesis and Novel Contributions</h2>
+<p>Table I provides a systematic mapping of how prior academic literature is integrated into DarkSight, alongside the novel engineering contributions introduced by our framework.</p>
+
+<p><b>TABLE I: SYSTEMATIC MAPPING OF INTEGRATED LITERATURE AND NOVEL CONTRIBUTIONS</b></p>
+<table>
+    <tr>
+        <th style="width: 22%;">Academic Paper</th>
+        <th style="width: 24%;">Integrated Component & Role</th>
+        <th style="width: 22%;">Scope in DarkSight</th>
+        <th style="width: 32%;">Novel Contribution in DarkSight</th>
+    </tr>
+    <tr>
+        <td><b>Mathur et al. (2019)</b> [1]</td>
+        <td>Tier-1 Regex Heuristics & Benchmark</td>
+        <td>Textual (Fast Pre-filter)</td>
+        <td>Operationalizes static crawl findings into a live, zero-latency in-browser interceptor.</td>
+    </tr>
+    <tr>
+        <td><b>Schaefer (2023)</b> [2]</td>
+        <td>Tier-2 Semantic Taxonomy</td>
+        <td>Textual (LLM Reasoning)</td>
+        <td>Translates offline taxonomy into an actionable prompt schema for local, quantized LLMs.</td>
+    </tr>
+    <tr>
+        <td><b>In-Context Learning (2023)</b> [3]</td>
+        <td>Prompt Engineering Methodology</td>
+        <td>Textual (Prompt Optimization)</td>
+        <td>Employs few-shot exemplars and CoT reasoning to prevent hallucination in real-time edge inference.</td>
+    </tr>
+    <tr>
+        <td><b>AidUI (2023)</b> [4]</td>
+        <td>Structural Asymmetry Heuristic</td>
+        <td>Structural (DOM Geometry)</td>
+        <td>Establishes a calibrated threshold (&ge; 1.0) catching opacity-only suppression on sibling elements.</td>
+    </tr>
+    <tr>
+        <td><b>50 Shades of Deceptive Patterns</b> [6]</td>
+        <td>21-Category Visual Taxonomy</td>
+        <td>Visual (VLM Classification)</td>
+        <td>Expands visual detection beyond text to complex spatial manipulations (e.g., Roach Motel).</td>
+    </tr>
+    <tr>
+        <td><b>DP Sentinel (2024)</b> [5]</td>
+        <td>Hybrid Architecture & Spatial VLM</td>
+        <td>Visual (Spatial Vision Scan)</td>
+        <td>Integrates spatial bounding box detection into a unified, local client pipeline via Ollama.</td>
+    </tr>
+    <tr>
+        <td><b>Schaefer (2024)</b> [7]</td>
+        <td>Countermeasure Taxonomy</td>
+        <td>Remediation (DOM Transformer)</td>
+        <td><b>First working runtime implementation:</b> dynamically applies HLE, HD, and SW to live DOMs without breaking page functionality.</td>
+    </tr>
+</table>
+
+<h3>Summary of Novel Contributions</h3>
+<p>By synthesizing these seven independent lines of research, DarkSight introduces three core advances:</p>
+<ol>
+    <li><b>Unified Multi-Modal Cascade:</b> Combines regex heuristics, DOM geometry mathematics, textual LLMs, and multimodal vision models into an asynchronous cascade that maximizes accuracy while preserving client responsiveness.</li>
+    <li><b>Complete Client-Side Privacy:</b> All model inferences (DeepSeek-R1 and Qwen2.5-VL) execute locally via Ollama. No user screenshots, DOM structures, or browsing telemetry ever leave the host machine.</li>
+    <li><b>Actionable Runtime Remediation:</b> Advances the field from passive, post-hoc labeling to active in-browser defense, neutralizing deceptive elements in real time while preserving the host web application's functional utility.</li>
+</ol>
+
+<h2>REFERENCES</h2>
+<div class="ref-item">[1] A. Mathur et al., "Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites," <i>Proc. ACM Hum.-Comput. Interact.</i>, vol. 3, no. CSCW, pp. 1–32, 2019.</div>
+<div class="ref-item">[2] M. Sch&auml;fer et al., "Taxonomy of Dark Patterns for LLM Analysis," 2023.</div>
+<div class="ref-item">[3] Y. Sazid, M. M. N. Fuad, and K. Sakib, "Automated Detection of Dark Patterns Using In-Context Learning Capabilities of GPT-3," in <i>2023 30th Asia-Pacific Software Engineering Conference (APSEC)</i>, IEEE, 2023.</div>
+<div class="ref-item">[4] S. M. H. Mansur et al., "AidUI: Toward Automated Recognition of Dark Patterns in User Interfaces via Structural Visual Analysis," in <i>2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE)</i>, 2023.</div>
+<div class="ref-item">[5] "Dark Pattern Sentinel: A Hybrid DOM Heuristics and LLM-Based Real-Time Detection System," 2024.</div>
+<div class="ref-item">[6] C. M. Gray et al., "50 Shades of Deceptive Patterns: A Taxonomy of Cognitive Biases in Digital Design," 2023.</div>
+<div class="ref-item">[7] M. Sch&auml;fer, P. Preuschoff, and J. Borchers, "Fighting Malicious Designs: Towards Visual Countermeasures Against Dark Patterns," in <i>Proc. 2024 CHI Conf. Hum. Factors Comput. Syst.</i>, 2024.</div>
+
+</body>
+</html>

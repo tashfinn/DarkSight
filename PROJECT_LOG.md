@@ -232,7 +232,37 @@ DarkSight is a Chrome Extension designed to detect Dark Patterns (Deceptive Patt
 - Significantly expanded the introductory text for Section 3, Section 4, and Section 4.1 to improve the academic tone and ensure the sections don't look "odd and short".
 - Resized the massive 7-subfigure block in Section 3 slightly (from 0.45\textwidth to 0.4\textwidth) and locked its placement with [H] to prevent it from floating to a random page and leaving Section 3 empty.
 
-## Latest Update: Repository Sync (September 27, 2026)
-- Committed and pushed all recent Capstone documentation, presentation slides, and LaTeX reports to the remote repository.
-- **Next Logical Steps**: Await feedback or further instructions for the capstone project.
+## Latest Update: Research Paper Methodology & LaTeX Synthesis (September 27, 2026)
+- **Accomplished**: Synthesized a comprehensive, publication-grade Methodology section for the research paper draft, seamlessly incorporating all 7 foundational academic papers (Mathur et al. 2019, Schaefer 2023, In-Context Learning 2023, AidUI 2023, 50 Shades of Deceptive Patterns, DP Sentinel 2024, and Schaefer 2024).
+- **Accomplished**: Generated the pure, standalone, methodology-only LaTeX file [DarkSight_Methodology.tex](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/DarkSight_Methodology.tex) (and [main.tex](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/main.tex)). It contains **strictly the Methodology**—no cover page, no title page, no author clutter—complete with all actual diagram screenshots, all 5 taxonomy tables, and the 7-paper bibliography.
+- **Accomplished**: Created the Google Docs / MS Word ready [DarkSight_Methodology.doc](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/DarkSight_Methodology.doc) file, formatted with clean Times New Roman typography, 1.5 line spacing, structured IEEE headings, centered mathematical formulas, a shaded Table I mapping all 7 papers, and styled dashed screenshot placeholder boxes indicating the exact file paths to paste each image.
+- **Next Logical Steps**: Submit the draft to the supervisor and incorporate any supervisor review notes or feedback into the main document.
+
+## Overleaf Methodology Synthesis (October 9, 2026)
+- **Accomplished**: Converted the exact 8-page draft PDF into a clean, standalone, highly editable LaTeX document for Overleaf.
+  - Accurately transcribed all sections: `III. METHODOLOGY`, `A. System Overview`, `B. Webpage Data Collection`, `C. Dark Pattern Detection` (Tiers 1, 2, 3), `D. Countermeasure Application` (Modes 1, 2, 3), `E. Integration of Previous Research`, and `F. Local Processing and Privacy`.
+  - Stripped unwanted draft watermark strings (`DarkSight_Methodology`).
+  - Bound both figures using standard LaTeX figures: `fig1_architecture.png` (Overall architecture) and `fig2_countermeasures.png` (Countermeasures architecture).
+  - Included full IEEE bibliography references `[1]` through `[7]` in the `thebibliography` environment for instant, zero-error compilation on Overleaf.
+- **Artifacts Saved**:
+  - `overleaf/main.tex` and updated root `main.tex` / `DarkSight_Methodology.tex`.
+  - Pre-packaged ready-to-upload ZIP: `DarkSight_Overleaf.zip` (containing `main.tex`, `fig1_architecture.png`, and `fig2_countermeasures.png`).
+- **Next Logical Steps**:
+  - Upload `DarkSight_Overleaf.zip` to Overleaf.
+  - Invite the supervisor to the project via Overleaf's "Share" button.
+
+## Release & Publishing Preparation (October 12, 2026)
+- **Accomplished**: Initiated public release and Chrome Web Store publication pipeline:
+  - Formatted and generated standard Chrome extension icons (`logo/icon16.png`, `logo/icon48.png`, `logo/icon128.png`) from high-resolution master asset, cutting popup image memory footprint.
+  - Updated `manifest.json` and `popup.html` with optimized icon paths and professional store-ready description.
+  - Created an authoritative, publication-grade `README.md` complete with badges, architecture flowcharts, local Ollama setup guide, and empirical benchmark citations.
+  - Authored a comprehensive `PRIVACY_POLICY.md` documenting on-device local execution, zero-cloud data leakage, and permissions justifications required by Google for Web Store approval.
+  - Built `package.ps1` to automatically generate a clean, production-ready `dist/darksight-v1.5.0.zip` bundle excluding node_modules, test logs, and raw datasets.
+  - Fixed `.gitignore` to prevent tracking heavy dataset zips, temporary build artifacts, and OS files.
+- **Artifacts Saved**: `README.md`, `PRIVACY_POLICY.md`, `LICENSE`, `package.ps1`, `dist/darksight-v1.5.0.zip`, `logo/icon16.png`, `logo/icon48.png`, `logo/icon128.png`.
+- **Next Logical Steps**:
+  - Push staged commits to GitHub repository (`origin/main`).
+  - Create a GitHub Release tag (`v1.5.0`) attaching `darksight-v1.5.0.zip`.
+  - Submit the extension to the Chrome Web Store Developer Dashboard using the provided Privacy Policy and Permission justifications.
+
 

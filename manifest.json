@@ -2,11 +2,11 @@
   "manifest_version": 3,
   "name": "DarkSight",
   "version": "1.5.0",
-  "description": "Detects dark patterns using local LLM",
+  "description": "Real-time dark pattern detection and countermeasures using local AI",
   "icons": {
-    "16": "logo/darksight.png",
-    "48": "logo/darksight.png",
-    "128": "logo/darksight.png"
+    "16": "logo/icon16.png",
+    "48": "logo/icon48.png",
+    "128": "logo/icon128.png"
   },
   "permissions": ["activeTab", "scripting", "storage", "declarativeNetRequest", "declarativeNetRequestWithHostAccess"],
   "host_permissions": [
@@ -24,7 +24,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "logo/darksight.png"
+    "default_icon": "logo/icon48.png"
   },
   "background": {
     "service_worker": "background.js"
