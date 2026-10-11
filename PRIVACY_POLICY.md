@@ -65,7 +65,7 @@ Because all computations occur locally on your machine, your browsing activity r
 ## 6. Open Source Transparency
 
 DarkSight is open-source software. You can inspect all extension source code, including content scripts, background service workers, and local prompt templates, directly on GitHub:  
-[https://github.com/tashfin5/DarkSight](https://github.com/tashfin5/DarkSight)
+[https://github.com/tashfinn/DarkSight](https://github.com/tashfinn/DarkSight)
 
 ---
 
@@ -78,4 +78,4 @@ If we update this Privacy Policy to reflect future features or regulatory update
 ## 8. Contact
 
 If you have questions or feedback regarding this Privacy Policy or DarkSight, please reach out via GitHub Issues:  
-[https://github.com/tashfin5/DarkSight/issues](https://github.com/tashfin5/DarkSight/issues)
+[https://github.com/tashfinn/DarkSight/issues](https://github.com/tashfinn/DarkSight/issues)

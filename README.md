@@ -92,7 +92,7 @@ DarkSight leverages local AI models via **Ollama**.
 #### Option A: Load from Source (Developer Mode)
 1. Clone this repository:
    ```bash
-   git clone https://github.com/tashfin5/DarkSight.git
+   git clone https://github.com/tashfinn/DarkSight.git
    ```
 2. Open Google Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** (toggle in the top-right corner).
@@ -100,7 +100,7 @@ DarkSight leverages local AI models via **Ollama**.
 5. Pin **DarkSight** to your toolbar!
 
 #### Option B: From GitHub Releases (Pre-packaged ZIP)
-1. Download the latest `darksight-v1.5.0.zip` from [Releases](https://github.com/tashfin5/DarkSight/releases).
+1. Download the latest `darksight-v1.5.0.zip` from [Releases](https://github.com/tashfinn/DarkSight/releases).
 2. Extract the ZIP archive into a folder.
 3. Open `chrome://extensions/`, enable **Developer mode**, and click **Load unpacked**.
 

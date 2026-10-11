@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tashfin5/DarkSight.git"
+    "url": "git+https://github.com/tashfinn/DarkSight.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/tashfin5/DarkSight/issues"
+    "url": "https://github.com/tashfinn/DarkSight/issues"
   },
-  "homepage": "https://github.com/tashfin5/DarkSight#readme",
+  "homepage": "https://github.com/tashfinn/DarkSight#readme",
   "dependencies": {
     "csv-parser": "^3.2.1",
     "puppeteer": "^25.3.0",
