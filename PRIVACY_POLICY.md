@@ -1,81 +1,85 @@
 # Privacy Policy for DarkSight
 
-**Effective Date:** October 12, 2026  
-**Last Updated:** October 12, 2026
+**Effective Date:** October 14, 2026  
+**Last Updated:** October 14, 2026
 
-DarkSight ("we", "our", or "the extension") is a privacy-first browser extension designed to protect users against deceptive online patterns (dark patterns) through on-device and local heuristic and artificial intelligence analysis.
+DarkSight ("we", "our", or "the extension") is an open-source, privacy-first browser extension created to protect users against deceptive web interfaces (dark patterns) and intrusive advertising through real-time detection, on-page countermeasures, and native network blocking.
 
-Your privacy is our utmost priority. This Privacy Policy details our data practices and explains how DarkSight handles your data.
-
----
-
-## 1. Summary of Principles
-
-- **Zero Cloud Data Transmission:** DarkSight does **not** transmit your browsing history, DOM trees, webpage text, or screenshots to any external cloud servers or third parties.
-- **Local On-Device AI Processing:** All Large Language Model (DeepSeek-R1) and Multimodal Vision Model (Qwen2.5-VL) analyses are executed entirely locally on your own machine via your local Ollama instance (`http://127.0.0.1:11434`).
-- **No Tracking or Analytics:** We do not embed analytics tracking, telemetry, identifiers, or advertising scripts.
-- **No Data Monetization:** We never collect, sell, or lease your personal information.
+Your privacy is our highest priority. This Privacy Policy outlines our data handling practices and details how DarkSight complies with Google Chrome Web Store Developer Program Policies.
 
 ---
 
-## 2. Information We Process and How It Is Handled
+## 1. Core Principles
 
-### A. Webpage Content & DOM Nodes
-- **What is processed:** Webpage text and interactive DOM elements (buttons, banners, urgency notices) on active tabs.
-- **How it is used:** Scanned in real-time using deterministic regular expressions (Mathur heuristic) and local AI classification to identify deceptive design patterns.
-- **Where it is processed:** Directly inside your local browser sandbox and sent exclusively to your local loopback address (`http://127.0.0.1:11434`). Data is cleared immediately after analysis and is never stored permanently.
+- **No User Tracking or Analytics:** DarkSight does **not** track, record, or profile your browsing history, clicks, search queries, or personal identities.
+- **No Data Collection or Monetization:** We do not collect, store, sell, lease, or monetize user data under any circumstance.
+- **Zero-Account Architecture:** DarkSight requires zero accounts, zero registrations, zero email sign-ups, and zero API tokens to use.
+- **Privacy-First Processing:** 
+  - Structural analysis (AidUI) and fast heuristic pattern detection run 100% client-side in real-time.
+  - When using Local AI (Ollama), all machine learning models execute entirely on your own device (`http://127.0.0.1:11434`) with zero data leaving your machine.
+  - When using Zero-Login Cloud AI, only isolated, anonymized text candidate snippets (e.g. "Ends in 05:00") are temporarily evaluated for manipulation classification. No personal data or URLs are transmitted.
 
-### B. Viewport Screenshots
-- **What is processed:** When visual detection is enabled, a screenshot of the active visible tab is captured.
-- **How it is used:** Passed directly to your local vision model to identify visual deceptive patterns (such as disguised ads, sneaking, or false hierarchies).
-- **Where it is processed:** Kept in temporary local memory, delivered solely to the local Ollama daemon, and discarded immediately afterward.
+---
+
+## 2. Information Handled by the Extension
+
+### A. Webpage DOM Elements & Candidate Texts
+- **What is evaluated:** Specific button labels, countdown timers, deal badges, and candidate promotional phrases on the active webpage.
+- **How it is used:** Scanned to detect deceptive design patterns (Urgency, Scarcity, Fake Discounts, Social Proof, False Hierarchy, and Obstruction) and apply visual countermeasures (Highlight, Hide, or Neutralize).
+- **Storage:** Candidate elements are processed in ephemeral memory and discarded immediately. No web content is saved to disk.
+
+### B. Viewport Screenshots (Visual Pipeline)
+- **What is evaluated:** When visual layout detection is enabled, a screenshot of the visible tab is captured to detect spatial deceptive layouts (e.g. disguised ads, sneaking).
+- **How it is used:** Processed locally or by the chosen multimodal model. Discarded immediately after inference.
 
 ### C. Extension Settings & Preferences
-- **What is stored:** Selected countermeasure preference (Highlight & Explain, Hide, or Switch) and detection toggle states.
-- **How it is stored:** Stored strictly on your local device using Chrome's native `chrome.storage.local` API. This data never leaves your browser.
+- **What is stored:** Selected countermeasure mode (Highlight & Explain, Hide, or Switch), AI model preferences, and ad blocker toggle states.
+- **Storage:** Stored exclusively on your local device using Chrome's native `chrome.storage.local` API.
 
 ---
 
-## 3. Chrome Permissions and Single Purpose Justification
+## 3. Chrome Permissions & Single Purpose Justification
 
-DarkSight requires specific Chrome extension permissions to fulfill its single purpose: **detecting and counteracting deceptive design patterns on the web**.
+DarkSight requests the minimum permissions required to fulfill its single purpose: **identifying deceptive online patterns and shielding users from manipulative web elements and intrusive ads**.
 
-| Permission | Justification |
+| Permission | Technical Justification |
 | :--- | :--- |
-| `<all_urls>` | Required to inspect e-commerce, booking, and shopping websites visited by the user in order to detect and highlight dark patterns in real-time. |
-| `http://127.0.0.1:11434/*` | Required for loopback network communication with the user's locally hosted Ollama server (DeepSeek-R1 and Qwen2.5-VL models) without relying on external cloud APIs. |
-| `activeTab` / `scripting` | Required to inject non-intrusive UI overlays (bounding highlights, explanations, and countermeasure transformations) into pages where dark patterns are detected. |
-| `storage` | Required to locally save user preferences (e.g. chosen countermeasure mode). |
-| `declarativeNetRequest` | Used to manage rule configurations safely without intercepting arbitrary network traffic. |
+| `<all_urls>` | Required to scan web pages visited by the user for deceptive UI patterns and enforce cosmetic element hiding on ads across web domains. |
+| `activeTab` / `scripting` | Required to render non-intrusive red highlight borders, tooltip explanations, and fair UI text replacements on identified dark pattern elements. |
+| `storage` | Required to save user preferences locally (countermeasure mode, enabled filters, AI provider choice) via `chrome.storage.local`. |
+| `declarativeNetRequest` / `declarativeNetRequestWithHostAccess` | Required to block intrusive ad networks, trackers, and popup scripts at the native browser network level with zero script overhead. |
+| `tabs` | Required to monitor tab navigation states, manage page refreshes, and track active tab ad statistics. |
+| `webRequest` | Required to count blocked requests accurately for the extension popup counter. |
+| `http://127.0.0.1:11434/*` | Required for loopback network communication with the user's locally hosted Ollama server (DeepSeek-R1, Qwen2.5-VL) for 100% offline AI inference. |
+| `https://text.pollinations.ai/*` | Required to connect to the zero-login, account-free Cloud AI inference endpoint for users who do not run a local GPU server. |
 
 ---
 
-## 4. Third-Party Services
+## 4. Third-Party Services & Data Sharing
 
-DarkSight does **not** integrate with any third-party analytics, crash reporting, advertising networks, or remote cloud AI providers (such as OpenAI, Anthropic, or Google Cloud APIs). Everything runs completely offline or on your own local loopback server.
-
----
-
-## 5. Security
-
-Because all computations occur locally on your machine, your browsing activity remains confined to your personal environment. We adopt standard security practices and follow Chrome Extension Manifest V3 security boundaries.
+DarkSight does **not** partner with advertising networks, analytics providers (e.g. Google Analytics, Mixpanel), or data brokers.
+- **Local Ollama:** Completely offline and self-contained on your machine.
+- **Zero-Login Cloud AI:** Powered by an anonymous OpenAI-compatible endpoint. Requests contain only short, detached UI phrases for classification, with no cookies, IP logging, or user identifiers attached.
 
 ---
 
-## 6. Open Source Transparency
+## 5. Security & Manifest V3 Compliance
 
-DarkSight is open-source software. You can inspect all extension source code, including content scripts, background service workers, and local prompt templates, directly on GitHub:  
+DarkSight strictly adheres to Google Chrome Manifest V3 security requirements:
+- No remote code execution (zero use of `eval()` or externally hosted JavaScript).
+- All libraries and rule sets are bundled statically inside the extension package.
+- Content security policy (CSP) enforces strict script isolation.
+
+---
+
+## 6. Open Source Verification
+
+DarkSight is open-source and developed transparently. Anyone can review the full source code on GitHub:  
 [https://github.com/tashfinn/DarkSight](https://github.com/tashfinn/DarkSight)
 
 ---
 
-## 7. Changes to This Policy
+## 7. Contact & Support
 
-If we update this Privacy Policy to reflect future features or regulatory updates, changes will be published in this document and documented in the GitHub repository release notes.
-
----
-
-## 8. Contact
-
-If you have questions or feedback regarding this Privacy Policy or DarkSight, please reach out via GitHub Issues:  
+For questions, feature requests, or privacy inquiries, please open an issue on GitHub:  
 [https://github.com/tashfinn/DarkSight/issues](https://github.com/tashfinn/DarkSight/issues)

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkSight • Connect Puter AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-card: rgba(17, 24, 39, 0.75);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #38bdf8;
+            --accent-blue: #2563eb;
+            --accent-green: #10b981;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 40%);
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 36px 32px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(56, 189, 248, 0.3));
+        }
+
+        .brand-title {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge-cloud {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-cyan);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+        }
+
+        .auth-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .feature-bullets {
+            text-align: left;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .bullet-icon {
+            font-size: 16px;
+        }
+
+        .btn-connect {
+            width: 100%;
+            background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            padding: 14px 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-connect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.45);
+            background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
+        }
+
+        .status-box {
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .status-box.success {
+            display: block;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+        }
+
+        .status-box.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+
+        .manual-toggle {
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--text-sub);
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .manual-toggle:hover {
+            color: var(--text-main);
+        }
+
+        .manual-section {
+            display: none;
+            margin-top: 16px;
+            text-align: left;
+        }
+
+        .manual-section.open {
+            display: block;
+        }
+
+        .manual-label {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .manual-input {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #f8fafc;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        .manual-input:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-manual-save {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-manual-save:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="brand-header">
+            <img src="logo/icon128.png" alt="DarkSight" class="brand-logo">
+            <h1 class="brand-title">DarkSight</h1>
+        </div>
+
+        <div class="badge-cloud">
+            <span>☁️</span>
+            <span>Free Cloud AI Connection</span>
+        </div>
+
+        <p class="auth-desc">
+            Connect your browser with Puter.js to enable instant, zero-hardware dark pattern detection using top AI vision and text models.
+        </p>
+
+        <div class="feature-bullets">
+            <div class="bullet-item">
+                <span class="bullet-icon">⚡</span>
+                <span><strong>Fast & Free:</strong> No OpenAI/Anthropic API keys required.</span>
+            </div>
+            <div class="bullet-item">
+                <span class="bullet-icon">🧠</span>
+                <span><strong>Top Models:</strong> GPT-4o-mini, Claude 3.5 Sonnet, DeepSeek & Gemini.</span>
+            </div>
+            <div class="bullet-item">
+                <span class="bullet-icon">👁️</span>
+                <span><strong>Vision Ready:</strong> Real-time visual layout & deceptive pattern analysis.</span>
+            </div>
+        </div>
+
+        <button id="btn-puter-connect" class="btn-connect">
+            <span>🚀</span>
+            <span id="btn-text">Connect Puter Account</span>
+        </button>
+
+        <div id="status-box" class="status-box"></div>
+
+        <div id="manual-toggle" class="manual-toggle">
+            Have a Puter Auth Token? Paste manually
+        </div>
+
+        <div id="manual-section" class="manual-section">
+            <label class="manual-label">Puter Auth Token (from puter.com/dashboard):</label>
+            <input type="password" id="manual-token-input" class="manual-input" placeholder="Paste Puter Auth Token here...">
+            <button id="btn-manual-save" class="btn-manual-save">Save Token</button>
+        </div>
+    </div>
+
+    <!-- Include Local Puter.js SDK -->
+    <script src="lib/puter.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

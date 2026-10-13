@@ -2,16 +2,25 @@
   "manifest_version": 3,
   "name": "DarkSight",
   "version": "1.5.0",
-  "description": "Real-time dark pattern detection and countermeasures using local AI",
+  "description": "Real-time dark pattern detector, manipulative UI countermeasure shield, and native ad blocker.",
   "icons": {
     "16": "logo/icon16.png",
     "48": "logo/icon48.png",
     "128": "logo/icon128.png"
   },
-  "permissions": ["activeTab", "scripting", "storage", "declarativeNetRequest", "declarativeNetRequestWithHostAccess"],
+  "permissions": ["activeTab", "scripting", "storage", "declarativeNetRequest", "declarativeNetRequestWithHostAccess", "tabs", "webRequest"],
   "host_permissions": [
     "<all_urls>",
-    "http://127.0.0.1:11434/*"
+    "http://127.0.0.1:11434/*",
+    "https://text.pollinations.ai/*",
+    "https://api.puter.com/*",
+    "https://*.puter.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["web_accessible_resources/*"],
+      "matches": ["<all_urls>"]
+    }
   ],
   "declarative_net_request": {
     "rule_resources": [
@@ -19,6 +28,41 @@
         "id": "ruleset_1",
         "enabled": true,
         "path": "rules.json"
+      },
+      {
+        "id": "ublock-filters",
+        "enabled": true,
+        "path": "rulesets/ublock-filters.json"
+      },
+      {
+        "id": "easylist",
+        "enabled": true,
+        "path": "rulesets/easylist.json"
+      },
+      {
+        "id": "easyprivacy",
+        "enabled": true,
+        "path": "rulesets/easyprivacy.json"
+      },
+      {
+        "id": "pgl",
+        "enabled": true,
+        "path": "rulesets/pgl.json"
+      },
+      {
+        "id": "ublock-badware",
+        "enabled": true,
+        "path": "rulesets/ublock-badware.json"
+      },
+      {
+        "id": "urlhaus-full",
+        "enabled": true,
+        "path": "rulesets/urlhaus-full.json"
+      },
+      {
+        "id": "ruleset_adblock",
+        "enabled": true,
+        "path": "adblock_rules.json"
       }
     ]
   },
@@ -30,6 +74,13 @@
     "service_worker": "background.js"
   },
   "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["adblocker.js"],
+      "css": ["adblock.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
     {
       "matches": ["<all_urls>"],
       "js": ["prompt.js", "content.js"],

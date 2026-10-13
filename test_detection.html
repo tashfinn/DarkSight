@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkSight Detection Test Lab</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 720px;
+            width: 100%;
+        }
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+        p.subtitle {
+            color: #94a3b8;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+        /* Specific pattern styles matching user's screenshot */
+        .deal-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .discount-pill {
+            background: #be123c;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .countdown-timer {
+            color: #e11d48;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        .stock-badge {
+            color: #f59e0b;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .social-proof {
+            color: #38bdf8;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .normal-text {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .instruction-box {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 24px;
+            color: #bae6fd;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DarkSight Detection Test Lab</h1>
+        <p class="subtitle">Open this page in Chrome with DarkSight enabled to verify instant detection.</p>
+
+        <div class="instruction-box">
+            <strong>What should happen:</strong><br>
+            1. Dark patterns below will automatically be outlined in <strong>glowing red boxes</strong>.<br>
+            2. Hover your mouse over any red outline to see the DarkSight explanation tooltip.<br>
+            3. Open the DarkSight extension popup to see the <strong>live pattern counter</strong> update!
+        </div>
+
+        <!-- Pattern 1: User's Exact Screenshot (15% off Ends in 05:38:52) -->
+        <div class="card">
+            <div class="card-title">Test 1: Exact Countdown Timer (Your Screenshot)</div>
+            <div class="deal-row">
+                <span class="discount-pill">15% off</span>
+                <span class="countdown-timer">Ends in 05:38:52</span>
+            </div>
+        </div>
+
+        <!-- Pattern 2: Scarcity Stock Pressure -->
+        <div class="card">
+            <div class="card-title">Test 2: Scarcity Pattern</div>
+            <div class="stock-badge">
+                Only 2 left in stock - order soon!
+            </div>
+        </div>
+
+        <!-- Pattern 3: Flash Sale Urgency -->
+        <div class="card">
+            <div class="card-title">Test 3: Flash Sale Urgency</div>
+            <div class="deal-row">
+                <span class="discount-pill">50% OFF</span>
+                <span class="countdown-timer">FLASH SALE - Sale ends in 02:45 minutes</span>
+            </div>
+        </div>
+
+        <!-- Pattern 4: Social Proof -->
+        <div class="card">
+            <div class="card-title">Test 4: Social Proof</div>
+            <div class="social-proof">
+                🔥 143 people have this item in their cart right now
+            </div>
+        </div>
+
+        <!-- Pattern 5: Amazon Deal Badges -->
+        <div class="card">
+            <div class="card-title">Test 5: Amazon Deal Badges (Urgency & Scarcity)</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div class="deal-row">
+                    <span class="discount-pill" style="background: #b91c1c;">Limited prime deal</span>
+                    <span class="stock-badge" style="color: #ea580c;">3% claimed</span>
+                </div>
+                <div class="deal-row">
+                    <span class="discount-pill" style="background: #c2410c;">Lightning deal</span>
+                    <span class="countdown-timer">Deal of the day</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern 6: Structural False Hierarchy (AidUI Engine) -->
+        <div class="card">
+            <div class="card-title">Test 6: Structural False Hierarchy (AidUI Engine)</div>
+            <p style="font-size: 13px; color: #94a3b8; margin-top: 0;">Asymmetric button sizes and high contrast disparity designed to deceive users:</p>
+            <div style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+                <button style="background: #10b981; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer;">
+                    Accept All & Continue
+                </button>
+                <button style="background: transparent; color: #475569; border: 1px solid #334155; padding: 4px 10px; border-radius: 4px; font-size: 11px; cursor: pointer;">
+                    Decline
+                </button>
+            </div>
+        </div>
+
+        <!-- Pattern 7: Textual Nuanced Deception (LLM API Engine) -->
+        <div class="card">
+            <div class="card-title">Test 7: Nuanced Confirmshaming (Textual LLM API)</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="color: #cbd5e1; font-size: 15px; font-weight: 600;">
+                    👉 "No thanks, I prefer paying full price"
+                </div>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    👉 "Items reserved in your cart for 04:59 minutes"
+                </div>
+            </div>
+        </div>
+
+        <!-- Normal Item (Should NOT be detected) -->
+        <div class="card">
+            <div class="card-title">Control Test: Normal Product (No Dark Pattern)</div>
+            <div class="normal-text">
+                Product Specifications: 100% Organic Cotton, Machine Wash Cold, Imported.
+            </div>
+        </div>
+
+        <!-- Normal E-Commerce UI (Should NOT be detected) -->
+        <div class="card">
+            <div class="card-title">Control Test: Standard E-Commerce Price & Links (No Dark Pattern)</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #94a3b8;">
+                <div><strong>Product Title:</strong> ninja precisionpro food processor & dough mixer, 1000...</div>
+                <div><strong>Prices:</strong> deal price: $13.49 | list price: $99.99</div>
+                <div><strong>Variants:</strong> +3 colors/patterns</div>
+                <div><strong>Navigation:</strong> shop shark deals | deals from this brand</div>
+            </div>
+        </div>
+
+        <!-- Console Diagnostic Trigger -->
+        <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+            <button onclick="if(window.darkSightTestEngines) { window.darkSightTestEngines(); } else { alert('DarkSight extension not detected. Please make sure DarkSight is loaded.'); }" style="background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: 1px solid #38bdf8; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);">
+                🧪 Run Full Diagnostic Suite in Console (Press F12)
+            </button>
+            <p style="color: #64748b; font-size: 12px; margin-top: 8px;">Opens DevTools console and tests Structural, Textual Heuristic, Textual LLM API, and Visual VLLM pipelines live.</p>
+        </div>
+    </div>
+</body>
+</html>

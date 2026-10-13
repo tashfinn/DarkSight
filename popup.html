@@ -3,83 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="popup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
         <img src="logo/icon128.png" class="logo" alt="Logo">
-        <h3>DarkSight</h3>
+        <div class="header-titles">
+            <h3>DarkSight</h3>
+            <span class="header-badge">v1.5.0</span>
+        </div>
+        <div class="header-ai-status" id="header-ai-status" title="Checking AI status...">
+            <span class="ai-status-indicator checking" id="header-ai-dot"></span>
+            <span class="ai-status-text" id="header-ai-text">AI: Testing...</span>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs for Separate Features -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" id="tab-btn-dp" data-tab="tab-dp">
+            <span class="tab-icon">🛡️</span>
+            <span>Patterns</span>
+        </button>
+        <button class="tab-btn" id="tab-btn-adblock" data-tab="tab-adblock">
+            <span class="tab-icon">🚫</span>
+            <span>Ads</span>
+        </button>
+        <button class="tab-btn" id="tab-btn-settings" data-tab="tab-settings">
+            <span class="tab-icon">⚙️</span>
+            <span>AI Models</span>
+        </button>
     </div>
     
     <div class="container">
-        <div class="stats-container">
-            <div class="stat-item">
-                <span class="stat-label">Textual Patterns Detected</span>
-                <span class="stat-value" id="text-count">0</span>
+        <!-- ==========================================
+             PANEL 1: DARK PATTERN DETECTION & SHIELD
+             ========================================== -->
+        <div class="tab-pane active" id="tab-dp">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-label">Textual Patterns Detected</span>
+                    <span class="stat-value" id="text-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Structural Patterns Detected</span>
+                    <span class="stat-value" id="struct-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Visual Patterns Detected</span>
+                    <span class="stat-value" id="visual-count">0</span>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Structural Patterns Detected</span>
-                <span class="stat-value" id="struct-count">0</span>
+            
+            <p class="subtitle">Intervention Mode</p>
+            
+            <button class="mode-btn uc" data-mode="UC">
+                <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <div class="text-block">
+                    <span class="title">Unchanged</span>
+                    <span class="desc">Disabled</span>
+                </div>
+            </button>
+            
+            <button class="mode-btn hle" data-mode="HLE">
+                <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></span>
+                <div class="text-block">
+                    <span class="title">Highlight & Explain</span>
+                    <span class="desc">Identify and explain patterns</span>
+                </div>
+            </button>
+            
+            <button class="mode-btn hd" data-mode="HD">
+                <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg></span>
+                <div class="text-block">
+                    <span class="title">Hide</span>
+                    <span class="desc">Remove manipulative elements</span>
+                </div>
+            </button>
+            
+            <button class="mode-btn sw" data-mode="SW">
+                <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+                <div class="text-block">
+                    <span class="title">Switch</span>
+                    <span class="desc">Neutralize deceptive language</span>
+                </div>
+            </button>
+
+            <div class="toggle-container">
+                <span class="toggle-label">Enable Pattern Detector</span>
+                <label class="dp-switch">
+                    <input type="checkbox" id="master-toggle" checked>
+                    <span class="dp-slider"></span>
+                </label>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Visual Patterns Detected</span>
-                <span class="stat-value" id="visual-count">0</span>
+
+            <div class="toggle-container">
+                <span class="toggle-label">Turn off for this site</span>
+                <label class="dp-switch">
+                    <input type="checkbox" id="site-toggle">
+                    <span class="dp-slider"></span>
+                </label>
             </div>
         </div>
-        
-        <p class="subtitle">Select Intervention Mode</p>
-        
-        <button class="mode-btn uc" data-mode="UC">
-            <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-            <div class="text-block">
-                <span class="title">Unchanged</span>
-                <span class="desc">Disabled</span>
-            </div>
-        </button>
-        
-        <button class="mode-btn hle" data-mode="HLE">
-            <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></span>
-            <div class="text-block">
-                <span class="title">Highlight & Explain</span>
-                <span class="desc">Identify and explain patterns</span>
-            </div>
-        </button>
-        
-        <button class="mode-btn hd" data-mode="HD">
-            <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg></span>
-            <div class="text-block">
-                <span class="title">Hide</span>
-                <span class="desc">Remove manipulative elements</span>
-            </div>
-        </button>
-        
-        <button class="mode-btn sw" data-mode="SW">
-            <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
-            <div class="text-block">
-                <span class="title">Switch</span>
-                <span class="desc">Neutralize deceptive language</span>
-            </div>
-        </button>
 
-        <div class="toggle-container">
-            <span class="toggle-label">Enable Detector</span>
-            <label class="dp-switch">
-                <input type="checkbox" id="master-toggle" checked>
-                <span class="dp-slider"></span>
-            </label>
+        <!-- ==========================================
+             PANEL 2: INDEPENDENT AD BLOCKER ENGINE
+             ========================================== -->
+        <div class="tab-pane" id="tab-adblock">
+            <div class="adblock-hero" id="adblock-hero-card">
+                <div class="adblock-shield-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div class="adblock-status-text">
+                    <h4 id="adblock-status-title">Ad Shield Active</h4>
+                    <span id="adblock-status-sub">Network & video ads blocked</span>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-label">Ads Blocked on Page</span>
+                    <span class="stat-value ad-stat" id="adblock-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">YouTube Video Ad Shield</span>
+                    <span class="stat-badge yt-badge" id="yt-shield-badge">Enabled</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Network Tracking Filter</span>
+                    <span class="stat-badge filter-badge">MV3 Fast DNR</span>
+                </div>
+            </div>
+
+            <div class="toggle-container">
+                <span class="toggle-label">Enable Ad Blocker</span>
+                <label class="dp-switch">
+                    <input type="checkbox" id="adblock-master-toggle" checked>
+                    <span class="dp-slider adblock-slider"></span>
+                </label>
+            </div>
+
+            <div class="toggle-container">
+                <span class="toggle-label">Turn off for this page</span>
+                <label class="dp-switch">
+                    <input type="checkbox" id="adblock-site-toggle">
+                    <span class="dp-slider adblock-slider"></span>
+                </label>
+            </div>
+
+            <div class="adblock-info-card">
+                <div class="info-row">
+                    <span class="info-dot red"></span>
+                    <span>Auto-skips YouTube pre-rolls & popups</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-dot blue"></span>
+                    <span>Blocks DoubleClick, AdSense, Taboola</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-dot green"></span>
+                    <span>Operates completely independent of Dark Patterns</span>
+                </div>
+            </div>
         </div>
 
-        <div class="toggle-container">
-            <span class="toggle-label">Turn off for this site</span>
-            <label class="dp-switch">
-                <input type="checkbox" id="site-toggle">
-                <span class="dp-slider"></span>
-            </label>
+        <!-- ==========================================
+             PANEL 3: AI INFERENCE & MODEL SETTINGS
+             ========================================== -->
+        <div class="tab-pane" id="tab-settings">
+            <div class="settings-hero" id="settings-hero-card">
+                <div class="settings-hero-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </div>
+                <div class="settings-hero-text">
+                    <h4 id="settings-provider-title">Zero-Login Cloud AI</h4>
+                    <span id="settings-provider-sub">100% Free • Zero Setup • No Accounts Needed</span>
+                </div>
+            </div>
+
+            <!-- Provider Mode Selector -->
+            <p class="subtitle">AI Inference Mode</p>
+            <div class="provider-switch-group">
+                <button type="button" class="provider-btn active" id="provider-btn-cloud" data-provider="cloud">
+                    <span class="provider-icon">☁️</span>
+                    <span class="provider-label">Cloud AI (Zero-Login)</span>
+                </button>
+                <button type="button" class="provider-btn" id="provider-btn-ollama" data-provider="ollama">
+                    <span class="provider-icon">💻</span>
+                    <span class="provider-label">Ollama (Local)</span>
+                </button>
+            </div>
+
+            <!-- Cloud Engine Status Card (Zero Login Required) -->
+            <div class="settings-section" id="section-cloud-status">
+                <div class="puter-account-card">
+                    <div class="puter-card-top">
+                        <span class="puter-badge active" id="cloud-status-badge">✅ AI Connected</span>
+                        <span class="puter-user" id="cloud-user-label">Zero-Login Cloud Engine</span>
+                    </div>
+                    <div id="cloud-status-subtext" style="font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.4;">
+                        ✨ Built-in Cloud AI active out-of-the-box. No login, tokens, or signups required.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Model (LLM) Selection -->
+            <div class="settings-section">
+                <label class="settings-field-label" for="select-text-model">
+                    <span>Text Detection Model (LLM)</span>
+                    <span class="field-badge" id="badge-text-tier">Tier 2</span>
+                </label>
+                <div class="select-wrapper">
+                    <select id="select-text-model" class="settings-select"></select>
+                </div>
+                <input type="text" id="input-custom-text-model" class="settings-custom-input" placeholder="e.g. gpt-4o, claude-3-5-haiku..." style="display:none;">
+            </div>
+
+            <!-- Vision Model (VLLM) Selection -->
+            <div class="settings-section">
+                <label class="settings-field-label" for="select-vision-model">
+                    <span>Vision Multimodal Model (VLLM)</span>
+                    <span class="field-badge" id="badge-vision-tier">Tier 3</span>
+                </label>
+                <div class="select-wrapper">
+                    <select id="select-vision-model" class="settings-select"></select>
+                </div>
+                <input type="text" id="input-custom-vision-model" class="settings-custom-input" placeholder="e.g. gpt-4o, qwen2.5vl..." style="display:none;">
+            </div>
+
+            <!-- Ollama Endpoint URL -->
+            <div class="settings-section" id="section-ollama-url" style="display:none;">
+                <label class="settings-field-label" for="input-ollama-url">
+                    <span>Ollama Server Endpoint</span>
+                </label>
+                <input type="text" id="input-ollama-url" class="settings-custom-input" value="http://127.0.0.1:11434" placeholder="http://127.0.0.1:11434">
+            </div>
+
+            <!-- Connection Test Card -->
+            <div class="test-connection-card">
+                <button type="button" class="btn-test-conn" id="btn-test-ai">
+                    <span class="test-icon">⚡</span>
+                    <span id="btn-test-ai-text">Test AI Connection</span>
+                </button>
+                <div id="test-ai-result" class="test-result-box" style="display:none;"></div>
+            </div>
         </div>
     </div>
 
+    <!-- Bottom Action Controls -->
+    <div class="bottom-actions">
+        <button id="reload-page-btn" class="reload-btn" title="Reload current page to apply new changes">
+            <svg class="reload-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span class="reload-text">Reload Page</span>
+        </button>
+    </div>
+
     <div class="footer">
-        Powered by local Mistral LLM
+        DarkSight v1.5.0 • Privacy & Pattern Engine
     </div>
 
     <script src="popup.js"></script>

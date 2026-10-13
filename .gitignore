@@ -19,3 +19,10 @@ kaggle_logs.txt
 # Environment / Local settings
 .env
 .env.local
+
+# Chrome Internal Generated Metadata
+_metadata/
+
+# Scratch & Debug Scripts
+scratch_*.ps1
+test_*.ps1
