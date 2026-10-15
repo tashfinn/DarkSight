@@ -765,3 +765,14 @@ DarkSight is a Chrome Extension designed to detect Dark Patterns (Deceptive Patt
 
 ## Rejected Version Deletion (October 15, 2026 - Update 2)
 - **Accomplished**: Permanently deleted the legacy DarkSight1.4.2[rejected] folder from the filesystem.
+
+## Remote GitHub Synchronization (October 15, 2026 - Update 3)
+- **Accomplished**: Successfully pushed clean repository commit to remote GitHub (origin/main).
+  - Remote repository https://github.com/tashfinn/DarkSight is now fully refreshed, displaying strictly the extension code, assets, and core docs.
+
+## README Documentation Refresh (October 15, 2026 - Update 4)
+- **Accomplished**: Modernized and updated README.md on GitHub:
+  - Added new badges: uBlock Origin Lite DNR engine, Zero-Login Cloud AI (Puter.js), Ollama, and ISC license.
+  - Documented dual capabilities: 3 Dark Pattern Countermeasures (HLE, HD, Fair UI) + High-Performance Ad Blocker & YouTube Video Ad Defuser.
+  - Updated Project Structure tree to perfectly match the cleaned repository files.
+  - Pushed commit 704a9de to origin/main.
