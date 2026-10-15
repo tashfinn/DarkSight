@@ -2,19 +2,42 @@
 node_modules/
 package-lock.json
 
-# Operating System Files
+# Operating System & IDE Files
 .DS_Store
 Thumbs.db
+desktop.ini
+*.tmp
 
-# Build and Packaging Outputs
+# Build, Packaging & Dist Outputs
 dist/
 build/
 *.zip
+store_assets/
 
-# Large Test Media and Logs
-test_screenshots/*.mp4
-test_screenshots/*.webm
+# Research Papers, Presentations & Thesis Reports
+papers/
+overleaf/
+datasets/
+Colab_Uploads/
+test_screenshots/
+tests/
+assets/
+*.pdf
+*.docx
+*.tex
+*.doc
+*.csv
 kaggle_logs.txt
+capstone_*
+DarkSight1.4.2*
+
+# Python & Local Scripts
+*.py
+analyze_categories.js
+diagram.mmd
+fig*.png
+test_detection.html
+popup_guard.js
 
 # Environment / Local settings
 .env
@@ -24,5 +47,11 @@ kaggle_logs.txt
 _metadata/
 
 # Scratch & Debug Scripts
-scratch_*.ps1
-test_*.ps1
+*.ps1
+!package.ps1
+DarkSight_Final_Evaluation_Report.md
+DarkSight_Kaggle_Results_Report.html
+DarkSight_Kaggle_Results_Report.md
+DarkSight_Methodology_Diagram.html
+DarkSight_Paper_Implementations.md
+DarkSight_Methodology*

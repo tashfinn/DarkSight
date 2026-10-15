@@ -75,6 +75,13 @@
   },
   "content_scripts": [
     {
+      "matches": ["*://*.youtube.com/*", "*://youtube.com/*"],
+      "js": ["yt_defuser.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
       "matches": ["<all_urls>"],
       "js": ["adblocker.js"],
       "css": ["adblock.css"],

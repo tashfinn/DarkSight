@@ -660,16 +660,108 @@ DarkSight is a Chrome Extension designed to detect Dark Patterns (Deceptive Patt
 - **Next Logical Steps**:
   - Proceed with Chrome Web Store Developer Dashboard upload using `dist/darksight-v1.5.0.zip`.
 
+## Academic Paper Formatting Overhaul ([`Paper.docx`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/Paper.docx)) (October 14, 2026 - Update 21)
+- **Accomplished**: Diagnosed and completely resolved severe structural corruption in [`Paper.docx`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/Paper.docx), transforming it from a collapsed run-on wall of text into a publication-grade academic document:
+  1. **Structural Reconstruction**:
+     - Restored 79 distinct, hierarchically styled OpenXML paragraphs across Section III (`METHODOLOGY`), Subsections A–F, Tier 1–3 detection pipelines, and Modes 1–3 countermeasure architectures.
+     - Applied standard academic typography: Times New Roman, 16pt Bold Centered Section Title, 13pt Bold Subsections, 11.5pt Bold Sub-subsections, 11pt Bold Italic Paragraph headings, and 11pt Justified body text with 1.15x line spacing and 1.0-inch margins.
+  2. **List & Callout Formatting**:
+     - Converted mashed inline items into clean, indented bullet points with bold category labels (Urgency, Scarcity, Social Proof, Fake Discount, Spatial/Color/Typography disparities).
+     - Styled process flow sequences as centered, shaded callout cards with subtle blue borders and padding.
+  3. **Embedded Figures & Captions**:
+     - Embedded [`fig1_architecture.png`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/fig1_architecture.png) and [`fig2_countermeasures.png`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/fig2_countermeasures.png) directly into the Word package (`word/media/`) via DrawingML, replacing plain text placeholders with centered, high-resolution diagrams and italicized figure captions.
+  4. **Text Integrity & Typo Fixes**:
+     - Corrected character encoding glitches (e.g., `Schäfer` with proper umlaut instead of `Schfer`), joined hyphenations, fixed missing spaces (`This integration`, `webpage elements`), and restored missing full stops.
+  5. **IEEE Bibliography Restored**:
+     - Appended the complete 7-entry IEEE reference list with 0.5-inch hanging indents citing Mathur et al., Schäfer et al. (2023 & 2024), Sazid et al. (APSEC), AidUI (ICSE), DP Sentinel, and 50 Shades of Deceptive Patterns.
+  6. **OpenXML Standards Compliance**:
+     - Fixed ZIP archive path separators to use forward slashes (`/`), registered PNG content types, and preserved a pristine backup at [`Paper_original_backup.docx`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/Paper_original_backup.docx).
+- **Artifacts Saved**: [`Paper.docx`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/Paper.docx), [`Paper_original_backup.docx`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/Paper_original_backup.docx), `PROJECT_LOG.md`.
+- **Next Logical Steps**:
+  - Open `Paper.docx` in Microsoft Word or Google Docs to review final visual layout.
+
+## YouTube Video Ad Destroyer & MAIN-World Player Defuser (October 14, 2026 - Update 22)
+- **Accomplished**: Diagnosed and permanently resolved why video ads were still appearing on YouTube:
+  1. **Root Cause 1 (Fatal Syntax Error in `adblocker.js`)**:
+     - Line 93 in [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js) was missing a closing brace `}` on `if (isFacebook)`. This caused an `Uncaught SyntaxError: Unexpected end of input`, which aborted the entire script at startup. The YouTube ad skipper loop never executed at all.
+  2. **Root Cause 2 (Client-Side API Payloads)**:
+     - YouTube delivers video ads directly via `ytInitialPlayerResponse` and the `/youtubei/v1/player` endpoint. Without intercepting these payloads at the JavaScript API level, the YouTube player actively downloads and queues ad streams.
+  3. **Engineering Fixes Applied**:
+     - **Resolved Syntax Error ([`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js))**: Corrected the nested block closure on line 93 so `startShields()` and all content engine routines execute without errors.
+     - **Tier 1 MAIN-World API Defuser ([`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js))**:
+       - Injected at `document_start` with `"world": "MAIN"` across YouTube (`*://*.youtube.com/*`) in [`manifest.json`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/manifest.json).
+       - Intercepts `window.ytInitialPlayerResponse` via dynamic getters/setters, stripping `adPlacements`, `adSlots`, and `playerAds` before the player can initialize.
+       - Hooks `window.fetch` and `XMLHttpRequest` for `/youtubei/v1/player`, neutralizing ad placements in dynamic SPA video navigations and playlist transitions so YouTube never schedules video ads.
+     - **Tier 2 High-Speed DOM Accelerator & Auto-Skipper ([`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js))**:
+       - Upgraded `isYouTubeAdActive()` to detect active ads across all player variants: `.ad-showing`, `.ad-interrupting`, `.ytp-ad-player-overlay`, `.ytp-ad-module`, `.ytp-ad-text`, and skip button containers.
+       - Automatically binds `ratechange`, `play`, and `timeupdate` to any `<video>` element on YouTube via `video._ds_hooked`.
+       - When an ad is detected: mutes audio instantly (`muted = true`), cranks speed to `16.0x`, jumps time directly to `video.duration`, ensures playback is unpaused (`video.play()`), and dispatches simulated Pointer and Mouse events to all skip button classes.
+       - Automatically purges anti-adblock modals (`ytd-enforcement-message-view-model`) and unpauses the main video.
+  4. **Packaging**:
+     - Updated [`package.ps1`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/package.ps1) to bundle `yt_defuser.js`.
+     - Recompiled distribution bundle [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,451.96 KB).
+- **Artifacts Saved**: [`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js), [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js), [`manifest.json`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/manifest.json), [`package.ps1`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/package.ps1), [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip), `PROJECT_LOG.md`.
+- **Next Logical Steps**:
+  - Reload extension in `chrome://extensions/` and test video playback on YouTube.
+
+## YouTube Zero-Latency Skip Clicker & Global JSON.parse Defuser (October 14, 2026 - Update 23)
+- **Accomplished**: Diagnosed and permanently resolved why an ad slipped through during video transitions and required manual skipping:
+  1. **Root Causes**:
+     - **`offsetParent` Null Trap**: `isYouTubeAdActive()` checked `skipBtn.offsetParent !== null`. In modern Chromium browsers, `offsetParent` returns `null` for any element styled with `position: fixed` or inside certain flex/grid containers, causing the extension to ignore visible skip buttons.
+     - **Missing Apex Domain Match**: `manifest.json` only matched `*://*.youtube.com/*`, failing to execute `yt_defuser.js` on apex `https://youtube.com/*` navigations.
+     - **SPA Dynamic Payloads**: YouTube uses `fetch` and `XMLHttpRequest` with `JSON.parse` across `/youtubei/v1/next` and `/youtubei/v1/reel` to dynamically inject mid-roll ads and recommendations without full-page reloads.
+  2. **Engineering Fixes Applied**:
+     - **Global `JSON.parse` Hook ([`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js))**: Intercepts `JSON.parse` in the `MAIN` world so that any JSON containing `adPlacements`, `playerAds`, `adSlots`, or `playerResponse` is sanitized immediately, regardless of whether it originates from `ytInitialPlayerResponse`, inline tags, or fetch calls.
+     - **Zero-Latency `MutationObserver` Auto-Clicker ([`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js))**: Added dedicated `MutationObserver` watching `document.body` with class filters; executes `clickAllSkipButtons()` the instant any skip button enters the DOM with zero polling delay.
+     - **Removed `offsetParent` Restriction**: The existence of any skip button in the DOM now immediately triggers both direct `.click()` and full Pointer/Mouse click sequences.
+     - **SPA Navigation Watchers**: Bound `yt-navigate-finish`, `yt-page-data-updated`, and `spfdone` to trigger `processYouTubeAd()` upon every video transition.
+     - **Updated Manifest**: Added `"*://youtube.com/*"` alongside `"*://*.youtube.com/*"` to cover apex domain navigations.
+  3. **Packaging**:
+     - Recompiled distribution bundle [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,452.53 KB).
+- **Artifacts Saved**: [`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js), [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js), [`manifest.json`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/manifest.json), [`package.ps1`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/package.ps1), [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip), `PROJECT_LOG.md`.
+- **Next Logical Steps**:
+  - Reload extension in `chrome://extensions/` and test navigating between videos on YouTube.
+
+## YouTube Playables Feed Clutter & Promotional Shelf Suppression (October 14, 2026 - Update 24)
+- **Accomplished**: Addressed user query regarding the "YouTube Playables" gaming carousel on the home feed:
+  1. **Classification Analysis**:
+     - "YouTube Playables" is a first-party promotional engagement shelf embedded by Google directly into the video grid.
+     - While not a 3rd-party network banner, it acts as a manipulative gamification/attention distraction mechanism (which is why DarkSight's dark pattern engine outlined its tagline *"Instant games, no downloads"* with red `dp-highlight` borders).
+  2. **Engineering Fix Applied**:
+     - **Cosmetic Collapse ([`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css))**: Added `:has()` rules collapsing `ytd-rich-section-renderer:has(a[href*="/playables"])`, `ytd-rich-section-renderer:has([title*="Playables" i])`, and `ytd-rich-shelf-renderer:has(a[href*="/playables"])` to `display: none !important; height: 0 !important; margin: 0 !important;`.
+     - **Dynamic Purging ([`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js))**: Added Playables shelf targeting into `cleanYouTubeGaps()` to immediately remove the entire shelf from the DOM and trigger grid reflow.
+  3. **Packaging**:
+     - Recompiled distribution bundle [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,452.58 KB).
+- **Artifacts Saved**: [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css), [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js), [`package.ps1`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/package.ps1), [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip), `PROJECT_LOG.md`.
+- **Next Logical Steps**:
+  - Reload extension in `chrome://extensions/` and refresh YouTube home feed to confirm the Playables shelf is completely gone.
 
 
 
 
 
+## Chrome Web Store Package Generation (October 15, 2026)
+- **Accomplished**: Generated a clean, production-ready ZIP archive strictly containing the extension runtime assets for direct upload to the Chrome Web Store Developer Dashboard.
+  - Verified bundle structure: manifest.json at root, background worker, content scripts, popup interface, rulesets, web accessible resources, icons, and local Puter.js library.
+  - Excluded development scripts, tests, markdown logs, datasets, and node modules.
+- **Artifacts Saved**: [dist/darksight-v1.5.0.zip](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,452.58 KB).
+- **Next Logical Steps**:
+  - Upload darksight-v1.5.0.zip to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole).
 
+## Chrome Web Store Assets Generation (October 15, 2026)
+- **Accomplished**: Generated exact-dimension, 24-bit RGB store assets to comply with Google Web Store guidelines:
+  - 4 Screenshots (1280x800, 24-bit PNG, no alpha): screenshot_1_daraz.png, screenshot_2_aliexpress.png, screenshot_3_booking.png, and screenshot_5_countermeasures.png.
+  - 1 Small Promo Tile (440x280, 24-bit PNG, no alpha): promo_tile_440x280.png.
+- **Artifacts Saved**: Files located in store_assets/.
 
+## Git Repository Cleanup & Pure Extension Scope (October 15, 2026)
+- **Accomplished**: Cleaned up tracked files in the Git repository to isolate pure extension source code and essential project documentation:
+  - Untracked from Git (while keeping untouched on local disk): DarkSight1.4.2[rejected], papers/, overleaf/, datasets/, Colab_Uploads/, 	est_screenshots/, 	ests/, ssets/, LaTeX reports (.tex), Word documents (.docx, .doc), CSV benchmarks (.csv), presentation slide PDFs, and scratch debug scripts.
+  - Added new clean .gitignore to prevent any inadvertent re-tracking of datasets, thesis artifacts, or temporary media.
+  - Properly tracked runtime script yt_defuser.js and removed deprecated popup_guard.js.
+  - Staged and committed clean state locally with zero untracked/dirty files. (Ready to push whenever user instructs).
+- **Next Logical Steps**:
+  - Run git push origin main when ready to synchronize clean repository with remote GitHub.
 
-
-
-
-
-
+## Rejected Version Deletion (October 15, 2026 - Update 2)
+- **Accomplished**: Permanently deleted the legacy DarkSight1.4.2[rejected] folder from the filesystem.

@@ -31,6 +31,7 @@ $coreFiles = @(
     "background.js",
     "content.js",
     "prompt.js",
+    "yt_defuser.js",
     "adblocker.js",
     "adblock.css",
     "popup.html",
