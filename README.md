@@ -1,44 +1,61 @@
 <div align="center">
 
 # 🛡️ DarkSight
-### Intelligent Real-Time Dark Pattern Detection & Countermeasures
+### Intelligent Real-Time Dark Pattern Detector, Countermeasure Shield & Ad Blocker
 
 [![Manifest V3](https://img.shields.io/badge/Chrome-Manifest_V3-4285F4?logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Ollama](https://img.shields.io/badge/AI-Ollama_Local_Inference-black?logo=ollama&logoColor=white)](https://ollama.com)
+[![uBlock Origin Lite Engine](https://img.shields.io/badge/Ad_Blocker-uBlock_Origin_Lite_Rules-red)](https://github.com/gorhill/uBlock)
+[![Zero-Login AI](https://img.shields.io/badge/Cloud_AI-Zero--Login_Puter_AI-orange)](https://puter.com)
+[![Ollama](https://img.shields.io/badge/Local_AI-Ollama_Inference-black?logo=ollama&logoColor=white)](https://ollama.com)
 [![DeepSeek-R1](https://img.shields.io/badge/Text_AI-DeepSeek--R1-blue)](https://ollama.com/library/deepseek-r1)
 [![Qwen2.5-VL](https://img.shields.io/badge/Vision_AI-Qwen2.5--VL-purple)](https://ollama.com/library/qwen2.5vl)
-[![Privacy First](https://img.shields.io/badge/Privacy-100%25_On--Device-success)](#-privacy--local-ai)
+[![Privacy First](https://img.shields.io/badge/Privacy-Zero_Tracking-success)](#-privacy--security)
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
 
-**DarkSight** is a next-generation Chrome Extension that protects web users from coercive, deceptive, and manipulative design patterns (Dark Patterns) on modern e-commerce and shopping platforms.
-
-Combining fast deterministic heuristics with local on-device Large Language Models (**DeepSeek-R1**) and Multimodal Vision Models (**Qwen2.5-VL**), DarkSight detects deceptive tactics in real-time and neutralizes them with active countermeasures.
+**DarkSight** is an all-in-one browser protection extension that shields you from psychological manipulation (Dark Patterns), enforces fair user interfaces, and eliminates intrusive ads, popunders, and YouTube video ads in real-time.
 
 </div>
 
 ---
 
-## 📸 Overview & Countermeasures
+## 🚀 Key Features
 
-DarkSight offers three selectable defense modes to give users complete control over their browsing experience:
+### 1️⃣ Real-Time Dark Pattern Detection & Countermeasures
+Built upon 7 landmark academic research papers (*Mathur et al., Schaefer et al., AidUI, DP Sentinel*), DarkSight inspects web pages using a multi-tiered pipeline:
+* **Microsecond Regex Heuristics:** Instantly catches countdown timers, expiring offers, "only 2 left in stock", and fake discounts.
+* **Structural Visual Analysis (AidUI):** Compares button bounding boxes, computed styles, and color contrasts to flag asymmetric button pairs (False Hierarchies).
+* **AI Cognitive Reasoning:** Uses Chain-of-Thought AI (DeepSeek-R1) and Multimodal Vision (Qwen2.5-VL) to detect subtle manipulation, disguised subscriptions, and manipulative layouts.
 
-| Mode | Visual | Description |
+#### 🛡️ Three User-Selectable Countermeasures:
+| Mode | Badge | Description |
 | :--- | :---: | :--- |
-| **Highlight & Explain (HLE)** | 🔴 | Injects glowing warning borders around deceptive elements and provides rich contextual tooltips explaining the psychological manipulation technique. |
+| **Highlight & Explain (HLE)** | 🔴 | Outlines deceptive elements in glowing red boxes with instant hover explanations describing the tactic. |
 | **Hide (HD)** | 🟣 | Suppresses and completely removes coercive DOM elements (fake countdowns, urgency tickers) from view. |
-| **Switch (SW)** | 🟢 | Automatically rewrites pressuring text into calm, neutral language (e.g., replaces *"Only 2 left! Hurry!"* with clean, informative indicators). |
+| **Switch (Fair UI)** | 🟢 | Neutralizes manipulative text into calm, honest language (e.g., replaces *"Only 2 left! Hurry!"* with clean stock indicators). |
+
+---
+
+### 2️⃣ High-Performance Native Ad Blocker (uBlock Origin Lite Parity)
+* **Declarative Net Request (DNR):** Powered by Chrome's native network engine using official EasyList, EasyPrivacy, and uBlock filters to block trackers and ads with zero browser latency.
+* **Real-Time YouTube Ad Defuser:** Automatically neutralizes video ads at the player engine level (`MAIN` world interceptor) and auto-skips pre-roll/mid-roll promotions.
+* **Streaming & Popunder Neutralizer:** Silently defuses malicious popunders and click traps on streaming and download sites while preserving legitimate cloud downloads.
+* **Cosmetic Filter & Social Cleaner:** Collapses empty ad placeholder boxes and cleans sponsored feed units on Facebook.
+
+---
+
+### 3️⃣ Flexible AI Intelligence (Cloud + Local)
+* **☁️ Zero-Login Cloud AI (Default):** Works 100% out of the box with zero setup, zero accounts, and zero API keys via Puter.js integration.
+* **💻 Local Ollama Engine (Optional):** Run completely offline on your own GPU/CPU using DeepSeek-R1 and Qwen2.5-VL for maximum on-device privacy.
 
 ---
 
 ## 🧠 Multi-Tier Hybrid Detection Architecture
 
-DarkSight unifies seven landmark academic research frameworks into an orchestrated, real-time pipeline:
-
 ```mermaid
 graph TD
     A[Webpage DOM & Viewport] --> B[Tier 1: Heuristic Regex Scan]
     A --> C[Tier 2: Structural Contrast & Geometry Scan]
-    A --> D[Tier 3: In-Context Reasoning LLM]
+    A --> D[Tier 3: In-Context Reasoning AI]
     A --> E[Tier 4: Multimodal Vision Analysis]
 
     B -->|Fast Scarcity / Urgency Match| F[Detection Aggregator]
@@ -52,58 +69,6 @@ graph TD
     G -->|SW| J[🟢 Neutralize Manipulative Copy]
 ```
 
-### The 4 Detection Engines:
-1. **Tier 1 — Fast Heuristic Engine (Mathur et al., 2019):** Microsecond regex pattern matching across DOM nodes to capture blatant urgency, scarcity, fake discounts, and social proof.
-2. **Tier 2 — Structural Visual Engine (AidUI):** Compares button bounding boxes, computed styles, color luminance, and contrast ratios to flag deceptive asymmetric button pairs (False Hierarchies).
-3. **Tier 3 — Textual AI Classification (DeepSeek-R1 via Ollama):** Chain-of-thought textual reasoning to identify ambiguous deceptive phrasing (confirmshaming, forced action, disguised subscriptions).
-4. **Tier 4 — Multimodal Vision Engine (Qwen2.5-VL / DP Sentinel):** Viewport snapshot analysis that visually inspects layout structures for disguised ads, sneak-into-basket, and deceptive overlays.
-
----
-
-## 🔒 Privacy & Local AI Guarantee
-
-- **100% On-Device Inference:** All AI inferences run locally on your own GPU/CPU via [Ollama](https://ollama.com).
-- **Zero Cloud Transmission:** Browsing history, webpage content, DOM structures, and screenshots **never leave your machine**.
-- **No Tracking:** No analytics, no telemetry, no third-party APIs.
-- Read our full [Privacy Policy](PRIVACY_POLICY.md).
-
----
-
-## 🚀 Quick Start Guide
-
-### 1. Prerequisites (Local AI Setup)
-DarkSight leverages local AI models via **Ollama**.
-
-1. Download and install [Ollama](https://ollama.com/download).
-2. Start Ollama and pull the recommended lightweight models in your terminal:
-   ```bash
-   # Text Classification Model (Chain-of-Thought reasoning)
-   ollama pull deepseek-r1:1.5b
-
-   # Multimodal Vision Model (Visual layout analysis)
-   ollama pull qwen2.5vl
-   ```
-3. Ensure Ollama is running (`http://127.0.0.1:11434`).
-
----
-
-### 2. Installing DarkSight in Google Chrome
-
-#### Option A: Load from Source (Developer Mode)
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/tashfinn/DarkSight.git
-   ```
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** (toggle in the top-right corner).
-4. Click **Load unpacked** and select the root directory of this repository.
-5. Pin **DarkSight** to your toolbar!
-
-#### Option B: From GitHub Releases (Pre-packaged ZIP)
-1. Download the latest `darksight-v1.5.0.zip` from [Releases](https://github.com/tashfinn/DarkSight/releases).
-2. Extract the ZIP archive into a folder.
-3. Open `chrome://extensions/`, enable **Developer mode**, and click **Load unpacked**.
-
 ---
 
 ## 📦 Project Structure
@@ -111,26 +76,59 @@ DarkSight leverages local AI models via **Ollama**.
 ```
 DarkSight/
 ├── manifest.json              # Chrome Manifest V3 configuration
-├── background.js              # Service Worker (Ollama API bridge, screenshot capture)
-├── content.js                 # DOM scanner, AidUI geometry analyzer, Countermeasure injector
-├── prompt.js                  # Few-shot prompts and taxonomy definitions
-├── popup.html / popup.js      # Extension popup UI & live stats counter
-├── popup.css / styles.css     # Dark-mode popup styling & in-page tooltip animations
-├── rules.json                 # DeclarativeNetRequest rule configurations
+├── background.js              # Service Worker (AI routing & network request bridge)
+├── content.js                 # DOM scanner, AidUI geometry analyzer & Countermeasure injector
+├── prompt.js                  # Few-shot prompts and academic taxonomy definitions
+├── yt_defuser.js              # YouTube player ad defuser (MAIN world script)
+├── adblocker.js               # Cosmetic ad filtering & DOM gap reflow engine
+├── adblock.css                # Declarative ad suppression stylesheet
+├── popup.html / popup.js      # Dual-tab extension popup UI (Dark Patterns & Ad Blocker)
+├── popup.css / styles.css     # Dark-mode styling, glowing badges & tooltip animations
+├── auth.html / auth.js        # Optional Puter Cloud AI account manager
+├── rules.json                 # Core declarative blocking rules
+├── adblock_rules.json         # High-priority ad & popunder DNR rules
+├── rulesets/                  # uBlock Origin Lite ruleset parity (EasyList, EasyPrivacy, etc.)
+├── web_accessible_resources/  # Surrogate defusers, script stubs & redirect resources
+├── lib/                       # Local Puter.js runtime library
 ├── logo/                      # Extension icons (16px, 48px, 128px)
-├── package.ps1                # Automated packaging script for releases & Chrome Web Store
+├── package.ps1                # Production packager for Chrome Web Store & Releases
 ├── PRIVACY_POLICY.md          # Formal privacy policy documentation
-└── tests/                     # Validation scripts, Puppeteer test suite, dataset evaluators
+└── CHROME_WEB_STORE_GUIDE.md  # Step-by-step Chrome Web Store submission guide
 ```
 
 ---
 
-## 📊 Empirical Evaluation & Academic Rigor
+## 🚀 Installation
 
-DarkSight was evaluated against landmark research datasets:
-- **Mathur et al. (Princeton Crawl):** Achieved **69.69% text recall** over 1,818 ground-truth shopping instances using on-device DeepSeek-R1.
-- **AidUI (ContextDP Dataset):** Evaluated against 501 real-world e-commerce visual layouts.
-- **User Evaluation Survey:** Validated across live shopping users with an average usability satisfaction score of **4.27 / 5.0**.
+### Option A: Install from Source (Developer Mode)
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/tashfinn/DarkSight.git
+   ```
+2. Open Google Chrome and navigate to `chrome://extensions/`.
+3. Enable **Developer mode** (toggle in the top-right corner).
+4. Click **Load unpacked** and select the cloned `DarkSight` folder.
+5. Pin **DarkSight** to your toolbar!
+
+### Option B: Pre-packaged Release ZIP
+1. Download the latest `darksight-v1.5.0.zip` from [Releases](https://github.com/tashfinn/DarkSight/releases).
+2. Extract the archive into a folder.
+3. Open `chrome://extensions/`, enable **Developer mode**, and click **Load unpacked**.
+
+---
+
+## ⚙️ Optional: Local AI Setup (Ollama)
+If you prefer 100% offline local processing instead of the default zero-login cloud engine:
+1. Install [Ollama](https://ollama.com/download).
+2. Pull the models in your terminal:
+   ```bash
+   # Text Analysis Model
+   ollama pull deepseek-r1:1.5b
+
+   # Multimodal Vision Model
+   ollama pull qwen2.5vl
+   ```
+3. In the DarkSight popup, select **Local Ollama** as your preferred AI engine.
 
 ---
 
@@ -143,6 +141,14 @@ In PowerShell:
 powershell -NoProfile -ExecutionPolicy Bypass -File package.ps1
 ```
 The output file will be generated in `dist/darksight-v1.5.0.zip`.
+
+---
+
+## 🔒 Privacy & Security
+
+- **Zero Tracking:** DarkSight never tracks, collects, or monetizes user browsing history.
+- **Privacy First:** All DOM analysis and cosmetic ad blocking happen entirely within your local browser sandbox.
+- Read our full [Privacy Policy](PRIVACY_POLICY.md).
 
 ---
 
