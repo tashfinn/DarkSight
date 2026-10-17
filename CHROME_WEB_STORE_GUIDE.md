@@ -46,9 +46,32 @@ Real-time dark pattern detector, manipulative UI countermeasure shield, and nati
 
 ### Detailed Description
 ```text
-🛡️ DarkSight is a comprehensive browser protection shield that detects deceptive design patterns (dark patterns), shields you from psychological manipulation, and blocks intrusive ads across the web in real-time.
+🛡️ DarkSight is an intelligent browser protection shield that detects deceptive design patterns (dark patterns), shields you from psychological manipulation, and blocks intrusive ads across the web in real-time.
 
 Built upon 7 landmark academic research papers (Mathur et al., Schaefer et al., AidUI, DP Sentinel), DarkSight continuously analyzes web elements to uncover hidden costs, artificial urgency, fake discounts, and manipulative button layouts.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📖 HOW TO USE DARKSIGHT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ INSTALL & PIN
+• Click "Add to Chrome" and pin the DarkSight shield icon to your toolbar.
+• It starts protecting you immediately with zero setup or configuration required.
+
+2️⃣ CHOOSE YOUR COUNTERMEASURE
+Click the DarkSight icon in your toolbar to choose how deceptive elements appear:
+• 🔴 Highlight & Explain (HLE) [Default]: Highlights deceptive countdowns and buttons in glowing red boxes. Hover your mouse over any highlighted box to see an instant explanation of the trick.
+• 🟣 Hide Deception (HD): Automatically removes and hides countdown timers, artificial stock warnings, and fake urgency tickers so you can shop in peace.
+• 🟢 Fair UI (Switch): Replaces manipulative marketing text with calm, honest language (e.g. replaces "Hurry! Only 1 left!" with neutral "In stock").
+
+3️⃣ AD BLOCKER & YOUTUBE SHIELD
+• Native Network Blocker: Powered by Chrome's Declarative Net Request (DNR) with official uBlock filters to stop banners, popunders, and trackers with 0% browser slowdown.
+• YouTube Video Ad Defuser: Automatically skips video ads in 0ms while keeping comments, notifications, and menus 100% functional.
+• Whitelist Toggle: Turn ad blocking off for any specific website with a single click in the popup if you want to support a creator.
+
+4️⃣ ZERO-LOGIN AI INTELLIGENCE
+• Works automatically out of the box with Cloud AI (zero registration, zero API keys).
+• Optional: Connect your local Ollama instance (DeepSeek-R1 / Qwen2.5-VL) in the "AI Models" tab for 100% offline, on-device privacy.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✨ CORE CAPABILITIES
