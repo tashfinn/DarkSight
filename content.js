@@ -26,7 +26,7 @@ function log(...a){
 
 // Print prominent system diagnostics on load
 console.log(
-    `%c🛡️ DarkSight v1.5.0 %c| %cMulti-Tier Detection Pipeline Initialized\n` +
+    `%c🛡️ DarkSight v1.5.1 %c| %cMulti-Tier Detection Pipeline Initialized\n` +
     `%c• 📐 Structural Engine (AidUI Asymmetry)   : %cONLINE %c(DOM Geometry & Visual Prominence)\n` +
     `%c• 📝 Textual Engine Tier 1 (Fast Heuristics): %cONLINE %c(0ms Instant Regex Scanning)\n` +
     `%c• 🤖 Textual Engine Tier 2 (LLM API Engine) : %cONLINE %c(In-Context Classification via API)\n` +

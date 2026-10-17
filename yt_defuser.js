@@ -1,8 +1,10 @@
 /* =========================================================
    DARKSIGHT YOUTUBE PLAYER DEFUSER (MAIN World Engine)
    Runs at document_start in the MAIN world.
-   Intercepts ytInitialPlayerResponse, JSON.parse, fetch,
-   and XMLHttpRequest to prune adPlacements before playback.
+   - Intercepts ytInitialPlayerResponse to neutralize pre-roll ads
+   - Hooks JSON.parse to neutralize dynamic adPlacements payloads
+   - Native movie_player monitor for instant 0ms ad skipping
+   - Zero network hijacking (100% native fetch/XHR for comments & continuations)
    ========================================================= */
 
 (function () {
@@ -60,60 +62,8 @@
         });
     } catch (e) {}
 
-    // 3. Intercept fetch for /youtubei/v1/player, /youtubei/v1/next, and /youtubei/v1/reel
-    const origFetch = window.fetch;
-    if (typeof origFetch === 'function') {
-        window.fetch = async function (...args) {
-            const response = await origFetch.apply(this, args);
-            try {
-                const url = typeof args[0] === 'string' ? args[0] : (args[0] && args[0].url) || '';
-                if (typeof url === 'string' && (url.includes('/youtubei/v1/player') || url.includes('/youtubei/v1/next') || url.includes('/youtubei/v1/reel'))) {
-                    const clone = response.clone();
-                    const text = await clone.text();
-                    try {
-                        const data = origParse(text);
-                        sanitizeData(data);
-                        return new Response(JSON.stringify(data), {
-                            status: response.status,
-                            statusText: response.statusText,
-                            headers: response.headers
-                        });
-                    } catch (err) {
-                        return response;
-                    }
-                }
-            } catch (e) {}
-            return response;
-        };
-    }
-
-    // 4. Intercept XMLHttpRequest for /youtubei/v1/player and /youtubei/v1/next
-    try {
-        const origOpen = XMLHttpRequest.prototype.open;
-        const origSend = XMLHttpRequest.prototype.send;
-        XMLHttpRequest.prototype.open = function (method, url, ...rest) {
-            this._ds_url = url;
-            return origOpen.call(this, method, url, ...rest);
-        };
-        XMLHttpRequest.prototype.send = function (...args) {
-            if (this._ds_url && typeof this._ds_url === 'string' && (this._ds_url.includes('/youtubei/v1/player') || this._ds_url.includes('/youtubei/v1/next'))) {
-                this.addEventListener('readystatechange', function () {
-                    if (this.readyState === 4 && this.status === 200) {
-                        try {
-                            const data = origParse(this.responseText);
-                            sanitizeData(data);
-                            const sanitizedText = JSON.stringify(data);
-                            Object.defineProperty(this, 'responseText', { value: sanitizedText, configurable: true });
-                            Object.defineProperty(this, 'response', { value: sanitizedText, configurable: true });
-                        } catch (e) {}
-                    }
-                });
-            }
-            return origSend.apply(this, args);
-        };
-    } catch (e) {}
-
-    // 5. Native movie_player monitor (MAIN world direct player object)
+    // 3. Native movie_player monitor (MAIN world direct player object)
+    // Silently neutralizes any active ad within 50ms without touching network stack
     setInterval(() => {
         try {
             const player = document.getElementById('movie_player');

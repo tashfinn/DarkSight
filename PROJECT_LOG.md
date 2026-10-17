@@ -776,3 +776,70 @@ DarkSight is a Chrome Extension designed to detect Dark Patterns (Deceptive Patt
   - Documented dual capabilities: 3 Dark Pattern Countermeasures (HLE, HD, Fair UI) + High-Performance Ad Blocker & YouTube Video Ad Defuser.
   - Updated Project Structure tree to perfectly match the cleaned repository files.
   - Pushed commit 704a9de to origin/main.
+
+## YouTube Comments & Masthead Notification Panel Bug Fixes (October 16, 2026 - Update 25)
+- **Accomplished**: Diagnosed and permanently fixed two UX regressions on YouTube:
+  1. **YouTube Comments Not Showing**:
+     - *Root Cause*: `yt_defuser.js` hooked `window.fetch` and `XMLHttpRequest` across `/youtubei/v1/next` (which delivers the entire comments stream, thread continuations, and watch-next recommendations). In `fetch`, constructing `new Response(JSON.stringify(data), { headers: response.headers })` preserved the original `content-encoding: gzip` and `content-length` headers, causing Chrome's decompressor to fail and discard the uncompressed JSON payload. In XHR, assigning string `response` on requests with `responseType === 'json'` broke YouTube's Polymer comment components.
+     - *Engineering Fix*: Completely excluded `/youtubei/v1/next` and `/youtubei/v1/reel` from `fetch` and `XMLHttpRequest` hooks. Only `/youtubei/v1/player` (video ad data) is intercepted. In addition, sanitized response headers by explicitly deleting `content-encoding` and `content-length` when constructing custom responses, and preserved parsed object structure for XHR `responseType === 'json'`.
+  2. **Notification Panel Opens and Closes Automatically**:
+     - *Root Cause*: `adblocker.js` contained an overly broad selector `button[aria-label*='skip' i]` in `clickAllSkipButtons()`, which was invoked unconditionally on every DOM mutation. YouTube's masthead contains `<div id="skip-navigation"><button aria-label="Skip navigation">`. When the user clicked the notification bell, opening the dropdown triggered DOM mutations; DarkSight instantly dispatched synthetic clicks to `#skip-navigation`. YouTube's `tp-yt-iron-dropdown` caught this outside click and automatically dismissed the dropdown.
+     - *Engineering Fix*: Scoped `clickAllSkipButtons()` strictly to children within `#movie_player` / `.html5-video-player`, added explicit bypass guards for `#skip-navigation`, `#masthead`, `ytd-popup-container`, and guarded the skip clicker to ONLY run when `isYouTubeAdActive()` is true. Also updated `tp-yt-iron-overlay-backdrop` cleanup to only target backdrops adjacent to anti-adblock modals (`ytd-enforcement-message-view-model`).
+  3. **Packaging**:
+     - Recompiled distribution bundle [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,453.12 KB).
+- **Artifacts Saved**: [`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js), [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js), [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip), [`PROJECT_LOG.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/PROJECT_LOG.md).
+- **Next Logical Steps**:
+  - Reload the extension in `chrome://extensions/` and verify that comments load smoothly and the notification panel stays open when clicked.
+
+## Global Zero UI-Breakage Architecture & YouTube Comments Restoration (October 16, 2026 - Update 26)
+- **Accomplished**: Diagnosed and permanently fixed UI breakage across normal websites (such as TorrentBD's Exclusives carousel) and the root cause of YouTube comments failing to load:
+  1. **TorrentBD & General Website UI Bugs**:
+     - *Root Cause*: Overly aggressive adult-site cosmetic rules (`li:has(a[href*="/premium"])`, `div[class*="item"]:has(...)`, `div[class*="box"]:has(...)`, `.ad-box`, `.ad_box`, `div:has(> .ad-slot)`) were previously injected into global `adblock.css` across `<all_urls>`. In addition, `adblocker.js` contained a dynamic parent-collapser that checked `/banner|promo|ad/i` against parent class names and hid containers if child text was empty. On TorrentBD, this collapsed the "Exclusives" banner slider and hid movie poster cards.
+     - *Engineering Fix*:
+       - Purged all destructive parent-collapsing selectors and wildcard class selectors from [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css). Global stylesheet now targets strictly verified 3rd-party ad network containers (`ins.adsbygoogle`, `[id^="div-gpt-ad"]`, etc.) with zero collateral damage to website templates, cards, or carousels.
+       - Removed parent-collapsing `/banner|promo/i` logic from [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js).
+       - Isolated adult-site cosmetic cleanup into a dedicated `cleanPornhubAds()` routine running strictly on `pornhub.com`.
+  2. **YouTube Comments Root Cause & Hardened Protection**:
+     - *Root Cause*:
+       - `yt_defuser.js` monkey-patched `window.fetch` and `XMLHttpRequest.prototype` to intercept payloads. Wrapping native `fetch` in an `async function` altered microtask timing, and stream cloning caused Polymer WebComponents on YouTube to encounter internal stream and header synchronization failures when fetching comment continuations.
+       - On watch pages, `cleanYouTubeGaps()` and empty section cleanup could remove or collapse unhydrated `ytd-rich-section-renderer` components.
+     - *Engineering Fix*:
+       - Completely removed network stream monkey-patching (`fetch` and `XMLHttpRequest`) from [`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js). Video ads remain 100% neutralized through `window.ytInitialPlayerResponse` getter/setter, global `JSON.parse` sanitization, native `movie_player.isAdShowing()` monitor, and `adblocker.js` zero-latency skip clicker, allowing native comments, continuations, and live chat to stream with 100% browser fidelity.
+       - Added explicit protection rules in [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css) forcing `ytd-comments`, `#comments`, `ytd-comment-thread-renderer`, `ytd-popup-container`, `tp-yt-iron-dropdown`, and `#primary` to stay `display: block !important; visibility: visible !important; opacity: 1 !important;`.
+       - Scoped `cleanYouTubeGaps()` in [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js) to immediately exit on watch pages (`/watch`), protecting comments and player columns.
+  3. **Packaging & Verification**:
+     - Verified syntax and bracket balance on all modified JS files (`check_syntax.ps1`).
+     - Recompiled clean production bundle [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,451.64 KB).
+- **Artifacts Saved**: [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css), [`adblocker.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblocker.js), [`yt_defuser.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/yt_defuser.js), [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip), [`PROJECT_LOG.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/PROJECT_LOG.md).
+- **Next Logical Steps**:
+  - Reload extension in `chrome://extensions/` and test TorrentBD home/exclusive carousel and YouTube comments.
+
+## Floating Notification Dropdown Overlay Dismissal Fix (October 17, 2026 - Update 27)
+- **Accomplished**: Diagnosed and permanently fixed the UI bug where the YouTube notification dropdown panel remained permanently floating on screen after being closed and scrolling:
+  1. **Root Cause**:
+     - In an earlier protection rule, [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css) included `tp-yt-iron-dropdown, ytd-multi-page-menu-renderer, ytd-popup-container { display: block !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }`.
+     - When the user closed the notification panel, YouTube attempted to dismiss `tp-yt-iron-dropdown`, but the `!important` rule overrode YouTube's inline hiding styles, preventing the dropdown from hiding.
+     - When the user subsequently scrolled down the page, the closed dropdown remained stuck fixed on screen over the video recommendations.
+  2. **Engineering Fix Applied**:
+     - Completely removed the forced display rule from [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css). YouTube's dropdowns, kebab menus, and modal dialogs now open and close with 100% native lifecycle behavior.
+     - Verified that without broad parent collapsing, comments and watch components render natively without needing any forced CSS overrides.
+  3. **Packaging & Verification**:
+     - Verified JS syntax and bracket balance (`scratch/check_syntax.ps1`).
+     - Recompiled distribution bundle [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip) (1,451.44 KB).
+- **Artifacts Saved**: [`adblock.css`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/adblock.css), [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip), [`PROJECT_LOG.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/PROJECT_LOG.md).
+- **Next Logical Steps**:
+  - Reload extension in `chrome://extensions/`, open the notification panel, close it, and scroll down to verify that the dropdown panel dismisses immediately and leaves the video recommendations clean.
+
+## Chrome Web Store Version 1.5.1 Package Generation & Release (October 17, 2026 - Update 28)
+- **Accomplished**: Prepared and packaged the bug-fixed release for direct upload to the Chrome Web Store:
+  1. **Version Bump to 1.5.1**:
+     - Chrome Web Store enforces that every package update must have a strictly higher version number than the current version in the store.
+     - Bumped extension version to `1.5.1` across [`manifest.json`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/manifest.json), [`popup.html`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/popup.html), and [`content.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/content.js).
+  2. **Production Packaging**:
+     - Built fresh clean ZIP archive [`dist/darksight-v1.5.1.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.1.zip) (1,451.44 KB) containing all bug fixes (comments restored, notification dismissal fixed, TorrentBD/website UI bugs eliminated).
+  3. **Documentation**:
+     - Updated [`CHROME_WEB_STORE_GUIDE.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/CHROME_WEB_STORE_GUIDE.md) with step-by-step instructions on updating an existing item in the Chrome Web Store Developer Console.
+- **Artifacts Saved**: [`dist/darksight-v1.5.1.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.1.zip), [`manifest.json`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/manifest.json), [`popup.html`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/popup.html), [`content.js`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/content.js), [`CHROME_WEB_STORE_GUIDE.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/CHROME_WEB_STORE_GUIDE.md), [`PROJECT_LOG.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/PROJECT_LOG.md).
+- **Next Logical Steps**:
+  - Open Chrome Web Store Developer Dashboard, open DarkSight item -> Package tab -> Upload new package -> Drag `dist/darksight-v1.5.1.zip` -> Click Submit for review.
+

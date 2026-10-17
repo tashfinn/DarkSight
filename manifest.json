@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "DarkSight",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Real-time dark pattern detector, manipulative UI countermeasure shield, and native ad blocker.",
   "icons": {
     "16": "logo/icon16.png",

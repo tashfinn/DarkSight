@@ -1,13 +1,13 @@
-# 🚀 DarkSight Chrome Web Store Publishing Guide
+# 🚀 DarkSight Chrome Web Store Publishing & Update Guide
 
-This guide contains everything you need to publish **DarkSight v1.5.0** to the official **Google Chrome Web Store**. All fields, permissions justifications, and store descriptions are pre-written and ready to copy-paste.
+This guide contains everything you need to publish or update **DarkSight v1.5.1** to the official **Google Chrome Web Store**. All fields, permissions justifications, and store descriptions are pre-written and ready to copy-paste.
 
 ---
 
 ## 📦 Step 1: Your Ready-to-Upload ZIP File
 
 Your clean, production-grade package is compiled and ready:
-- **Location:** [`dist/darksight-v1.5.0.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.0.zip)
+- **Location:** [`dist/darksight-v1.5.1.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.1.zip)
 - **Size:** ~1.45 MB (clean Manifest V3 bundle, zero junk files)
 
 *(If you ever make code changes, run `powershell -ExecutionPolicy Bypass -File package.ps1` to rebuild it).*
@@ -17,10 +17,16 @@ Your clean, production-grade package is compiled and ready:
 ## 🌐 Step 2: Open Google Developer Dashboard
 
 1. Go to the **[Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)**.
-2. Sign in with your Google account.
-3. If this is your first time publishing, pay the one-time **$5 USD** developer registration fee.
-4. Click the blue **"+ New Item"** button in the top right.
-5. Drag and drop `dist/darksight-v1.5.0.zip` into the uploader.
+2. Sign in with your Google Developer account.
+3. **If Updating an Existing Item**:
+   - Click on your existing **DarkSight** item in the items list.
+   - In the left sidebar, click on **Package**.
+   - Click the blue **Upload new package** button.
+   - Drag and drop [`dist/darksight-v1.5.1.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.1.zip).
+   - Click **Submit for review** in the top right corner.
+4. **If Publishing for the First Time**:
+   - Click the blue **"+ New Item"** button in the top right.
+   - Drag and drop [`dist/darksight-v1.5.1.zip`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/dist/darksight-v1.5.1.zip) into the uploader.
 
 ---
 

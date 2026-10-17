@@ -12,6 +12,7 @@
     let isSiteDisabled = false;
     let ytLoop = null;
     let fbLoop = null;
+    let pornhubLoop = null;
     let lastMutedByUs = false;
     let domObserver = null;
 
@@ -41,21 +42,6 @@
         "iframe[src*='highcpmgate']",
         "iframe[src*='deloplen']",
         ".adsbygoogle",
-        ".ad-container",
-        ".ad-wrapper",
-        ".ad-slot",
-        ".ad-banner",
-        ".advertisement",
-        ".adSpot",
-        ".ad-link",
-        ".network-ad",
-        ".adBlockContainer",
-        "div[class*='adSpot']",
-        "div[id*='adSpot']",
-        "div[class*='ad_box']",
-        "div[class*='banner_ad']",
-        "div[class*='ad-placement']",
-        "div[class*='sponsored']",
         "#masthead-ad",
         "ytd-ad-slot-renderer",
         "ytd-promoted-sparkles-web-renderer",
@@ -94,7 +80,10 @@
         }
 
         if (isPornhub) {
-            setInterval(collapseUniversalAdPlaceholders, 500);
+            cleanPornhubAds();
+            if (!pornhubLoop) {
+                pornhubLoop = setInterval(cleanPornhubAds, 500);
+            }
         }
 
         collapseUniversalAdPlaceholders();
@@ -113,6 +102,10 @@
         if (fbLoop) {
             clearInterval(fbLoop);
             fbLoop = null;
+        }
+        if (pornhubLoop) {
+            clearInterval(pornhubLoop);
+            pornhubLoop = null;
         }
         if (domObserver) {
             domObserver.disconnect();
@@ -217,11 +210,14 @@
     }
 
     /* =========================================================
-       YOUTUBE EMPTY GAP & MASTHEAD AD PURGER
+       YOUTUBE EMPTY GAP & MASTHEAD AD PURGER (Home & Browse Feeds Only)
        ========================================================= */
 
     function cleanYouTubeGaps() {
         if (!isYouTube || !adBlockEnabled || isSiteDisabled) return;
+        // CRITICAL: NEVER run gap cleaner on watch pages! Watch pages host player, comments, and recommendations.
+        if (window.location.pathname.startsWith("/watch")) return;
+
         try {
             const adContainers = document.querySelectorAll(`
                 ytd-rich-section-renderer:has(ytd-ad-slot-renderer),
@@ -232,7 +228,6 @@
                 ytd-rich-section-renderer:has(ytd-brand-video-singleton-renderer),
                 ytd-rich-item-renderer:has(ytd-ad-slot-renderer),
                 ytd-rich-item-renderer:has(ytd-in-feed-ad-layout-renderer),
-                ytd-rich-item-renderer:has(#ad),
                 ytd-rich-section-renderer:has(a[href*="/playables"]),
                 ytd-rich-section-renderer:has([title*="Playables" i]),
                 #masthead-ad,
@@ -241,6 +236,9 @@
                 ytd-statement-banner-renderer
             `);
             for (const el of adContainers) {
+                // Safeguard comments and player columns
+                if (el.closest("ytd-comments, #comments, ytd-comment-thread-renderer, ytd-watch-metadata, #primary, #primary-inner, ytd-watch-flexy")) continue;
+
                 el.style.setProperty("display", "none", "important");
                 el.style.setProperty("height", "0px", "important");
                 el.style.setProperty("min-height", "0px", "important");
@@ -249,11 +247,11 @@
                 el.remove();
             }
 
-            // Also collapse any empty rich sections at the top of the feed
+            // Collapse empty ad promo shelves on feed (only if specifically containing an ad slot)
             const sections = document.querySelectorAll("ytd-rich-section-renderer");
             for (const sec of sections) {
                 if (!sec.querySelector("ytd-rich-item-renderer, ytd-video-renderer, ytd-reel-item-renderer")) {
-                    if (sec.querySelector("ytd-ad-slot-renderer, #masthead-ad, ytd-banner-promo-renderer") || !sec.textContent.trim()) {
+                    if (sec.querySelector("ytd-ad-slot-renderer, #masthead-ad, ytd-banner-promo-renderer")) {
                         sec.style.setProperty("display", "none", "important");
                         sec.style.setProperty("height", "0px", "important");
                         sec.style.setProperty("margin", "0px", "important");
@@ -265,8 +263,41 @@
     }
 
     /* =========================================================
-       UNIVERSAL AD PLACEHOLDER & BLANK SPACE VAPORIZER
-       Runs across all websites to collapse empty ad boxes and margins
+       PORNHUB DEDICATED AD CLEANER (Isolated Strictly to Pornhub)
+       ========================================================= */
+
+    function cleanPornhubAds() {
+        if (!isPornhub || !adBlockEnabled || isSiteDisabled) return;
+        try {
+            const adListItems = document.querySelectorAll(`
+                li:has(.adSpot),
+                li:has(.network-ad),
+                li:has(.adBlockContainer),
+                li:has(iframe[src*="trafficjunky"]),
+                li:has(iframe[src*="exoclick"]),
+                li:has(a[href*="trafficjunky"]),
+                li:has(a[href*="exoclick"]),
+                li.adListItem,
+                li.commercial,
+                li.grid_ad,
+                li[data-segment="ad"],
+                .adSpot,
+                .network-ad,
+                .adBlockContainer,
+                .underplayerAd
+            `);
+            for (const item of adListItems) {
+                item.style.setProperty("display", "none", "important");
+                item.style.setProperty("height", "0px", "important");
+                item.remove();
+            }
+        } catch (e) {}
+    }
+
+    /* =========================================================
+       UNIVERSAL AD PLACEHOLDER COLLAPSER (All Websites)
+       Zero UI Breakage: ONLY targets genuine ad network units
+       NEVER modifies parent containers or collapses website grids
        ========================================================= */
 
     const UNIVERSAL_AD_SELECTORS = [
@@ -280,33 +311,9 @@
         "[data-dfp]",
         "[data-google-query-id]",
         ".adsbygoogle",
-        ".ad-container",
-        ".ad-wrapper",
-        ".ad-slot",
-        ".ad-banner",
-        ".ad-box",
-        ".ad-placeholder",
-        ".advertisement",
-        ".ad_container",
-        ".ad_wrapper",
-        ".ad_banner",
-        ".ad_slot",
-        ".ad_box",
-        "div[class*='ad-placement']",
-        "div[class*='ad-wrapper']",
-        "div[class*='ad-container']",
-        "div[class*='ad-slot']",
-        "div[class*='banner-ad']",
-        "div[class*='sponsor']",
         ".trc_related_container",
         ".outbrain-widget",
-        ".taboola-container",
-        ".adSpot",
-        ".ad-link",
-        ".network-ad",
-        ".adBlockContainer",
-        ".adSpotContainer",
-        ".underplayerAd"
+        ".taboola-container"
     ];
 
     function collapseUniversalAdPlaceholders() {
@@ -314,62 +321,12 @@
         try {
             if (isYouTube) cleanYouTubeGaps();
             if (isFacebook) cleanFacebookAds();
-
-            // 1. Detect and destroy any card or grid item hosting "Remove Ads", "Sponsored", or ad labels
-            const removeAdButtons = document.querySelectorAll(`
-                [class*="removeAds" i],
-                [class*="remove-ad" i],
-                [class*="remove_ad" i],
-                [id*="removeAds" i],
-                [id*="remove-ad" i],
-                a[href*="premium"],
-                a[href*="remove_ads"],
-                .removeAds,
-                span, button, a
-            `);
-            for (const btn of removeAdButtons) {
-                const text = (btn.textContent || "").trim();
-                if (/^remove\s*ads?$/i.test(text) || /^remove\s*advertising$/i.test(text)) {
-                    const card = btn.closest('li, div[class*="video" i], div[class*="card" i], div[class*="col" i], div[class*="item" i], div[class*="box" i]') || btn.parentElement;
-                    if (card && card !== document.body && card !== document.documentElement && card.id !== "masthead-container") {
-                        card.style.setProperty("display", "none", "important");
-                        card.style.setProperty("height", "0px", "important");
-                        card.style.setProperty("min-height", "0px", "important");
-                        card.style.setProperty("width", "0px", "important");
-                        card.style.setProperty("margin", "0px", "important");
-                        card.style.setProperty("padding", "0px", "important");
-                        card.remove();
-                    }
-                }
-            }
-
-            // 2. Also check video list items (li) containing ad network iframes or ad links
-            const adListItems = document.querySelectorAll(`
-                li:has(.adSpot),
-                li:has(.network-ad),
-                li:has(.adBlockContainer),
-                li:has(iframe[src*="trafficjunky"]),
-                li:has(iframe[src*="exoclick"]),
-                li:has(a[href*="trafficjunky"]),
-                li:has(a[href*="exoclick"]),
-                li:has(a[href*="/premium"]),
-                li.adListItem,
-                li.commercial,
-                li.grid_ad,
-                li[data-segment="ad"]
-            `);
-            for (const item of adListItems) {
-                item.style.setProperty("display", "none", "important");
-                item.style.setProperty("height", "0px", "important");
-                item.style.setProperty("width", "0px", "important");
-                item.style.setProperty("margin", "0px", "important");
-                item.style.setProperty("padding", "0px", "important");
-                item.remove();
-            }
+            if (isPornhub) cleanPornhubAds();
 
             const adElements = document.querySelectorAll(UNIVERSAL_AD_SELECTORS.join(", "));
             for (const el of adElements) {
-                // Safeguard essential elements like YouTube masthead
+                // Safeguard essential elements like YouTube masthead, comments, and popup containers
+                if (isYouTube && el.closest("ytd-popup-container, #popup-container, ytd-multi-page-menu-renderer, tp-yt-iron-dropdown, ytd-comments, #comments, ytd-comment-thread-renderer, #masthead, ytd-masthead, #masthead-container, #primary, #primary-inner")) continue;
                 if (el.id === "masthead-container" || el.closest("#masthead-container")) continue;
 
                 el.style.setProperty("display", "none", "important");
@@ -379,22 +336,6 @@
                 el.style.setProperty("margin", "0px", "important");
                 el.style.setProperty("padding", "0px", "important");
                 el.style.setProperty("border", "none", "important");
-
-                // If parent only contains this ad element and has no readable text or media, collapse parent
-                const parent = el.parentElement;
-                if (parent && parent !== document.body && parent !== document.documentElement && parent.id !== "masthead-container") {
-                    const pClass = (parent.className || "").toString().toLowerCase();
-                    const pId = (parent.id || "").toString().toLowerCase();
-                    const isAdWrapper = /ad[-_]|sponsor|banner|promo/i.test(pClass) || /ad[-_]|banner|gpt/i.test(pId);
-
-                    if (isAdWrapper || (parent.children.length === 1 && !parent.textContent.trim())) {
-                        parent.style.setProperty("display", "none", "important");
-                        parent.style.setProperty("height", "0px", "important");
-                        parent.style.setProperty("min-height", "0px", "important");
-                        parent.style.setProperty("margin", "0px", "important");
-                        parent.style.setProperty("padding", "0px", "important");
-                    }
-                }
             }
         } catch (e) {}
     }
@@ -404,6 +345,13 @@
        ========================================================= */
 
     function clickAllSkipButtons() {
+        // ONLY click skip buttons if a video ad is actually active!
+        if (!isYouTubeAdActive()) return;
+
+        // ONLY search within the active YouTube player, NEVER across the global document!
+        const player = document.getElementById("movie_player") || document.querySelector(".html5-video-player");
+        if (!player) return;
+
         const skipSelectors = [
             ".ytp-skip-ad-button",
             ".ytp-ad-skip-button",
@@ -421,12 +369,14 @@
             "div[class*='ytp-skip-ad-button']",
             ".ytp-ad-overlay-close-button",
             "button.ytp-ad-overlay-close-button",
-            "button[aria-label*='Skip' i]",
-            "button[aria-label*='skip' i]"
+            ".ytp-ad-player-overlay-layout button[aria-label*='skip' i]",
+            ".video-ads button[aria-label*='skip' i]"
         ];
         for (const sel of skipSelectors) {
-            const btns = document.querySelectorAll(sel);
+            const btns = player.querySelectorAll(sel);
             for (const btn of btns) {
+                // Safeguard: NEVER click masthead navigation or outside dialogs
+                if (btn.id === "skip-navigation" || btn.closest("#skip-navigation, #masthead, ytd-masthead, #masthead-container, ytd-popup-container, #popup-container")) continue;
                 triggerClick(btn);
             }
         }
@@ -450,8 +400,8 @@
             return true;
         }
 
-        // 4. If ANY skip button exists anywhere in DOM, an ad is active
-        if (document.querySelector(".ytp-skip-ad-button, .ytp-ad-skip-button, .ytp-ad-skip-button-modern, .ytp-skip-ad-button-modern, .ytp-ad-skip-button-slot, button[class*='ytp-ad-skip-button'], button[class*='ytp-skip-ad-button']")) {
+        // 4. If ANY skip button exists inside the player, an ad is active
+        if (player && player.querySelector(".ytp-skip-ad-button, .ytp-ad-skip-button, .ytp-ad-skip-button-modern, .ytp-skip-ad-button-modern, .ytp-ad-skip-button-slot, button[class*='ytp-ad-skip-button'], button[class*='ytp-skip-ad-button']")) {
             return true;
         }
 
@@ -481,9 +431,7 @@
     function processYouTubeAd() {
         if (!adBlockEnabled || isSiteDisabled) return;
 
-        cleanYouTubeGaps();
-        clickAllSkipButtons();
-
+        const isAd = isYouTubeAdActive();
         const video = document.querySelector("video.html5-main-video") || document.querySelector("video");
 
         // Automatically bind ratechange and playback events to any video element
@@ -499,7 +447,7 @@
             });
         }
 
-        if (isYouTubeAdActive()) {
+        if (isAd) {
             if (video) {
                 // Silently mute the ad
                 if (!video.muted) {
@@ -521,7 +469,7 @@
                 }
             }
 
-            // Immediately click all skip buttons
+            // Click ad skip buttons (strictly scoped)
             clickAllSkipButtons();
         } else {
             // Restore normal playback speed and volume for actual video
@@ -540,7 +488,7 @@
         const antiAdblockModal = document.querySelector("ytd-enforcement-message-view-model, tp-yt-paper-dialog[aria-label*='ad blocker' i]");
         if (antiAdblockModal) {
             antiAdblockModal.remove();
-            document.querySelectorAll("tp-yt-iron-overlay-backdrop").forEach(b => b.remove());
+            document.querySelectorAll("tp-yt-iron-overlay-backdrop:has(~ ytd-enforcement-message-view-model)").forEach(b => b.remove());
             if (video && video.paused) {
                 const playBtn = document.querySelector(".ytp-play-button");
                 if (playBtn) playBtn.click();
@@ -551,6 +499,9 @@
     function startYouTubeAdSkipper() {
         if (ytLoop) clearInterval(ytLoop);
         ytLoop = setInterval(processYouTubeAd, 50);
+
+        // Gap cleaner runs periodically, not 20 times a second
+        setInterval(cleanYouTubeGaps, 1000);
 
         function hookVideoEvents() {
             const video = document.querySelector("video");
@@ -569,23 +520,37 @@
 
         // Fast MutationObserver to click skip buttons within 0ms of entering DOM
         const ytObserver = new MutationObserver(() => {
-            clickAllSkipButtons();
             const player = document.getElementById("movie_player") || document.querySelector(".html5-video-player");
             if (player && (player.classList.contains("ad-showing") || player.classList.contains("ad-interrupting"))) {
                 processYouTubeAd();
             }
         });
-        const target = document.body || document.documentElement;
+        const target = document.getElementById("movie_player") || document.body || document.documentElement;
         if (target) {
             ytObserver.observe(target, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
         }
 
         // Hook YouTube SPA navigation events
-        window.addEventListener("yt-navigate-finish", processYouTubeAd);
-        window.addEventListener("yt-page-data-updated", processYouTubeAd);
-        window.addEventListener("spfdone", processYouTubeAd);
-        document.addEventListener("yt-navigate-finish", processYouTubeAd);
-        document.addEventListener("yt-page-data-updated", processYouTubeAd);
+        window.addEventListener("yt-navigate-finish", () => {
+            processYouTubeAd();
+            cleanYouTubeGaps();
+        });
+        window.addEventListener("yt-page-data-updated", () => {
+            processYouTubeAd();
+            cleanYouTubeGaps();
+        });
+        window.addEventListener("spfdone", () => {
+            processYouTubeAd();
+            cleanYouTubeGaps();
+        });
+        document.addEventListener("yt-navigate-finish", () => {
+            processYouTubeAd();
+            cleanYouTubeGaps();
+        });
+        document.addEventListener("yt-page-data-updated", () => {
+            processYouTubeAd();
+            cleanYouTubeGaps();
+        });
 
         hookVideoEvents();
         setTimeout(hookVideoEvents, 500);
