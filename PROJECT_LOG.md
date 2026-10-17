@@ -843,3 +843,15 @@ DarkSight is a Chrome Extension designed to detect Dark Patterns (Deceptive Patt
 - **Next Logical Steps**:
   - Open Chrome Web Store Developer Dashboard, open DarkSight item -> Package tab -> Upload new package -> Drag `dist/darksight-v1.5.1.zip` -> Click Submit for review.
 
+## Comprehensive How-To-Use Documentation & Web Store Listing Refresh (October 18, 2026 - Update 29)
+- **Accomplished**: Modernized project documentation and Web Store listing assets with clear instructions on usage:
+  1. **GitHub README Refresh**:
+     - Added comprehensive **"📖 How to Use DarkSight"** section covering Quick Start, popup UI controls, switching between the 3 Countermeasures (HLE, HD, Fair UI), native ad blocking & YouTube video ad defuser controls, and live developer console diagnostics (`darkSightTestEngines()`).
+     - Documented all 3 AI provider configurations: Zero-Login Cloud AI (Default, 0 configuration), Puter.js, and Local Ollama (DeepSeek-R1 + Qwen2.5-VL).
+     - Committed and pushed changes to remote repository (`origin/main`).
+  2. **Chrome Web Store Detailed Description**:
+     - Added an engaging, copy-paste-ready "How to Use DarkSight" block to [`CHROME_WEB_STORE_GUIDE.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/CHROME_WEB_STORE_GUIDE.md) formatted specifically for the Chrome Web Store Developer Console listing.
+- **Artifacts Saved**: [`README.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/README.md), [`CHROME_WEB_STORE_GUIDE.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/CHROME_WEB_STORE_GUIDE.md), [`PROJECT_LOG.md`](file:///d:/Work/PROJECTS/CSE400%20%5BCAPSTONE%5D/DarkSight/PROJECT_LOG.md).
+- **Next Logical Steps**:
+  - Upload `dist/darksight-v1.5.1.zip` to Chrome Web Store Developer Console and update the store listing description.
+
